@@ -30,8 +30,8 @@ No build step, no framework, no CDN dependencies beyond the Google Fonts `<link>
 4. **Product Demo** — trade-show lead → CRM record → follow-up, as a 5-screen tap-through phone demo (badge scan, Marketing Cloud, Sales Cloud + Data Cloud match, automated follow-up, campaign-influence outcome).
 5. **A Technician's Day** — the flagship interactive: a 10-screen field-service walkthrough (schedule, route map + job briefing, job list, work order, parts, checklist, job-site photo capture, signature, auto-reassignment, day wrap-up). Explicitly labeled as Phase 2 / forward-looking.
 6. **Connected Ops** — before/after toggle. Three tools get absorbed; SAP stays put.
-7. **Architecture** — five layers, with the Einstein Trust Layer featured.
-8. **Executive Dashboard** — simulated Lightning UI with four tabbed KPI views.
+7. **Architecture** — five uniform layers, click any row to expand its explainer (one open at a time).
+8. **Executive Dashboard** — simulated Lightning UI. The four tabs and the sidebar's Dashboards items share one handler (`activateDash`) and one state; Pipeline by Region is a sidebar-only panel.
 9. **Business Value Calculator** — the real $115K investment snapshot plus four interactive tabs and a PDF export.
 10. **Path Forward** — outcome cards, the real SOW Gantt, org chart, and contact CTAs.
 

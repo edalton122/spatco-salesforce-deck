@@ -414,22 +414,28 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
    SLIDE 7 — ARCHITECTURE
 ═══════════════════════════════════════════════════════════════ */
 #s7{background:linear-gradient(160deg,#011F3D 0%,var(--brand-secondary) 100%);}
-.arch-stack{display:flex;flex-direction:column;gap:12px;margin-top:26px;}
-.layer{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:center;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:18px 24px;transition:all .28s;}
-.layer:hover{background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.2);}
+.arch-stack{display:flex;flex-direction:column;gap:8px;margin-top:18px;}
+.layer{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:13px;transition:background .28s,border-color .28s;}
+.layer:hover,.layer.open{background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.2);}
+.layer-head{display:grid;grid-template-columns:150px 1fr 22px;gap:22px;align-items:center;padding:10px 20px;cursor:pointer;border-radius:13px;outline:none;}
+.layer-head:focus-visible{box-shadow:0 0 0 2px rgba(255,255,255,.55);}
 .layer .lnum{display:flex;align-items:center;gap:11px;}
-.layer .lnum b{width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.layer .lnum b{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .layer .lnum span{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72);line-height:1.25;}
-.layer .lbody{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.lchip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:7px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.82);}
+.layer .lbody{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.lchip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:5px 12px;font-size:11px;font-weight:700;color:rgba(255,255,255,.82);}
 .lchip.tbd{border-style:dashed;color:rgba(255,255,255,.5);background:transparent;}
 .lchip.grn{background:rgba(114,191,68,.13);border-color:rgba(114,191,68,.4);color:#A8E07C;}
 .lchip.blu{background:rgba(2,116,190,.18);border-color:rgba(2,116,190,.45);color:#7FC6F2;}
-.layer.trust{background:linear-gradient(120deg,rgba(255,105,0,.11),rgba(255,105,0,.03));border:1.5px solid rgba(255,105,0,.45);box-shadow:0 10px 40px rgba(255,105,0,.13);}
 .layer.trust .lnum b{background:var(--brand-accent);color:#fff;}
-.layer.trust .lnum span{color:var(--brand-accent);}
-.layer.trust p{font-size:.85rem;color:rgba(255,255,255,.8);line-height:1.68;}
-.layer.trust p b{color:#fff;}
+.layer-chev{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);transition:transform .38s cubic-bezier(.4,0,.2,1),background .2s;}
+.layer-head:hover .layer-chev{background:rgba(255,255,255,.1);color:#fff;}
+.layer.open .layer-chev{transform:rotate(180deg);}
+.layer-more{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .38s cubic-bezier(.4,0,.2,1),opacity .38s cubic-bezier(.4,0,.2,1);}
+.layer.open .layer-more{grid-template-rows:1fr;opacity:1;}
+.layer-more-in{overflow:hidden;min-height:0;}
+.layer-more-in p{margin:0 20px 0 192px;padding:2px 42px 14px 0;font-size:.82rem;line-height:1.6;color:rgba(255,255,255,.72);}
+.layer-more-in p b{color:#fff;}
 .arch-note{margin-top:20px;display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.035);border:1px dashed rgba(255,255,255,.16);border-radius:13px;padding:16px 20px;}
 .arch-note p{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.68;}
 
@@ -1614,52 +1620,67 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
     <div class="arch-stack">
 
       <div class="layer">
-        <div class="lnum"><b>1</b><span>Data<br>Sources</span></div>
-        <div class="lbody">
-          <div class="lchip">SAP — ERP &amp; system of record</div>
-          <div class="lchip">Existing spreadsheets</div>
-          <div class="lchip">SharePoint quote libraries</div>
-          <div class="lchip">Trade-show badge capture</div>
+        <div class="layer-head" role="button" tabindex="0" aria-expanded="false" aria-controls="lm-1" onclick="toggleLayer(this)">
+          <div class="lnum"><b>1</b><span>Data<br>Sources</span></div>
+          <div class="lbody">
+            <div class="lchip">SAP — ERP &amp; system of record</div>
+            <div class="lchip">Existing spreadsheets</div>
+            <div class="lchip">SharePoint quote libraries</div>
+            <div class="lchip">Trade-show badge capture</div>
+          </div>
+          <span class="layer-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
         </div>
+        <div class="layer-more" id="lm-1"><div class="layer-more-in"><p>SAP stays the system of record — Salesforce syncs with it as the front-end engagement layer.</p></div></div>
       </div>
 
       <div class="layer">
-        <div class="lnum"><b>2</b><span>Integration<br>Layer</span></div>
-        <div class="lbody">
-          <div class="lchip tbd">Integration approach — TBD</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.52);line-height:1.6;">To be finalized with the implementation partner during discovery. No integration tooling is assumed or committed in the current scope.</div>
+        <div class="layer-head" role="button" tabindex="0" aria-expanded="false" aria-controls="lm-2" onclick="toggleLayer(this)">
+          <div class="lnum"><b>2</b><span>Integration<br>Layer</span></div>
+          <div class="lbody">
+            <div class="lchip tbd">Integration approach — TBD</div>
+          </div>
+          <span class="layer-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
         </div>
+        <div class="layer-more" id="lm-2"><div class="layer-more-in"><p>To be finalized with the implementation partner during discovery. No integration tooling is assumed or committed in the current scope.</p></div></div>
       </div>
 
       <div class="layer trust">
-        <div class="lnum"><b>3</b><span>Einstein<br>Trust Layer</span></div>
-        <div>
-          <p><b>SPATCO's data stays SPATCO's data.</b> No customer data is retained by the model provider, and nothing SPATCO puts into the platform is ever used to train an outside model. Zero data retention, dynamic grounding, and toxicity/audit controls are built into the platform — not bolted on later.</p>
-          <div class="lbody" style="margin-top:12px;">
+        <div class="layer-head" role="button" tabindex="0" aria-expanded="false" aria-controls="lm-3" onclick="toggleLayer(this)">
+          <div class="lnum"><b>3</b><span>Einstein<br>Trust Layer</span></div>
+          <div class="lbody">
             <div class="lchip">Zero data retention</div>
             <div class="lchip">No third-party model training</div>
             <div class="lchip">Audit trail &amp; masking</div>
           </div>
+          <span class="layer-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
         </div>
+        <div class="layer-more" id="lm-3"><div class="layer-more-in"><p><b>SPATCO's data stays SPATCO's data.</b> No customer data is retained by the model provider, and nothing SPATCO puts into the platform is ever used to train an outside model. Zero data retention, dynamic grounding, and toxicity/audit controls are built into the platform — not bolted on later.</p></div></div>
       </div>
 
       <div class="layer">
-        <div class="lnum"><b>4</b><span>Data Cloud<br>Foundations</span></div>
-        <div class="lbody">
-          <div class="lchip grn">Unified customer profiles</div>
-          <div class="lchip grn">Segmentation</div>
-          <div class="lchip grn">Flex credits — included</div>
-          <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Value already included with Phase 1 licensing — not a future purchase.</div>
+        <div class="layer-head" role="button" tabindex="0" aria-expanded="false" aria-controls="lm-4" onclick="toggleLayer(this)">
+          <div class="lnum"><b>4</b><span>Data Cloud<br>Foundations</span></div>
+          <div class="lbody">
+            <div class="lchip grn">Unified customer profiles</div>
+            <div class="lchip grn">Segmentation</div>
+            <div class="lchip grn">Flex credits — included</div>
+          </div>
+          <span class="layer-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
         </div>
+        <div class="layer-more" id="lm-4"><div class="layer-more-in"><p>Value already included with Phase 1 licensing — not a future purchase.</p></div></div>
       </div>
 
       <div class="layer">
-        <div class="lnum"><b>5</b><span>Applications</span></div>
-        <div class="lbody">
-          <div class="lchip blu">Sales Cloud</div>
-          <div class="lchip blu">Marketing Cloud</div>
-          <div class="lchip blu">Reports &amp; Dashboards</div>
+        <div class="layer-head" role="button" tabindex="0" aria-expanded="false" aria-controls="lm-5" onclick="toggleLayer(this)">
+          <div class="lnum"><b>5</b><span>Applications</span></div>
+          <div class="lbody">
+            <div class="lchip blu">Sales Cloud</div>
+            <div class="lchip blu">Marketing Cloud</div>
+            <div class="lchip blu">Reports &amp; Dashboards</div>
+          </div>
+          <span class="layer-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
         </div>
+        <div class="layer-more" id="lm-5"><div class="layer-more-in"><p>Phase 1 applications: Sales Cloud and Marketing Cloud, with reports and dashboards for leadership visibility.</p></div></div>
       </div>
 
     </div>
@@ -1701,14 +1722,14 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
       <div class="dash-body">
         <div class="dash-side">
           <h6>Dashboards</h6>
-          <a data-side="0" class="on">📊 Revenue Leadership</a>
-          <a data-side="1">🎯 Pipeline by Region</a>
-          <a data-side="2">🏭 Account Whitespace</a>
-          <a data-side="3">📣 Campaign Performance</a>
+          <a data-side="0" data-panel="0" class="on">📊 Revenue Leadership</a>
+          <a data-side="1" data-panel="4">🎯 Pipeline by Region</a>
+          <a data-side="2" data-panel="0">🏭 Account Whitespace</a>
+          <a data-side="3" data-panel="3">📣 Campaign Performance</a>
           <h6 style="margin-top:16px;">Reports</h6>
-          <a data-side="4">Rep Activity Summary</a>
-          <a data-side="5">New Hire Ramp Tracker</a>
-          <a data-side="6">Trade Show ROI</a>
+          <a data-side="4" data-panel="1">Rep Activity Summary</a>
+          <a data-side="5" data-panel="2">New Hire Ramp Tracker</a>
+          <a data-side="6" data-panel="3">Trade Show ROI</a>
         </div>
         <div class="dash-main">
 
@@ -1719,11 +1740,11 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
             <div class="kpi" style="--k:#C8102E;"><div class="l">Trade Show ROI</div><div class="v">4.1×</div><div class="d up">▲ from untracked</div></div>
           </div>
 
-          <div class="dash-tabs">
-            <button class="on" role="tab" onclick="setDashTab(0,this)">Cross-Sell Whitespace</button>
-            <button onclick="setDashTab(1,this)">Rep Productivity</button>
-            <button onclick="setDashTab(2,this)">New-Hire Ramp</button>
-            <button onclick="setDashTab(3,this)">Campaign ROI</button>
+          <div class="dash-tabs" role="tablist">
+            <button class="on" role="tab" data-panel="0">Cross-Sell Whitespace</button>
+            <button role="tab" data-panel="1">Rep Productivity</button>
+            <button role="tab" data-panel="2">New-Hire Ramp</button>
+            <button role="tab" data-panel="3">Campaign ROI</button>
           </div>
 
           <!-- Tab 0 — Whitespace -->
@@ -1856,6 +1877,33 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
                 <div><i style="background:#FF6900;"></i>In journey<b>29%</b></div>
                 <div><i style="background:#CBD5E1;"></i>Unqualified<b>13%</b></div>
               </div>
+            </div>
+          </div>
+
+          <!-- Sidebar-only panel — Pipeline by Region -->
+          <div class="dash-panel" id="dp-4">
+            <div class="dp-hero" style="--hc:#0274BE;">
+              <div class="dp-num"><b>$18.4M</b><span>Open pipeline</span></div>
+              <div class="dp-cmp"><div style="font-size:11px;color:#64748B;line-height:1.6;">One view of open pipeline across all <b style="color:var(--ink);">36 locations</b> — every region on the same definitions, instead of one spreadsheet per branch.</div></div>
+              <div class="dp-pill" style="color:#0369A1;background:#E0F2FE;">4 regions</div>
+            </div>
+            <div class="panel-card">
+              <h5>Open Pipeline by Region</h5>
+              <div class="sub">Illustrative · all open opportunities</div>
+              <div class="hbar"><div class="top"><span>Carolinas</span><b>$7.6M</b></div><div class="track"><i style="--bc:#0274BE;" data-w="100"></i></div></div>
+              <div class="hbar"><div class="top"><span>Southeast</span><b>$4.9M</b></div><div class="track"><i style="--bc:#FF6900;" data-w="64"></i></div></div>
+              <div class="hbar"><div class="top"><span>Mid-Atlantic</span><b>$3.2M</b></div><div class="track"><i style="--bc:#72BF44;" data-w="42"></i></div></div>
+              <div class="hbar"><div class="top"><span>Midwest</span><b>$2.7M</b></div><div class="track"><i style="--bc:#C8102E;" data-w="36"></i></div></div>
+              <p class="dash-note">Leaders see where pipeline is thin before the quarter closes.</p>
+            </div>
+            <div class="panel-card">
+              <h5>Pipeline per Location</h5>
+              <div class="sub">Illustrative · open pipeline ÷ locations</div>
+              <div class="hbar"><div class="top"><span>Carolinas · 12 locations</span><b>$633K</b></div><div class="track"><i style="--bc:#0274BE;" data-w="100"></i></div></div>
+              <div class="hbar"><div class="top"><span>Southeast · 10 locations</span><b>$490K</b></div><div class="track"><i style="--bc:#FF6900;" data-w="77"></i></div></div>
+              <div class="hbar"><div class="top"><span>Midwest · 6 locations</span><b>$450K</b></div><div class="track"><i style="--bc:#C8102E;" data-w="71"></i></div></div>
+              <div class="hbar"><div class="top"><span>Mid-Atlantic · 8 locations</span><b>$400K</b></div><div class="track"><i style="--bc:#72BF44;" data-w="63"></i></div></div>
+              <p class="dash-note">Same $18.4M, normalized so small branches aren't hidden behind big ones.</p>
             </div>
           </div>
 
@@ -2700,23 +2748,44 @@ function paintPanel(panel){
     setTimeout(()=>{el.style.height=el.dataset.h+'px';}, 60+i*110);
   });
 }
-const DASH_SIDE_TAB=[0,0,0,3,1,2,3];
-const DASH_TAB_SIDE=[0,4,5,6];
-function setDashTab(i,btn,sideIdx){
-  document.querySelectorAll('.dash-tabs button').forEach((b,j)=>{
-    const on=j===i;
+function toggleLayer(head){
+  const layer=head.closest('.layer');
+  const opening=!layer.classList.contains('open');
+  document.querySelectorAll('.arch-stack .layer').forEach(l=>{
+    const on=l===layer&&opening;
+    l.classList.toggle('open',on);
+    l.querySelector('.layer-head').setAttribute('aria-expanded',String(on));
+  });
+}
+document.querySelectorAll('.layer-head').forEach(hd=>hd.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleLayer(hd);}
+}));
+const DASH_TAB_SIDE=[2,4,5,3];
+const dashState={panel:0,side:0};
+function activateDash(panel,side){
+  dashState.panel=panel; dashState.side=side;
+  document.querySelectorAll('.dash-tabs button').forEach(b=>{
+    const on=+b.dataset.panel===panel;
     b.classList.toggle('on',on);
     b.setAttribute('aria-selected',String(on));
   });
-  document.querySelectorAll('.dash-panel').forEach((p,j)=>p.classList.toggle('on',j===i));
-  const side=sideIdx!==undefined?sideIdx:DASH_TAB_SIDE[i];
-  document.querySelectorAll('.dash-side a').forEach((a,j)=>a.classList.toggle('on',j===side));
-  const panel=document.getElementById('dp-'+i);
-  paintPanel(panel);
-  if(panel) panel.scrollIntoView({block:'nearest',behavior:'smooth'});
+  document.querySelectorAll('.dash-side a[data-side]').forEach(a=>a.classList.toggle('on',+a.dataset.side===side));
+  document.querySelectorAll('.dash-panel').forEach((p,j)=>p.classList.toggle('on',j===panel));
+  const el=document.getElementById('dp-'+panel);
+  paintPanel(el);
+  if(el) el.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
-document.querySelectorAll('.dash-side a').forEach((a,j)=>{
-  a.addEventListener('click',()=>setDashTab(DASH_SIDE_TAB[j],null,j));
+document.querySelectorAll('.dash-tabs button[data-panel], .dash-side a[data-panel]').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const panel=+el.dataset.panel;
+    let side;
+    if(el.dataset.side!==undefined) side=+el.dataset.side;
+    else {
+      const cur=document.querySelector('.dash-side a[data-side="'+dashState.side+'"]');
+      side=(cur&&+cur.dataset.panel===panel)?dashState.side:DASH_TAB_SIDE[panel];
+    }
+    activateDash(panel,side);
+  });
 });
 (function initDashObserver(){
   const s8=document.getElementById('s8');
