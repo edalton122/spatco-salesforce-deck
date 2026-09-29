@@ -52,9 +52,8 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 ═══════════════════════════════════════════════════════════════ */
 #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--brand-primary),var(--brand-accent));z-index:460;transition:width .15s linear;}
 
-/* ── Sticky top nav (hidden while Slide 1 is in view) ── */
-#topnav{position:fixed;top:0;left:0;right:0;height:62px;z-index:440;background:rgba(1,20,40,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.22);transition:opacity .35s ease,transform .35s ease;}
-#topnav.hidden{opacity:0;transform:translateY(-100%);pointer-events:none;}
+/* ── Fixed top nav (always visible) ── */
+#topnav{position:fixed;top:0;left:0;right:0;height:62px;z-index:440;background:rgba(1,20,40,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.22);}
 .tn-inner{position:relative;max-width:1520px;margin:0 auto;height:100%;padding:0 26px;display:flex;align-items:center;gap:22px;}
 .tn-lock{display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;}
 .tn-lock > span{font-size:13px;font-weight:800;color:#fff;letter-spacing:-.01em;}
@@ -99,17 +98,10 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
   linear-gradient(-58deg,transparent 0 58%,rgba(255,105,0,.055) 58% 60%,rgba(255,105,0,.02) 60% 66%,transparent 66%),
   radial-gradient(rgba(2,116,190,.07) 1px,transparent 1px);
   background-size:100% 100%,40px 40px;pointer-events:none;}
-.hero-wrap{position:relative;z-index:3;max-width:1400px;margin:0 auto;padding:44px 60px;width:100%;
+.hero-wrap{position:relative;z-index:3;max-width:1400px;margin:0 auto;padding:98px 60px 44px;width:100%;
   display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);gap:60px;align-items:center;}
 .hero-col-l{min-width:0;}
-.cobrand{display:flex;align-items:center;gap:18px;margin-bottom:auto;}
-.cobrand .divider{width:1px;height:30px;background:rgba(255,255,255,.22);}
-.cobrand .sf-lockup{display:flex;align-items:center;gap:9px;}
-.cobrand .sf-lockup span{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.01em;}
-.spatco-wordmark{display:flex;flex-direction:column;line-height:1;}
-.spatco-wordmark b{font-size:16px;font-weight:900;color:#fff;letter-spacing:.06em;}
-.spatco-wordmark i{font-size:8.5px;font-style:normal;font-weight:700;letter-spacing:.22em;color:var(--spatco-red);text-transform:uppercase;margin-top:3px;}
-.hero-h1{font-size:clamp(2.4rem,5.6vw,4.5rem);font-weight:900;color:#fff;letter-spacing:-.035em;line-height:1.02;margin:34px 0 0;}
+.hero-h1{font-size:clamp(2.4rem,5.6vw,4.5rem);font-weight:900;color:#fff;letter-spacing:-.035em;line-height:1.02;margin:0;}
 .hero-h1 .accent{background:linear-gradient(95deg,var(--brand-accent),#FFA254);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero-sub{font-size:1.02rem;color:rgba(255,255,255,.62);line-height:1.72;max-width:600px;margin-top:20px;}
 .stat-pills{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;}
@@ -195,14 +187,20 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 .future-note{margin-top:18px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.16);border-radius:13px;padding:15px 18px;}
 .future-note b{display:block;font-size:9.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:6px;}
 .future-note p{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.62;}
-.plat-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px;}
-.orbit-hub{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#0A8FE0,var(--brand-primary) 62%,#015A9E);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(2,116,190,.1),0 0 0 26px rgba(2,116,190,.05),0 24px 64px rgba(2,116,190,.4);z-index:3;}
-.orbit-hub b{font-size:12px;font-weight:900;color:#fff;letter-spacing:.06em;margin-top:8px;}
-.orbit-ring{position:absolute;border:1px dashed rgba(255,255,255,.14);border-radius:50%;animation:spin 46s linear infinite;}
-.orbit-ring.r1{width:280px;height:280px;}
-.orbit-ring.r2{width:392px;height:392px;animation-duration:70s;animation-direction:reverse;}
-.orbit-chip{position:absolute;background:rgba(255,255,255,.07);backdrop-filter:blur(9px);border:1px solid rgba(255,255,255,.16);border-radius:11px;padding:9px 15px;font-size:10.5px;font-weight:800;color:#fff;white-space:nowrap;z-index:4;}
-.orbit-chip.sap{border-color:rgba(114,191,68,.45);background:rgba(114,191,68,.11);}
+.plat-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px;gap:16px;}
+.plat-diagram{display:flex;flex-direction:column;align-items:center;}
+.sf-hub{width:264px;height:264px;overflow:visible;filter:drop-shadow(0 18px 44px rgba(2,116,190,.42));}
+.sf-hub .hub-seg{cursor:pointer;outline:none;transition:filter .2s,transform .25s;transform-origin:130px 130px;}
+.sf-hub .hub-seg:hover,.sf-hub .hub-seg:focus-visible{filter:brightness(1.12);transform:scale(1.025);}
+.sf-hub .hub-seg text{fill:#fff;font-size:11.5px;font-weight:900;letter-spacing:.01em;pointer-events:none;font-family:var(--font-main);paint-order:stroke;stroke:rgba(0,0,0,.22);stroke-width:2.5px;}
+.sf-hub .hub-core{fill:#fff;font-size:11px;font-weight:900;letter-spacing:.05em;font-family:var(--font-main);}
+.plat-sync{position:relative;height:92px;width:100%;display:flex;justify-content:center;margin:-4px 0;}
+.plat-sync-tag{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;background:#0A1F38;border:1px solid rgba(114,191,68,.35);border-radius:12px;padding:7px 13px;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.3);}
+.plat-sync-tag .tagline{display:inline-block;font-size:8.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:rgba(114,191,68,.16);color:#9BDB74;}
+.plat-sync-tag small{font-size:9px;font-weight:700;color:rgba(255,255,255,.55);letter-spacing:.04em;}
+.ops-node.plat-sap{position:relative;transform:none;left:auto;top:auto;width:230px;}
+.plat-caption{max-width:400px;text-align:center;font-size:.82rem;line-height:1.65;color:rgba(255,255,255,.62);margin:6px 0 0;}
+.plat-caption b{color:#fff;}
 
 #drawer-scrim{position:fixed;inset:0;background:rgba(0,8,19,.62);backdrop-filter:blur(3px);z-index:420;opacity:0;pointer-events:none;transition:opacity .34s;}
 #drawer-scrim.open{opacity:1;pointer-events:auto;}
@@ -252,35 +250,59 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 .step h4{font-size:1.02rem;font-weight:900;color:var(--ink);margin-bottom:6px;letter-spacing:-.015em;}
 .step p{font-size:.85rem;color:var(--muted);line-height:1.68;}
 .step .chip{display:inline-block;margin-top:8px;font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--brand-light);color:var(--brand-primary);border:1px solid rgba(2,116,190,.22);}
-.phone-frame-v{width:262px;background:#1C1C1E;border-radius:42px;padding:11px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 70px rgba(1,63,117,.35);position:relative;flex-shrink:0;margin:0 auto;}
-.phone-frame-v::after{content:'';position:absolute;right:-3px;top:88px;width:3px;height:58px;background:#2C2C2E;border-radius:0 3px 3px 0;box-shadow:0 68px 0 #2C2C2E;}
-.pfv-status{display:flex;justify-content:space-between;align-items:center;padding:5px 15px 4px;color:#fff;font-size:9.5px;font-weight:700;}
-.pfv-screen{position:relative;height:470px;border-radius:32px;overflow:hidden;background:linear-gradient(165deg,#012B52 0%,#011F3D 55%,#00142A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px 20px;}
-.pfv-screen::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(2,116,190,.16) 1px,transparent 1px);background-size:22px 22px;}
-.pfv-play{width:62px;height:62px;border-radius:50%;background:rgba(255,105,0,.14);border:2px solid var(--brand-accent);display:flex;align-items:center;justify-content:center;margin-bottom:18px;animation:pulseRing 2s ease-out infinite;position:relative;z-index:2;}
-.pfv-screen h5{font-size:13px;font-weight:900;color:#fff;letter-spacing:-.01em;position:relative;z-index:2;}
-.pfv-screen small{font-size:10px;color:rgba(255,255,255,.44);line-height:1.6;margin-top:8px;display:block;position:relative;z-index:2;}
-.pfv-badge{position:absolute;top:16px;left:50%;transform:translateX(-50%);font-size:8px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-accent);background:rgba(255,105,0,.12);border:1px solid rgba(255,105,0,.34);border-radius:20px;padding:4px 12px;z-index:3;white-space:nowrap;}
-.pfv-track{position:absolute;left:20px;right:20px;bottom:22px;z-index:2;}
-.pfv-track .bar{height:3px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden;}
-.pfv-track .bar i{display:block;height:100%;width:34%;background:var(--brand-accent);border-radius:3px;}
-.pfv-track .t{display:flex;justify-content:space-between;font-size:8px;font-weight:700;color:rgba(255,255,255,.34);margin-top:6px;}
-.pfv-home{height:18px;display:flex;align-items:center;justify-content:center;}
-.pfv-home span{width:110px;height:4.5px;background:rgba(255,255,255,.35);border-radius:3px;}
+.d4-right{display:flex;flex-direction:column;align-items:center;gap:18px;}
+.d4-ctx{width:100%;max-width:340px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--brand-accent);border-radius:14px;padding:16px 18px 12px;box-shadow:0 8px 26px rgba(1,63,117,.08);}
+.d4-pill{display:inline-block;font-size:9.5px;font-weight:800;color:var(--brand-accent);text-transform:uppercase;letter-spacing:.1em;border:1px solid rgba(255,105,0,.3);background:rgba(255,105,0,.08);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+.d4-title{font-size:1.12rem;font-weight:900;color:var(--ink);line-height:1.2;letter-spacing:-.02em;margin-bottom:7px;}
+.d4-body{font-size:.8rem;color:var(--muted);line-height:1.62;margin-bottom:6px;min-height:78px;}
+.d4-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.d4-foot .demo-dots{padding:0;margin:0;}
+.d4-foot .demo-dot{background:#CBD5E1;}
+.d4-foot .demo-dot.active{background:var(--brand-accent);}
+.d4-hint{display:flex;align-items:center;gap:6px;}
+.d4-hint span:first-child{font-size:14px;}
+.d4-hint span:last-child{font-size:10.5px;font-weight:700;color:#94A3B8;}
+.d4-scanner{position:relative;height:104px;border-radius:12px;background:linear-gradient(160deg,#0B1B2E,#12304F);margin-bottom:9px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.d4-badge{position:relative;width:118px;height:70px;background:#fff;border-radius:8px;padding:9px 10px;box-shadow:0 8px 22px rgba(0,0,0,.35);}
+.d4-badge i{display:block;width:60px;height:6px;border-radius:3px;background:#0B2545;margin-bottom:6px;}
+.d4-badge b{display:block;width:46px;height:4px;border-radius:2px;background:#CBD5E1;margin-bottom:4px;}
+.d4-badge b.s{width:34px;}
+.d4-badge .qr{position:absolute;right:9px;bottom:8px;width:26px;height:26px;display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.d4-badge .qr em{background:#0B2545;border-radius:1.5px;}
+.d4-badge .qr em:nth-child(2){opacity:.45;} .d4-badge .qr em:nth-child(3){opacity:.7;}
+.d4-laser{position:absolute;left:14%;right:14%;top:14px;height:2px;background:var(--brand-accent);box-shadow:0 0 12px 3px rgba(255,105,0,.65);animation:laserSweep 1.1s ease-in-out infinite alternate;}
+@keyframes laserSweep{from{top:14px;}to{top:86px;}}
+.d4-scan-txt{position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
+.d4-scan-txt .a{color:rgba(255,255,255,.6);} .d4-scan-txt .b{display:none;color:#8DDB5C;}
+.d4-scanner.done .d4-laser{display:none;}
+.d4-scanner.done .d4-scan-txt .a{display:none;} .d4-scanner.done .d4-scan-txt .b{display:inline;}
+.d4-tags{display:flex;flex-wrap:wrap;gap:4px;}
+.d4-tags span{font-size:7.5px;font-weight:800;color:var(--brand-primary);background:rgba(2,116,190,.08);border:1px solid rgba(2,116,190,.2);border-radius:20px;padding:2px 7px;}
+.d4-tl{position:relative;padding-left:4px;}
+.d4-tl-item{position:relative;display:flex;gap:10px;padding:0 0 12px;}
+.d4-tl-item:not(:last-child)::before{content:'';position:absolute;left:5px;top:12px;bottom:0;width:1.5px;background:#DDE5EF;}
+.d4-tl-item i{width:11px;height:11px;border-radius:50%;background:var(--brand-primary);border:2px solid #fff;box-shadow:0 0 0 1.5px var(--brand-primary);flex-shrink:0;margin-top:1px;position:relative;z-index:1;}
+.d4-tl-item i.g{background:var(--brand-green);box-shadow:0 0 0 1.5px var(--brand-green);}
+.d4-tl-item b{display:block;font-size:9.5px;font-weight:900;color:#0B2545;}
+.d4-tl-item span{display:block;font-size:8px;color:#64748B;line-height:1.5;margin-top:1px;}
+.d4-tl-item.dim{opacity:.55;}
+.d4-tl-item.hl b{color:var(--brand-primary);}
+.d4-share{height:10px;border-radius:6px;background:#E6EBF2;overflow:hidden;}
+.d4-share i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--brand-primary),#0A8FE0);transition:width 1.1s cubic-bezier(.4,0,.2,1);}
 
 /* ═══════════════════════════════════════════════════════════════
    SLIDE 5 — INTERACTIVE PHONE DEMO
 ═══════════════════════════════════════════════════════════════ */
 #slide-demo{position:relative;}
-#phone-outer{width:272px;min-height:560px;background:#1C1C1E;border-radius:44px;padding:12px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);position:relative;flex-shrink:0;}
-#phone-outer::after{content:'';position:absolute;right:-3px;top:90px;width:3px;height:60px;background:#2C2C2E;border-radius:0 3px 3px 0;box-shadow:0 70px 0 #2C2C2E;}
-#phone-status-bar{display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;color:#fff;font-size:10px;font-weight:700;letter-spacing:.02em;}
-#phone-screen{background:#F4F6FA;border-radius:34px;overflow:hidden;position:relative;height:490px;}
-#phone-screen .demo-screen{position:absolute;inset:0;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1);background:#F4F6FA;overflow:hidden;}
-#phone-screen .demo-screen.ds-active{transform:translateX(0);}
-#phone-screen .demo-screen.ds-exiting{transform:translateX(-100%);}
-#phone-home-bar{height:20px;display:flex;align-items:center;justify-content:center;}
-#phone-home-bar span{width:120px;height:5px;background:rgba(255,255,255,.35);border-radius:3px;}
+.phone-outer{width:272px;min-height:560px;background:#1C1C1E;border-radius:44px;padding:12px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);position:relative;flex-shrink:0;}
+.phone-outer::after{content:'';position:absolute;right:-3px;top:90px;width:3px;height:60px;background:#2C2C2E;border-radius:0 3px 3px 0;box-shadow:0 70px 0 #2C2C2E;}
+.phone-status-bar{display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;color:#fff;font-size:10px;font-weight:700;letter-spacing:.02em;}
+.phone-screen{background:#F4F6FA;border-radius:34px;overflow:hidden;position:relative;height:490px;}
+.phone-screen .demo-screen{position:absolute;inset:0;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1);background:#F4F6FA;overflow:hidden;}
+.phone-screen .demo-screen.ds-active{transform:translateX(0);}
+.phone-screen .demo-screen.ds-exiting{transform:translateX(-100%);}
+.phone-home-bar{height:20px;display:flex;align-items:center;justify-content:center;}
+.phone-home-bar span{width:120px;height:5px;background:rgba(255,255,255,.35);border-radius:3px;}
 .demo-dots{display:flex;justify-content:flex-start;gap:6px;padding:14px 0 4px;margin-top:24px;}
 .demo-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s,transform .3s;}
 .demo-dot.active{background:var(--brand-accent);transform:scale(1.35);}
@@ -329,6 +351,25 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 .ds-avatar.steel{background:linear-gradient(135deg,#46505A,#2C333A);}
 .ds-bars{display:flex;align-items:flex-end;gap:7px;height:62px;}
 .ds-bars > div{flex:1;border-radius:4px 4px 0 0;height:0;transition:height .8s cubic-bezier(.4,0,.2,1);}
+.ds-map{position:relative;height:198px;border-radius:12px;overflow:hidden;border:1px solid #DDE5EF;margin-bottom:8px;flex-shrink:0;}
+.ds-map > svg{position:absolute;inset:0;width:100%;height:100%;}
+#ds-route{stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset 1.7s cubic-bezier(.4,0,.2,1);}
+#ds-route.drawn{stroke-dashoffset:0;}
+.ds-nav-banner{position:absolute;top:7px;left:7px;right:7px;display:flex;align-items:center;gap:8px;background:#013F75;color:#fff;border-radius:10px;padding:7px 10px;box-shadow:0 5px 16px rgba(1,63,117,.35);}
+.ds-nav-banner b{display:block;font-size:9.5px;font-weight:900;letter-spacing:-.005em;}
+.ds-nav-banner span{display:block;font-size:8px;color:rgba(255,255,255,.66);margin-top:1px;}
+.ds-eta{position:absolute;right:7px;bottom:7px;background:#fff;border-radius:20px;padding:4px 10px;font-size:8.5px;font-weight:700;color:#475569;box-shadow:0 3px 10px rgba(1,63,117,.18);}
+.ds-eta b{color:var(--brand-primary);font-weight:900;}
+.ds-viewfinder{position:relative;height:172px;border-radius:12px;overflow:hidden;background:#0B1220;flex-shrink:0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);}
+.ds-vf-meta{position:absolute;left:8px;bottom:6px;font-size:7.5px;font-weight:800;letter-spacing:.05em;color:#fff;background:rgba(11,18,32,.6);border-radius:5px;padding:2px 6px;}
+#ds-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;}
+#ds-flash.go{animation:camFlash .55s ease-out;}
+@keyframes camFlash{0%{opacity:.95;}100%{opacity:0;}}
+.ds-shutter{width:46px;height:46px;border-radius:50%;background:#fff;border:3px solid #0B2545;padding:3px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.ds-shutter span{display:block;width:100%;height:100%;border-radius:50%;background:#0B2545;transition:transform .12s;}
+.ds-shutter:not(.taken){animation:pulseRing 1.8s ease-out infinite;}
+.ds-shutter.press span{transform:scale(.78);}
+.ds-thumb{width:42px;height:32px;border-radius:6px;flex-shrink:0;background:#94A3B8;}
 #sig-path{stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 1.5s ease;}
 #sig-path.drawn{stroke-dashoffset:0;}
 
@@ -343,29 +384,27 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 .toggle-wrap button.on[data-state="after"]{background:var(--brand-green);box-shadow:0 4px 14px rgba(114,191,68,.32);}
 #ops-stage{position:relative;height:440px;margin-top:22px;}
 #ops-svg{position:absolute;inset:0;width:100%;height:100%;}
-#ops-svg path{transition:opacity .55s ease;}
-.ops-before-line{stroke:var(--spatco-red);stroke-width:2;stroke-dasharray:7 6;fill:none;opacity:.55;}
+#ops-svg path{transition:opacity .55s ease,stroke .5s ease,stroke-width .5s ease;}
+.ops-line{fill:none;stroke:var(--spatco-red);stroke-width:2;stroke-dasharray:7 6;stroke-linecap:round;opacity:.6;}
+#ops-stage.after .ops-line.spoke{stroke:var(--brand-green);stroke-width:2.6;stroke-dasharray:9 7;opacity:.92;animation:dashFlow 1.4s linear infinite;}
+#ops-stage.after .ops-line.extra{opacity:0;}
 .ops-after-line{stroke:var(--brand-green);stroke-width:2.6;stroke-dasharray:9 7;fill:none;opacity:0;animation:dashFlow 1.4s linear infinite;}
-#ops-stage.after .ops-before-line{opacity:0;}
-#ops-stage.after .ops-after-line{opacity:.9;}
-.ops-node{position:absolute;background:#fff;border:1.5px solid var(--line);border-radius:13px;padding:13px 17px;text-align:center;width:172px;transform:translate(-50%,-50%);transition:all .6s cubic-bezier(.4,0,.2,1);box-shadow:0 5px 20px rgba(1,63,117,.09);z-index:3;}
+.ops-node{position:absolute;background:#fff;border:1.5px solid var(--line);border-radius:13px;padding:13px 17px;text-align:center;width:172px;transform:translate(-50%,-50%) scale(1);transition:transform .9s cubic-bezier(.4,0,.2,1),opacity .8s ease,filter .8s ease,box-shadow .6s ease,border-color .6s ease;box-shadow:0 5px 20px rgba(1,63,117,.09);z-index:3;}
 .ops-node b{display:block;font-size:12px;font-weight:900;color:var(--ink);}
 .ops-node span{display:block;font-size:9px;color:var(--muted);margin-top:3px;line-height:1.45;}
-.ops-node .tagline{display:inline-block;margin-top:7px;font-size:7.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:2.5px 8px;border-radius:20px;background:#FEE2E2;color:var(--spatco-red);}
-#ops-stage.after .ops-node.replaced{opacity:.28;filter:grayscale(1);}
+.ops-node .tagline{display:inline-block;margin-top:7px;font-size:7.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:2.5px 8px;border-radius:20px;background:#FEE2E2;color:var(--spatco-red);opacity:0;transform:translateY(4px);transition:opacity .45s ease,transform .45s ease;}
+#ops-stage.after .ops-node .tagline{opacity:1;transform:none;transition-delay:1.55s;}
+#ops-stage.after .ops-node.replaced{opacity:.28;filter:grayscale(1);transform:translate(-50%,-50%) scale(.7);}
 #ops-stage.after .ops-node.replaced b{text-decoration:line-through;}
-#ops-stage.after .ops-node[data-pull="tl"]{transform:translate(-50%,-50%) translate(80px,60px) scale(.7);}
-#ops-stage.after .ops-node[data-pull="tr"]{transform:translate(-50%,-50%) translate(-80px,66px) scale(.7);}
-#ops-stage.after .ops-node[data-pull="br"]{transform:translate(-50%,-50%) translate(-84px,-58px) scale(.7);}
 .ops-node.sap{border-color:rgba(114,191,68,.45);border-width:2px;}
 .ops-node.sap .tagline{background:rgba(114,191,68,.14);color:#3F7A22;}
 #ops-stage.after .ops-node.sap{box-shadow:0 8px 28px rgba(114,191,68,.26);border-color:var(--brand-green);}
-.ops-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:186px;height:186px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#0A8FE0,var(--brand-primary) 62%,#015A9E);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(2,116,190,.09),0 20px 52px rgba(2,116,190,.34);z-index:4;transition:box-shadow .6s;}
-#ops-stage.after .ops-hub{box-shadow:0 0 0 14px rgba(114,191,68,.12),0 0 0 30px rgba(114,191,68,.06),0 20px 60px rgba(2,116,190,.4);}
+.ops-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.25);opacity:0;pointer-events:none;width:186px;height:186px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#0A8FE0,var(--brand-primary) 62%,#015A9E);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(2,116,190,.09),0 20px 52px rgba(2,116,190,.34);z-index:4;transition:transform .5s ease,opacity .35s ease,box-shadow .6s;}
+#ops-stage.after .ops-hub{transform:translate(-50%,-50%) scale(1);opacity:1;box-shadow:0 0 0 14px rgba(114,191,68,.12),0 0 0 30px rgba(114,191,68,.06),0 20px 60px rgba(2,116,190,.4);transition:transform .95s cubic-bezier(.34,1.35,.64,1) .3s,opacity .6s ease .3s,box-shadow .8s ease 1s;}
 .ops-hub b{font-size:12.5px;font-weight:900;color:#fff;margin-top:7px;letter-spacing:.03em;}
 .ops-hub span{font-size:8px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-top:2px;}
-.ops-absorb{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);display:flex;flex-direction:column;gap:5px;align-items:center;z-index:5;opacity:0;transition:opacity .5s ease .45s;pointer-events:none;}
-#ops-stage.after .ops-absorb{opacity:1;}
+.ops-absorb{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);display:flex;flex-direction:column;gap:5px;align-items:center;z-index:5;opacity:0;transition:opacity .4s ease;pointer-events:none;}
+#ops-stage.after .ops-absorb{opacity:1;transition:opacity .5s ease 1.6s;}
 .ops-absorb div{background:rgba(114,191,68,.12);border:1px solid rgba(114,191,68,.4);color:#3F7A22;font-size:9px;font-weight:800;border-radius:20px;padding:4px 13px;white-space:nowrap;}
 .ops-legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:8px;}
 .ops-legend div{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--muted);}
@@ -415,9 +454,10 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 .dash-side a.on{background:rgba(2,116,190,.1);color:var(--brand-primary);}
 .dash-side a:hover{background:rgba(2,116,190,.06);}
 .dash-main{padding:18px 22px;}
-.dash-tabs{display:flex;gap:4px;border-bottom:1px solid #E6EBF2;margin-bottom:16px;flex-wrap:wrap;}
-.dash-tabs button{border:none;background:transparent;padding:9px 15px;font-size:11.5px;font-weight:800;color:#94A3B8;cursor:pointer;border-bottom:2.5px solid transparent;transition:all .2s;}
-.dash-tabs button.on{color:var(--brand-primary);border-bottom-color:var(--brand-primary);}
+.dash-tabs{display:flex;gap:6px;border-bottom:1px solid #E6EBF2;margin-bottom:16px;flex-wrap:wrap;padding-bottom:0;}
+.dash-tabs button{border:none;background:transparent;padding:10px 16px;font-size:11.5px;font-weight:800;color:#64748B;cursor:pointer;border-bottom:3px solid transparent;border-radius:8px 8px 0 0;transition:all .2s;}
+.dash-tabs button:hover{background:rgba(2,116,190,.06);color:var(--brand-primary);}
+.dash-tabs button.on{color:var(--brand-primary);background:rgba(2,116,190,.1);border-bottom-color:var(--brand-primary);}
 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:16px;}
 .kpi{background:#fff;border:1px solid #E6EBF2;border-radius:10px;padding:13px 14px;border-top:3px solid var(--k,var(--brand-primary));}
 .kpi .l{font-size:8.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;line-height:1.3;}
@@ -426,7 +466,16 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 .kpi .d.up{color:#15803D;}
 .kpi .d.dn{color:var(--spatco-red);}
 .dash-panel{display:none;}
-.dash-panel.on{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;}
+.dash-panel.on{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;animation:fadeInUp .38s ease both;}
+.dp-hero{grid-column:1/-1;display:flex;align-items:center;gap:26px;background:linear-gradient(135deg,#F6FAFF,#fff);border:1px solid #E6EBF2;border-left:4px solid var(--hc,var(--brand-primary));border-radius:11px;padding:15px 20px;}
+.dp-num b{display:block;font-size:2rem;font-weight:900;color:var(--ink);letter-spacing:-.035em;line-height:1;}
+.dp-num span{display:block;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin-top:6px;}
+.dp-cmp{flex:1;min-width:0;}.dp-cmp .hbar{margin-bottom:8px;}.dp-cmp .hbar:last-child{margin-bottom:0;}
+.dp-pill{font-size:10.5px;font-weight:900;color:#15803D;background:#DCFCE7;border-radius:20px;padding:6px 13px;white-space:nowrap;}
+.dp-vs b{display:block;font-size:1.9rem;font-weight:900;letter-spacing:-.035em;line-height:1;}
+.dp-vs span{display:block;font-size:10px;font-weight:700;color:#64748B;margin-top:5px;max-width:190px;line-height:1.4;}
+.dp-vs.bad b{color:var(--spatco-red);}.dp-vs.good b{color:#15803D;}
+.dp-arrow{font-size:1.6rem;font-weight:900;color:#CBD5E1;}
 .panel-card{background:#fff;border:1px solid #E6EBF2;border-radius:11px;padding:15px 17px;}
 .panel-card h5{font-size:11px;font-weight:900;color:var(--ink);margin-bottom:3px;}
 .panel-card .sub{font-size:9px;color:#94A3B8;margin-bottom:13px;}
@@ -581,7 +630,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 
 @media (max-width:1080px){
   .slide-inner{padding:80px 30px 44px;}
-  .hero-wrap{padding:40px 30px;grid-template-columns:1fr;gap:34px;}
+  .hero-wrap{padding:92px 30px 40px;grid-template-columns:1fr;gap:34px;}
   .hero-visual{justify-content:flex-start;}
   .growth-card{max-width:100%;}
   .flip-grid,.wtt-grid,.org,.cta-cards,.inv-grid,.kpi-grid{grid-template-columns:1fr 1fr;}
@@ -603,7 +652,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 
 <div id="progress"></div>
 
-<header id="topnav" class="hidden">
+<header id="topnav">
   <div class="tn-inner">
     <button class="tn-lock" id="tn-home" aria-label="Back to overview">
       <svg width="26" height="18" viewBox="0 0 273 191"><path fill="#00A1E0" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
@@ -622,18 +671,6 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 <section class="slide" id="s1" data-short="Overview" data-nav="Overview" data-theme="dark">
   <div class="hero-wrap">
    <div class="hero-col-l">
-
-    <div class="cobrand">
-      <div class="sf-lockup">
-        <svg width="34" height="24" viewBox="0 0 273 191" aria-label="Salesforce"><path fill="#00A1E0" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
-        <span>Salesforce</span>
-      </div>
-      <div class="divider"></div>
-      <div class="spatco-wordmark">
-        <b>SPATCO</b>
-        <i>Energy Solutions</i>
-      </div>
-    </div>
 
     <!-- Headline options considered:
          A. "Built for the Road to $800M."            ← selected: ties directly to the Kian growth mandate
@@ -853,16 +890,22 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
       </div>
 
       <div class="plat-visual">
-        <div class="orbit-ring r1"></div>
-        <div class="orbit-ring r2"></div>
-        <div class="orbit-hub">
-          <svg width="44" height="31" viewBox="0 0 273 191"><path fill="#fff" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
-          <b>SPATCO CRM</b>
+        <div class="plat-diagram">
+          <svg class="sf-hub" viewBox="0 0 260 260" role="img" aria-label="Salesforce hub containing Sales Cloud, Marketing Cloud and Data Cloud Foundations"><defs><linearGradient id="hg-sales" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A8FE0"/><stop offset="1" stop-color="#0274BE"/></linearGradient><linearGradient id="hg-marketing" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A3D"/><stop offset="1" stop-color="#FF6900"/></linearGradient><linearGradient id="hg-data" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#72BF44"/><stop offset="1" stop-color="#4F9E2A"/></linearGradient><radialGradient id="hg-core" cx=".34" cy=".3" r=".9"><stop offset="0" stop-color="#0A8FE0"/><stop offset=".62" stop-color="#0274BE"/><stop offset="1" stop-color="#013F75"/></radialGradient></defs><g class="hub-seg" onclick="openDrawer('sales')" tabindex="0" role="button" aria-label="Sales Cloud"><path d="M26.0 62.5A124 124 0 0 1 234.0 62.5L171.9 102.8A50 50 0 0 0 88.1 102.8Z" fill="url(#hg-sales)"/><text x="130.0" y="38.0" text-anchor="middle"><tspan x="130.0" dy="0">Sales</tspan><tspan x="130.0" dy="13">Cloud</tspan></text></g><g class="hub-seg" onclick="openDrawer('marketing')" tabindex="0" role="button" aria-label="Marketing Cloud"><path d="M240.5 73.7A124 124 0 0 1 136.5 253.8L132.6 179.9A50 50 0 0 0 174.6 107.3Z" fill="url(#hg-marketing)"/><text x="205.3" y="168.5" text-anchor="middle"><tspan x="205.3" dy="0">Marketing</tspan><tspan x="205.3" dy="13">Cloud</tspan></text></g><g class="hub-seg" onclick="openDrawer('data')" tabindex="0" role="button" aria-label="Data Cloud Foundations"><path d="M123.5 253.8A124 124 0 0 1 19.5 73.7L85.4 107.3A50 50 0 0 0 127.4 179.9Z" fill="url(#hg-data)"/><text x="54.7" y="168.5" text-anchor="middle"><tspan x="54.7" dy="0">Data Cloud</tspan><tspan x="54.7" dy="13">Foundations</tspan></text></g><circle cx="130" cy="130" r="45" fill="url(#hg-core)" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/><g transform="translate(114,104) scale(0.1172)"><path fill="#fff" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></g><text class="hub-core" x="130" y="152" text-anchor="middle">Salesforce</text></svg>
+          <div class="plat-sync">
+            <svg width="44" height="92" viewBox="0 0 44 92" aria-hidden="true">
+              <path class="ops-after-line" style="opacity:.95;" d="M22 12 L22 80"/>
+              <path d="M22 2 L30 14 L14 14Z" fill="#72BF44"/>
+              <path d="M22 90 L30 78 L14 78Z" fill="#72BF44"/>
+            </svg>
+            <div class="plat-sync-tag"><span class="tagline">System of Record &mdash; Not Replaced</span><small>Two-way sync</small></div>
+          </div>
+          <div class="ops-node sap plat-sap">
+            <b>SAP</b>
+            <span>ERP &middot; finance &middot; inventory &middot; service contracts</span>
+          </div>
         </div>
-        <div class="orbit-chip" style="top:11%;left:6%;">Sales Cloud</div>
-        <div class="orbit-chip" style="top:26%;right:2%;">Marketing Cloud</div>
-        <div class="orbit-chip" style="bottom:22%;left:0;">Data Cloud Foundations</div>
-        <div class="orbit-chip sap" style="bottom:7%;right:6%;">🔒 SAP — System of Record</div>
+        <p class="plat-caption"><b>Salesforce is the engagement layer</b> &mdash; Sales Cloud, Marketing Cloud, and Data Cloud Foundations sit inside it. SAP stays the system of record underneath.</p>
       </div>
     </div>
   </div>
@@ -911,33 +954,178 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 
       </div>
 
-      <div>
-        <!-- TODO: drop in demo-loop.mp4 — replace the .pfv-screen contents below with:
-             <video src="demo-loop.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video> -->
-        <div class="phone-frame-v">
-          <div class="pfv-status">
-            <span>9:41</span>
-            <span style="font-size:8.5px;opacity:.65;">SPATCO Sales</span>
+      <div class="d4-right">
+        <div class="d4-ctx">
+          <div class="d4-pill" id="d4-pill">Step 1 of 5</div>
+          <h3 class="d4-title" id="d4-title">Scan the badge.<br>Lead captured in one tap.</h3>
+          <p class="d4-body" id="d4-body">Dana stops by Booth B12. One scan captures name, company, and interest area — no clipboard, no end-of-show spreadsheet.</p>
+          <div class="d4-foot">
+            <div class="demo-dots" id="d4-dots">
+              <div class="demo-dot active"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div>
+            </div>
+            <div class="d4-hint" id="d4-hint"><span>👆</span><span>Tap to begin</span></div>
+          </div>
+        </div>
+
+        <div class="phone-outer" id="d4-phone">
+          <div class="phone-status-bar">
+            <span>2:14</span>
+            <span style="font-size:9px;opacity:.7;">SPATCO Sales</span>
             <span style="display:flex;align-items:center;gap:3px;">
-              <svg width="11" height="8" fill="#fff" viewBox="0 0 11 8"><rect y="2" width="2" height="6" rx="1" opacity=".4"/><rect x="3" y="1.5" width="2" height="6.5" rx="1" opacity=".6"/><rect x="6" y=".5" width="2" height="7.5" rx="1" opacity=".8"/><rect x="9" width="2" height="8" rx="1"/></svg>
-              <svg width="21" height="10" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="19" height="10" rx="3.5" stroke="#fff" stroke-opacity=".35"/><rect x="1.5" y="1.5" width="15" height="8" rx="2.5" fill="#fff"/></svg>
+              <svg width="11" height="8" fill="white" viewBox="0 0 11 8"><rect y="2" width="2" height="6" rx="1" opacity=".4"/><rect x="3" y="1.5" width="2" height="6.5" rx="1" opacity=".6"/><rect x="6" y=".5" width="2" height="7.5" rx="1" opacity=".8"/><rect x="9" width="2" height="8" rx="1"/></svg>
+              <svg width="22" height="11" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="19" height="10" rx="3.5" stroke="white" stroke-opacity=".35"/><rect x="1.5" y="1.5" width="15" height="8" rx="2.5" fill="white"/></svg>
             </span>
           </div>
-          <div class="pfv-screen">
-            <div class="pfv-badge">Demo Footage Coming Soon</div>
-            <div class="pfv-play">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF6900"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <div id="d4-screen" class="phone-screen">
+
+            <!-- ── Screen 1: Badge Scan ── -->
+            <div class="demo-screen ds-active" id="d4-screen-1">
+              <div id="d4-invite" onclick="dismissInvite4()" style="position:absolute;inset:0;z-index:25;cursor:pointer;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(to bottom,rgba(1,63,117,0.25) 0%,rgba(1,31,61,0.86) 60%,rgba(1,31,61,0.96) 100%);">
+                <div style="font-size:36px;margin-bottom:10px;animation:bounce 1.1s ease-in-out infinite;">👆</div>
+                <div style="background:white;border-radius:16px;padding:13px 18px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.35);max-width:196px;">
+                  <div style="font-size:11px;font-weight:900;color:#013F75;margin-bottom:4px;">Badge Scan to Pipeline</div>
+                  <div style="font-size:9px;color:#64748B;line-height:1.55;">Tap through 5 screens — booth scan to reportable outcome — in about a minute.</div>
+                  <div style="margin-top:9px;padding:6px 14px;background:linear-gradient(135deg,#FF6900,#C44E00);border-radius:8px;font-size:9.5px;font-weight:800;color:white;">Tap to Begin →</div>
+                </div>
+              </div>
+              <div class="ds-bar">
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">Booth B12</span>
+                <span class="t">Badge Scanner</span>
+                <span style="display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#5CA834;animation:pulseSlow 1.4s ease-in-out infinite;"></span><span style="font-size:8px;font-weight:900;color:#15803D;letter-spacing:.08em;">LIVE</span></span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-h">Carolinas Fuel &amp; Fleet Expo</div>
+                <div class="d4-scanner" id="d4-scanner">
+                  <div class="d4-badge"><i></i><b></b><b class="s"></b><div class="qr"><em></em><em></em><em></em><em></em></div></div>
+                  <div class="d4-laser"></div>
+                  <div class="d4-scan-txt"><span class="a">Scanning badge…</span><span class="b">✓ Badge captured</span></div>
+                </div>
+                <div id="d4-lead" class="ds-reveal">
+                  <div class="ds-card" style="border-left:2.5px solid var(--brand-accent);margin-bottom:0;">
+                    <div class="ds-row" style="margin-bottom:7px;"><div class="ds-avatar steel">DW</div><div style="flex:1;min-width:0;"><div style="font-size:10.5px;font-weight:900;color:#0B2545;">Dana Whitfield</div><div style="font-size:8.5px;color:#64748B;">Fleet Operations Manager</div></div><span class="ds-chip hi">Hot</span></div>
+                    <div class="ds-kv"><span>Company</span><b>Harborview Freight Lines</b></div>
+                    <div class="ds-kv"><span>Interest</span><b>Environmental Compliance</b></div>
+                    <div class="ds-kv" style="border-bottom:none;"><span>Scanned by</span><b>J. Okafor · 2:14 PM</b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemo4()">Save Lead<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
             </div>
-            <h5>Trade Show Lead &rarr; Pipeline</h5>
-            <small>A 90-second walkthrough of the loop on the left, recorded in a SPATCO-configured org.</small>
-            <div class="pfv-track">
-              <div class="bar"><i></i></div>
-              <div class="t"><span>0:31</span><span>1:30</span></div>
+
+            <!-- ── Screen 2: Lands in Marketing Cloud ── -->
+            <div class="demo-screen" id="d4-screen-2">
+              <div class="ds-bar">
+                <button class="ds-back" onclick="advanceDemo4()">‹ Scan</button>
+                <span class="t">Marketing Cloud</span>
+                <span class="ds-chip" style="background:rgba(255,105,0,.12);color:#C44E00;">Campaign</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-card" style="border-left:2.5px solid var(--brand-accent);">
+                  <div style="font-size:10.5px;font-weight:900;color:#0B2545;">Carolinas Fuel &amp; Fleet Expo</div>
+                  <div style="font-size:8.5px;color:#64748B;margin-top:2px;">Trade show · Booth B12 · Follow-up journey active</div>
+                </div>
+                <div class="ds-row" style="gap:6px;margin-bottom:10px;">
+                  <div class="ds-stat"><b id="d4-members">63</b><span>Campaign<br>Members</span></div>
+                  <div class="ds-stat"><b style="color:#5CA834;">Live</b><span>Follow-up<br>Journey</span></div>
+                </div>
+                <div class="ds-h">Newest Members</div>
+                <div id="d4-newrow" class="ds-reveal">
+                  <div class="ds-card" style="background:#FFF7ED;border-color:rgba(255,105,0,.4);">
+                    <div class="ds-row" style="justify-content:space-between;margin-bottom:5px;"><div style="font-size:10px;font-weight:900;color:#0B2545;">Dana Whitfield</div><span class="ds-chip" style="background:#FF6900;color:#fff;">New</span></div>
+                    <div style="font-size:8.5px;color:#64748B;margin-bottom:6px;">Harborview Freight Lines</div>
+                    <div class="d4-tags"><span>Carolinas Fuel &amp; Fleet Expo</span><span>Booth B12</span><span>Rep: J. Okafor</span><span>Environmental</span></div>
+                  </div>
+                </div>
+                <div class="ds-card" style="opacity:.6;padding:8px 11px;"><div style="font-size:9.5px;font-weight:800;color:#334155;">Priya Nair</div><div style="font-size:8px;color:#94A3B8;">Lakeside Fuel Co-op · Booth B12</div></div>
+                <div class="ds-card" style="opacity:.45;padding:8px 11px;"><div style="font-size:9.5px;font-weight:800;color:#334155;">Tom Reilly</div><div style="font-size:8px;color:#94A3B8;">Northgate Transit · Booth B12</div></div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta accent" onclick="advanceDemo4()">Open in Sales Cloud<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
             </div>
-          </div>
-          <div class="pfv-home"><span></span></div>
-        </div>
-        <p style="text-align:center;font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#94A3B8;margin-top:16px;">Placeholder &mdash; live recording to be added</p>
+
+            <!-- ── Screen 3: Sales Cloud record ── -->
+            <div class="demo-screen" id="d4-screen-3">
+              <div class="ds-bar">
+                <button class="ds-back" onclick="advanceDemo4()">‹ Campaign</button>
+                <span class="t">Sales Cloud</span>
+                <span class="ds-chip ok">Converted</span>
+              </div>
+              <div class="ds-body">
+                <div id="d4-match" class="ds-reveal">
+                  <div class="ds-card" style="background:#F3F9FF;border-color:rgba(2,116,190,.35);">
+                    <div style="font-size:7.5px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:var(--brand-primary);margin-bottom:5px;">✦ Data Cloud · Unified profile match</div>
+                    <div style="font-size:10.5px;font-weight:900;color:#0B2545;margin-bottom:5px;">Harborview Freight Lines</div>
+                    <div class="ds-kv"><span>Customer since</span><b>2021</b></div>
+                    <div class="ds-kv"><span>Active line</span><b>Petroleum Service</b></div>
+                    <div class="ds-kv" style="border-bottom:none;"><span>New interest</span><b style="color:var(--brand-accent);">Environmental Compliance</b></div>
+                    <div style="margin-top:6px;"><span class="ds-chip ok">Second line of business</span></div>
+                  </div>
+                </div>
+                <div id="d4-opp" class="ds-reveal">
+                  <div class="ds-h">Opportunity Created</div>
+                  <div class="ds-card" style="border-left:2.5px solid var(--brand-green);background:#F8FFF4;">
+                    <div class="ds-row" style="justify-content:space-between;margin-bottom:4px;"><span class="ds-chip sap">1 Record</span><span style="font-size:11px;font-weight:900;color:#15803D;">$30,000</span></div>
+                    <div style="font-size:10px;font-weight:900;color:#0B2545;">Harborview — Environmental Compliance</div>
+                    <div class="ds-kv" style="margin-top:4px;"><span>Stage</span><b>Qualification</b></div>
+                    <div class="ds-kv"><span>Source</span><b>Trade Show · Booth B12</b></div>
+                    <div class="ds-kv" style="border-bottom:none;"><span>Owner</span><b>J. Okafor</b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemo4()">View Activity<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 4: Automated Follow-Up ── -->
+            <div class="demo-screen" id="d4-screen-4">
+              <div class="ds-bar">
+                <button class="ds-back" onclick="advanceDemo4()">‹ Record</button>
+                <span class="t">Activity Timeline</span>
+                <span class="ds-chip sap">Automated</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-h">Harborview — Environmental Compliance</div>
+                <div class="d4-tl">
+                  <div class="d4-tl-item dim"><i></i><div><b>Badge scanned at Booth B12</b><span>2:14 PM · Carolinas Fuel &amp; Fleet Expo</span></div></div>
+                  <div class="d4-tl-item dim"><i></i><div><b>Added to campaign · account matched</b><span>2:14 PM · Marketing Cloud + Data Cloud</span></div></div>
+                  <div id="d4-tl-3" class="d4-tl-item ds-reveal hl"><i></i><div><b>Journey email sent</b><span>5:02 PM · "Great meeting you at the Expo" <em class="ds-chip ok" style="margin-left:2px;">Within 3 hrs</em></span></div></div>
+                  <div id="d4-tl-4" class="d4-tl-item ds-reveal hl"><i></i><div><b>Task created for J. Okafor</b><span>Call Dana re: environmental scope · due tomorrow 9:00 AM</span></div></div>
+                  <div id="d4-tl-5" class="d4-tl-item ds-reveal"><i class="g"></i><div><b>Email opened</b><span>5:41 PM · engagement logged to the record</span></div></div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemo4()">See the Outcome<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 5: Reportable Outcome ── -->
+            <div class="demo-screen" id="d4-screen-5">
+              <div class="ds-bar">
+                <button class="ds-back" onclick="advanceDemo4()">‹ Timeline</button>
+                <span class="t">Campaign Influence</span>
+                <span class="ds-chip ok">Report</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-card" style="background:linear-gradient(135deg,var(--brand-secondary),#012B52);border:none;text-align:center;padding:13px 11px;">
+                  <div style="font-size:9px;font-weight:800;color:rgba(255,255,255,.6);margin-bottom:3px;">Carolinas Fuel &amp; Fleet Expo</div>
+                  <div style="font-size:27px;font-weight:900;color:#fff;letter-spacing:-.03em;">4.1<span style="font-size:16px;color:var(--brand-accent);">x</span></div>
+                  <div style="font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:2px;">Return on event spend</div>
+                </div>
+                <div class="ds-card" style="padding:8px 11px;">
+                  <div class="ds-kv"><span>Event spend</span><b>$12,000</b></div>
+                  <div class="ds-kv"><span>Influenced pipeline</span><b style="color:#15803D;">$49,200</b></div>
+                  <div class="ds-kv" style="border-bottom:none;"><span>Opportunities</span><b>3</b></div>
+                </div>
+                <div class="ds-h">This Lead's Share of Pipeline</div>
+                <div class="d4-share"><i id="d4-share"></i></div>
+                <div class="ds-row" style="justify-content:space-between;margin:4px 0 8px;"><span style="font-size:8.5px;font-weight:800;color:var(--brand-primary);">Harborview · $30,000</span><span style="font-size:8.5px;font-weight:700;color:#94A3B8;">61% of $49,200</span></div>
+                <div id="d4-close" class="ds-reveal">
+                  <div class="ds-card" style="background:#F0FDF4;border-color:rgba(114,191,68,.45);padding:8px 10px;margin-bottom:4px;"><div class="ds-row"><span style="font-size:13px;">✅</span><div style="font-size:9px;font-weight:800;color:#15803D;line-height:1.45;">“What did that show return?” — now a number, not a guess.</div></div></div>
+                  <div style="font-size:7.5px;color:#94A3B8;line-height:1.5;padding:0 2px;">Illustrative figures.</div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta accent" onclick="resetDemo4()">🔁 Replay the Walkthrough</button></div>
+            </div>
+
+          </div><!-- /d4-screen -->
+          <div class="phone-home-bar"><span></span></div>
+        </div><!-- /d4-phone -->
       </div>
     </div>
   </div>
@@ -962,13 +1150,12 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 
       <!-- Left context panel -->
       <div style="flex:1;min-width:0;">
-        <div id="demo-pill">Step 1 of 8</div>
+        <div id="demo-pill">Step 1 of 10</div>
         <h2 id="demo-title">Marcus starts his day.<br>5 jobs, already sequenced.</h2>
         <p id="demo-body">No more guessing the route or calling dispatch for the next stop. Everything Marcus needs is already on his phone.</p>
         <div id="demo-hint"><span>👆</span><span>Tap the phone to begin</span></div>
-        <div class="demo-dots">
-          <div class="demo-dot active"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div>
-          <div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div>
+        <div class="demo-dots" id="demo-dots">
+          <div class="demo-dot active"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div>
         </div>
         <div style="margin-top:26px;padding:14px 17px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-left:2.5px solid var(--brand-accent);border-radius:12px;max-width:400px;">
           <p style="font-size:9px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--brand-accent);margin-bottom:6px;">Scope Note</p>
@@ -979,8 +1166,8 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
       <!-- Right: phone -->
       <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
         <div style="font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px;">Tap anywhere on the screen</div>
-        <div id="phone-outer">
-          <div id="phone-status-bar">
+        <div id="phone-outer" class="phone-outer">
+          <div class="phone-status-bar">
             <span>7:12</span>
             <span style="font-size:9px;opacity:.7;">SPATCO Field</span>
             <span style="display:flex;align-items:center;gap:3px;">
@@ -988,7 +1175,21 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
               <svg width="22" height="11" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="19" height="10" rx="3.5" stroke="white" stroke-opacity=".35"/><rect x="1.5" y="1.5" width="15" height="8" rx="2.5" fill="white"/></svg>
             </span>
           </div>
-          <div id="phone-screen">
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="js-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#AFCFEA"/><stop offset="1" stop-color="#E6F0F8"/></linearGradient>
+  <symbol id="jobsite-scene" viewBox="0 0 200 130" preserveAspectRatio="xMidYMid slice">
+    <rect width="200" height="130" fill="url(#js-sky)"/>
+    <rect y="86" width="200" height="44" fill="#8E99A6"/>
+    <rect y="86" width="200" height="4" fill="#A9B3BF"/>
+    <rect x="14" y="14" width="172" height="17" rx="3" fill="#46505A"/>
+    <rect x="14" y="26" width="172" height="5" fill="#C8102E"/>
+    <rect x="34" y="31" width="5" height="58" fill="#5B6672"/><rect x="161" y="31" width="5" height="58" fill="#5B6672"/>
+    <rect x="52" y="60" width="30" height="42" rx="4" fill="#E2E8F0"/><rect x="58" y="66" width="18" height="12" rx="2" fill="#0B2545"/><rect x="58" y="82" width="18" height="3" rx="1" fill="#94A3B8"/>
+    <rect x="118" y="60" width="30" height="42" rx="4" fill="#E2E8F0"/><rect x="124" y="66" width="18" height="12" rx="2" fill="#0B2545"/><rect x="124" y="82" width="18" height="3" rx="1" fill="#94A3B8"/>
+    <rect x="30" y="102" width="140" height="7" rx="2" fill="#C5CDD6"/>
+    <rect x="44" y="98" width="112" height="3" fill="#FF6900" opacity=".9"/>
+  </symbol></defs></svg>
+          <div id="phone-screen" class="phone-screen">
 
             <!-- ── Screen 1: Today's Schedule ── -->
             <div class="demo-screen ds-active" id="ds-screen-1">
@@ -996,7 +1197,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
                 <div style="font-size:36px;margin-bottom:10px;animation:bounce 1.1s ease-in-out infinite;">👆</div>
                 <div style="background:white;border-radius:16px;padding:13px 18px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.35);max-width:196px;">
                   <div style="font-size:11px;font-weight:900;color:#013F75;margin-bottom:4px;">A Technician's Day</div>
-                  <div style="font-size:9px;color:#64748B;line-height:1.55;">Tap through 8 screens — dispatch to done — to see where the platform is headed.</div>
+                  <div style="font-size:9px;color:#64748B;line-height:1.55;">Tap through 10 screens — dispatch to done — to see where the platform is headed.</div>
                   <div style="margin-top:9px;padding:6px 14px;background:linear-gradient(135deg,#FF6900,#C44E00);border-radius:8px;font-size:9.5px;font-weight:800;color:white;">Tap to Begin →</div>
                 </div>
               </div>
@@ -1026,11 +1227,52 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
                 </div>
                 <div style="font-size:8px;color:#94A3B8;line-height:1.5;padding:0 2px;">Sequenced by proximity and skill match · 2 more stops below</div>
               </div>
-              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">View Job List<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">Start Route<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
             </div>
 
-            <!-- ── Screen 2: Job List ── -->
+            <!-- ── Screen 2: Route Navigation + Job Briefing ── -->
             <div class="demo-screen" id="ds-screen-2">
+              <div class="ds-bar">
+                <button class="ds-back" onclick="advanceDemoScreen()">‹ Today</button>
+                <span class="t">Navigation</span>
+                <span style="display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#5CA834;animation:pulseSlow 1.4s ease-in-out infinite;"></span><span style="font-size:8px;font-weight:900;color:#15803D;letter-spacing:.08em;">LIVE</span></span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-map">
+                  <svg viewBox="0 0 232 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                    <rect width="232" height="200" fill="#E9EFF6"/>
+                    <path d="M-6 132C40 118 84 150 134 138S210 118 240 128" fill="none" stroke="#CFE3F5" stroke-width="15"/>
+                    <rect x="172" y="120" width="50" height="34" rx="7" fill="#D8ECD0"/><rect x="86" y="72" width="34" height="26" rx="6" fill="#D8ECD0"/>
+                    <g fill="none" stroke-linecap="square">
+                      <g stroke="#D5DDE8" stroke-width="8"><path d="M0 70H232M0 110H232M0 160H232M28 0V200M70 0V200M160 0V200M205 0V200"/></g>
+                      <g stroke="#fff" stroke-width="6"><path d="M0 70H232M0 110H232M0 160H232M28 0V200M70 0V200M160 0V200M205 0V200"/></g>
+                    </g>
+                    <path id="ds-route" pathLength="100" d="M28 186V160H70V110H160V70" fill="none" stroke="#0274BE" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="28" cy="186" r="6" fill="#0274BE" stroke="#fff" stroke-width="2.5"/>
+                    <g><circle cx="205" cy="160" r="8" fill="#94A3B8" stroke="#fff" stroke-width="2"/><text x="205" y="163" text-anchor="middle" font-size="9" font-weight="900" fill="#fff">3</text></g>
+                    <g><circle cx="110" cy="70" r="8" fill="#94A3B8" stroke="#fff" stroke-width="2"/><text x="110" y="73" text-anchor="middle" font-size="9" font-weight="900" fill="#fff">2</text></g>
+                    <g><circle cx="160" cy="70" r="11" fill="#FF6900" stroke="#fff" stroke-width="2.5"/><text x="160" y="74" text-anchor="middle" font-size="11" font-weight="900" fill="#fff">1</text></g>
+                  </svg>
+                  <div class="ds-nav-banner">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20v-7a4 4 0 0 1 4-4h9"/><path d="M14 4l5 5-5 5"/></svg>
+                    <div><b>Turn right onto Kettle Creek Rd</b><span>En route to Ridgeline Manufacturing</span></div>
+                  </div>
+                  <div class="ds-eta"><b>12.4 mi</b> · ETA 8:30 AM</div>
+                </div>
+                <div id="ds-briefing" class="ds-reveal">
+                  <div class="ds-card" style="border-left:2.5px solid var(--brand-accent);padding:9px 11px;margin-bottom:0;">
+                    <div class="ds-row" style="justify-content:space-between;margin-bottom:4px;"><span class="ds-h" style="margin:0;">Job Briefing</span><span class="ds-chip sap">WO-48210</span></div>
+                    <div class="ds-kv"><span>Gate code</span><b style="font-size:12.5px;letter-spacing:.16em;color:var(--brand-accent);">4471</b></div>
+                    <div class="ds-kv"><span>Ask for</span><b>T. Ellison &middot; Plant Maintenance Lead</b></div>
+                    <div class="ds-kv" style="border-bottom:none;"><span>Access</span><b>Enter via Bay 3</b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">I've Arrived<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 3: Job List ── -->
+            <div class="demo-screen" id="ds-screen-3">
               <div class="ds-bar">
                 <button class="ds-back" onclick="advanceDemoScreen()">‹ Today</button>
                 <span class="t">My Work Orders</span>
@@ -1058,8 +1300,8 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
               <div class="ds-foot" style="text-align:center;"><span style="font-size:8.5px;font-weight:700;color:#94A3B8;">Tap the top work order to open it</span></div>
             </div>
 
-            <!-- ── Screen 3: Work Order Detail ── -->
-            <div class="demo-screen" id="ds-screen-3">
+            <!-- ── Screen 4: Work Order Detail ── -->
+            <div class="demo-screen" id="ds-screen-4">
               <div class="ds-bar">
                 <button class="ds-back" onclick="advanceDemoScreen()">‹ Jobs</button>
                 <span class="t">WO-48210</span>
@@ -1087,8 +1329,8 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
               <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">Check Parts<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
             </div>
 
-            <!-- ── Screen 4: Parts Check ── -->
-            <div class="demo-screen" id="ds-screen-4">
+            <!-- ── Screen 5: Parts Check ── -->
+            <div class="demo-screen" id="ds-screen-5">
               <div class="ds-bar">
                 <button class="ds-back" onclick="advanceDemoScreen()">‹ WO-48210</button>
                 <span class="t">Parts Check</span>
@@ -1123,8 +1365,8 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
               <div class="ds-foot"><button class="ds-cta green" onclick="advanceDemoScreen()">Start Job<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
             </div>
 
-            <!-- ── Screen 5: On-Site Checklist ── -->
-            <div class="demo-screen" id="ds-screen-5">
+            <!-- ── Screen 6: On-Site Checklist ── -->
+            <div class="demo-screen" id="ds-screen-6">
               <div class="ds-bar">
                 <span style="font-size:9px;font-weight:800;color:#94A3B8;">On Site</span>
                 <span class="t">Service Checklist</span>
@@ -1142,8 +1384,40 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
               <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">Close Out Job<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
             </div>
 
-            <!-- ── Screen 6: Completion & Signature ── -->
-            <div class="demo-screen" id="ds-screen-6">
+            <!-- ── Screen 7: Job-Site Photo Capture ── -->
+            <div class="demo-screen" id="ds-screen-7">
+              <div class="ds-bar">
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">WO-48210</span>
+                <span class="t">Job-Site Photo</span>
+                <span class="ds-chip ok">5/5 Done</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-h">Completed Job Site</div>
+                <div class="ds-viewfinder">
+                  <svg viewBox="0 0 200 130" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;"><use href="#jobsite-scene"/></svg>
+                  <svg viewBox="0 0 200 130" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".85" aria-hidden="true"><path d="M10 24V10H24M176 10H190V24M190 106V120H176M24 120H10V106"/><rect x="84" y="50" width="32" height="26" stroke-dasharray="3 3" stroke-width="1.2" opacity=".7"/></svg>
+                  <div class="ds-vf-meta">WO-48210 &middot; 9:58 AM &middot; GPS locked</div>
+                  <div id="ds-flash"></div>
+                </div>
+                <div class="ds-row" style="justify-content:center;margin:9px 0 5px;">
+                  <button id="ds-shutter" class="ds-shutter" onclick="takeJobPhoto()" aria-label="Take photo"><span></span></button>
+                </div>
+                <div style="text-align:center;font-size:8.5px;font-weight:700;color:#64748B;margin-bottom:8px;">Take a photo of the completed job site</div>
+                <div id="ds-photo-attached" class="ds-reveal">
+                  <div class="ds-card" style="background:#F0FDF4;border-color:rgba(114,191,68,.45);padding:7px 9px;margin-bottom:0;">
+                    <div class="ds-row">
+                      <svg class="ds-thumb" viewBox="0 0 200 130" preserveAspectRatio="xMidYMid slice"><use href="#jobsite-scene"/></svg>
+                      <div style="flex:1;min-width:0;"><div id="ds-photo-label" style="font-size:9.5px;font-weight:900;color:#15803D;">Photo attached to WO-48210</div><div style="font-size:8px;color:#4D7C0F;margin-top:1px;">Ridgeline Manufacturing &middot; job site &middot; 9:58 AM</div></div>
+                      <span style="font-size:14px;">✅</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">Continue to Close Out<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 8: Completion & Signature ── -->
+            <div class="demo-screen" id="ds-screen-8">
               <div class="ds-bar">
                 <span style="font-size:9px;font-weight:800;color:#94A3B8;">WO-48210</span>
                 <span class="t">Close Out</span>
@@ -1174,8 +1448,8 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
               <div class="ds-foot"><button class="ds-cta green" onclick="advanceDemoScreen()">Submit &amp; Continue<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
             </div>
 
-            <!-- ── Screen 7: Auto-Reassignment ── -->
-            <div class="demo-screen" id="ds-screen-7">
+            <!-- ── Screen 9: Auto-Reassignment ── -->
+            <div class="demo-screen" id="ds-screen-9">
               <div class="ds-bar">
                 <span style="display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#5CA834;animation:pulseSlow 1.4s ease-in-out infinite;"></span><span style="font-size:8px;font-weight:900;color:#15803D;letter-spacing:.08em;">LIVE</span></span>
                 <span class="t">Dispatch View</span>
@@ -1206,8 +1480,8 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
               <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">See Day Wrap-Up<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
             </div>
 
-            <!-- ── Screen 8: Day Wrap-Up ── -->
-            <div class="demo-screen" id="ds-screen-8">
+            <!-- ── Screen 10: Day Wrap-Up ── -->
+            <div class="demo-screen" id="ds-screen-10">
               <div class="ds-bar">
                 <span style="font-size:9px;font-weight:800;color:#94A3B8;">5:40 PM</span>
                 <span class="t">Day Wrap-Up</span>
@@ -1249,7 +1523,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
             </div>
 
           </div><!-- /phone-screen -->
-          <div id="phone-home-bar"><span></span></div>
+          <div class="phone-home-bar"><span></span></div>
         </div><!-- /phone-outer -->
       </div>
 
@@ -1274,41 +1548,35 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 
     <div id="ops-stage">
       <svg id="ops-svg" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true">
-        <!-- chaotic "today" mesh -->
-        <path class="ops-before-line" d="M130 100 L860 86"/>
-        <path class="ops-before-line" d="M130 100 L150 360"/>
-        <path class="ops-before-line" d="M860 86 L850 358"/>
-        <path class="ops-before-line" d="M150 360 L850 358"/>
-        <path class="ops-before-line" d="M130 100 L850 358"/>
-        <path class="ops-before-line" d="M860 86 L150 360"/>
-        <path class="ops-before-line" d="M130 100 Q430 40 860 86"/>
-        <path class="ops-before-line" d="M150 360 Q500 430 850 358"/>
-        <!-- clean "after" flow into the hub -->
-        <path class="ops-after-line" d="M180 110 L430 200"/>
-        <path class="ops-after-line" d="M820 96 L575 195"/>
-        <path class="ops-after-line" d="M195 352 L430 262"/>
-        <path class="ops-after-line" d="M812 348 L572 265"/>
+        <!-- Today: tangled point-to-point lines between disconnected tools.
+             With Salesforce: the four "spoke" lines redirect into the hub, the two "extra" lines fade. -->
+        <path class="ops-line extra" id="ops-x0"/>
+        <path class="ops-line extra" id="ops-x1"/>
+        <path class="ops-line spoke" id="ops-s0"/>
+        <path class="ops-line spoke" id="ops-s1"/>
+        <path class="ops-line spoke" id="ops-s2"/>
+        <path class="ops-line spoke" id="ops-s3"/>
       </svg>
 
-      <div class="ops-node sap" data-pull="none" style="left:13%;top:24%;">
+      <div class="ops-node sap" id="ops-n-sap" data-b="11,33" data-a="14,22" style="left:11%;top:33%;">
         <b>SAP</b>
         <span>ERP · finance · inventory · service contracts</span>
         <span class="tagline">System of Record — Not Replaced</span>
       </div>
 
-      <div class="ops-node replaced" data-pull="tr" style="left:86%;top:20%;">
+      <div class="ops-node replaced" id="ops-n-sp" data-b="58,15" data-a="77,31" style="left:58%;top:15%;">
         <b>SharePoint</b>
         <span>Quote docs, proposals, scattered folders</span>
         <span class="tagline">Absorbed</span>
       </div>
 
-      <div class="ops-node replaced" data-pull="tl" style="left:15%;top:82%;">
+      <div class="ops-node replaced" id="ops-n-em" data-b="30,82" data-a="23,73" style="left:30%;top:82%;">
         <b>Email-Based Quoting</b>
         <span>Threads between sales, support, estimating</span>
         <span class="tagline">Absorbed</span>
       </div>
 
-      <div class="ops-node replaced" data-pull="br" style="left:85%;top:81%;">
+      <div class="ops-node replaced" id="ops-n-mm" data-b="86,60" data-a="77,71" style="left:86%;top:60%;">
         <b>Manual Marketing Tools</b>
         <span>Constant Contact, badge scans, spreadsheets</span>
         <span class="tagline">Absorbed</span>
@@ -1433,28 +1701,29 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
       <div class="dash-body">
         <div class="dash-side">
           <h6>Dashboards</h6>
-          <a class="on">📊 Revenue Leadership</a>
-          <a>🎯 Pipeline by Region</a>
-          <a>🏭 Account Whitespace</a>
-          <a>📣 Campaign Performance</a>
+          <a data-side="0" class="on">📊 Revenue Leadership</a>
+          <a data-side="1">🎯 Pipeline by Region</a>
+          <a data-side="2">🏭 Account Whitespace</a>
+          <a data-side="3">📣 Campaign Performance</a>
           <h6 style="margin-top:16px;">Reports</h6>
-          <a>Rep Activity Summary</a>
-          <a>New Hire Ramp Tracker</a>
-          <a>Trade Show ROI</a>
+          <a data-side="4">Rep Activity Summary</a>
+          <a data-side="5">New Hire Ramp Tracker</a>
+          <a data-side="6">Trade Show ROI</a>
         </div>
         <div class="dash-main">
-          <div class="dash-tabs">
-            <button class="on" onclick="setDashTab(0,this)">Cross-Sell Whitespace</button>
-            <button onclick="setDashTab(1,this)">Rep Productivity</button>
-            <button onclick="setDashTab(2,this)">New-Hire Ramp</button>
-            <button onclick="setDashTab(3,this)">Campaign ROI</button>
-          </div>
 
           <div class="kpi-grid">
             <div class="kpi" style="--k:#0274BE;"><div class="l">Whitespace Penetration</div><div class="v">31%</div><div class="d up">▲ 12 pts vs. baseline</div></div>
             <div class="kpi" style="--k:#FF6900;"><div class="l">Rep Selling Hours / Wk</div><div class="v">27.4</div><div class="d up">▲ 4.9 hrs recaptured</div></div>
             <div class="kpi" style="--k:#72BF44;"><div class="l">New-Hire Ramp</div><div class="v">14 wk</div><div class="d up">▼ 4 wks faster</div></div>
             <div class="kpi" style="--k:#C8102E;"><div class="l">Trade Show ROI</div><div class="v">4.1×</div><div class="d up">▲ from untracked</div></div>
+          </div>
+
+          <div class="dash-tabs">
+            <button class="on" role="tab" onclick="setDashTab(0,this)">Cross-Sell Whitespace</button>
+            <button onclick="setDashTab(1,this)">Rep Productivity</button>
+            <button onclick="setDashTab(2,this)">New-Hire Ramp</button>
+            <button onclick="setDashTab(3,this)">Campaign ROI</button>
           </div>
 
           <!-- Tab 0 — Whitespace -->
@@ -1491,6 +1760,14 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 
           <!-- Tab 1 — Rep Productivity -->
           <div class="dash-panel" id="dp-1">
+            <div class="dp-hero" style="--hc:#72BF44;">
+              <div class="dp-num"><b>27.4</b><span>Selling hrs / wk / rep</span></div>
+              <div class="dp-cmp">
+                <div class="hbar"><div class="top"><span>Before Phase 1</span><b>22.5 hrs</b></div><div class="track"><i style="--bc:#CBD5E1;" data-w="82"></i></div></div>
+                <div class="hbar"><div class="top"><span>With Salesforce</span><b>27.4 hrs</b></div><div class="track"><i style="--bc:#72BF44;" data-w="100"></i></div></div>
+              </div>
+              <div class="dp-pill">▲ 4.9 hrs recaptured</div>
+            </div>
             <div class="panel-card">
               <h5>Where a Rep's Week Goes</h5>
               <div class="sub">Illustrative · average across ~38 sellers</div>
@@ -1516,6 +1793,11 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 
           <!-- Tab 2 — Ramp -->
           <div class="dash-panel" id="dp-2">
+            <div class="dp-hero" style="--hc:#0274BE;">
+              <div class="dp-num"><b>14 wk</b><span>To first closed deal</span></div>
+              <div class="dp-cmp"><div style="font-size:11px;color:#64748B;line-height:1.6;">New sellers reach their first closed deal <b style="color:var(--ink);">4 weeks sooner</b> than the 18-week baseline — guided steps in the CRM instead of tribal knowledge.</div></div>
+              <div class="dp-pill">▼ 4 wks faster</div>
+            </div>
             <div class="panel-card">
               <h5>Time to First Closed Deal</h5>
               <div class="sub">Illustrative · new commercial sellers</div>
@@ -1543,6 +1825,12 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 
           <!-- Tab 3 — Campaign ROI -->
           <div class="dash-panel" id="dp-3">
+            <div class="dp-hero" style="--hc:#FF6900;">
+              <div class="dp-vs bad"><b>$0</b><span>of event spend traceable to pipeline today</span></div>
+              <div class="dp-arrow">&rarr;</div>
+              <div class="dp-vs good"><b>4.1&times;</b><span>trade-show ROI, measured per event</span></div>
+              <div class="dp-pill" style="margin-left:auto;">▲ from untracked</div>
+            </div>
             <div class="panel-card">
               <h5>Trade Show Performance</h5>
               <div class="sub">Illustrative · top events of ~30 per year</div>
@@ -1948,8 +2236,6 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
     links.forEach((l,j)=>l.classList.toggle('on',j===i));
     const light=slides[i].dataset.theme==='light';
     dots.forEach(d=>d.classList.toggle('light',light));
-    /* Slide 1 carries its own logo lockup — fade the bar in from Slide 2 on. */
-    topnav.classList.toggle('hidden',i===0);
     if(i===0) closeMenu();
   }
   const io=new IntersectionObserver(syncActive,{threshold:0,rootMargin:'-45% 0px -45% 0px'});
@@ -2052,172 +2338,351 @@ function closeDrawer(){
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
 
 /* ═══════════════════════════════════════════════════════════════
-   SLIDE 5 — INTERACTIVE DEMO STATE MACHINE
+   INTERACTIVE PHONE DEMO ENGINE — shared by Slide 4 and Slide 5
+   One state machine (screen slide-in, dot progress, left-panel copy swap,
+   tap ripple, per-screen hooks); each demo supplies its own config.
+═══════════════════════════════════════════════════════════════ */
+function createDemo(cfg){
+  const $=id=>document.getElementById(id);
+  const S={n:0,timers:[]};
+  const clear=()=>{ S.timers.forEach(t=>clearTimeout(t)); S.timers=[]; };
+  const later=(fn,ms)=>{ S.timers.push(setTimeout(fn,ms)); };
+  const reveal=(id,on)=>{ const el=$(id); if(el) el.classList.toggle('in',!!on); };
+  const helpers={later,reveal,$};
+  const last=cfg.context.length-1;
+
+  function resetVisuals(){ clear(); if(cfg.reset) cfg.reset(helpers); }
+
+  function show(n){
+    const pillEl=$(cfg.pill);
+    if(!pillEl) return;
+    const ctx=cfg.context[n];
+    const ctxPanel=pillEl.parentElement;
+    ctxPanel.style.transition='opacity 0.2s ease';
+    ctxPanel.style.opacity='0';
+    setTimeout(()=>{
+      $(cfg.pill).textContent=ctx.pill;
+      $(cfg.title).innerHTML=ctx.title;
+      $(cfg.body).textContent=ctx.body;
+      const hintEl=$(cfg.hint);
+      if(hintEl){
+        const parts=ctx.hint.split(' ');
+        hintEl.querySelector('span:first-child').textContent=parts[0];
+        hintEl.querySelector('span:last-child').textContent=parts.slice(1).join(' ');
+      }
+      ctxPanel.style.opacity='1';
+    },200);
+
+    document.querySelectorAll('#'+cfg.dots+' .demo-dot').forEach((dot,i)=>dot.classList.toggle('active',i===n));
+
+    const screenEl=$(cfg.screen);
+    const current=screenEl.querySelector('.demo-screen.ds-active');
+    const target=$(cfg.prefix+(n+1));
+    if(!target) return;
+    if(current && current!==target){
+      current.classList.add('ds-exiting');
+      current.classList.remove('ds-active');
+      setTimeout(()=>{ current.classList.remove('ds-exiting'); current.style.transform='translateX(100%)'; },420);
+    }
+    target.style.transform='';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ target.classList.add('ds-active'); }));
+
+    clear();
+    if(cfg.hooks[n]) cfg.hooks[n](helpers);
+  }
+
+  function advance(){ if(S.n<last){ S.n++; show(S.n); } }
+
+  function reset(){
+    resetVisuals();
+    S.n=0;
+    show(0);
+    const inv=$(cfg.invite);
+    if(inv){ inv.style.display='flex'; inv.style.opacity='1'; }
+  }
+
+  function dismissInvite(){
+    const inv=$(cfg.invite);
+    if(!inv) return;
+    inv.style.transition='opacity 0.35s ease';
+    inv.style.opacity='0';
+    setTimeout(()=>{ inv.style.display='none'; },360);
+    if(cfg.startOnInvite && cfg.hooks[0]){ clear(); cfg.hooks[0](helpers); }
+  }
+
+  const screen=$(cfg.screen);
+  if(screen){
+    screen.addEventListener('mousedown',function(e){
+      const rect=this.getBoundingClientRect();
+      const r=document.createElement('div');
+      r.className='touch-ripple';
+      r.style.left=(e.clientX-rect.left)+'px';
+      r.style.top=(e.clientY-rect.top)+'px';
+      this.appendChild(r);
+      setTimeout(()=>r.remove(),600);
+    });
+    /* Tapping anywhere advances, except on screen 1 where the invite overlay owns the first tap. */
+    screen.addEventListener('click',function(e){
+      if(e.target.closest('#'+cfg.invite)) return;
+      if(e.target.closest('button')) return;
+      if(e.target.closest('.ds-card[onclick]')) return;
+      if(S.n===last){ reset(); return; }
+      advance();
+    });
+  }
+
+  return {show,advance,reset,dismissInvite,later,reveal,$,get n(){return S.n;}};
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 5 — A TECHNICIAN'S DAY (10 screens)
 ═══════════════════════════════════════════════════════════════ */
 const DEMO_CONTEXT = [
-  { pill: 'Step 1 of 8', title: "Marcus starts his day.<br>5 jobs, already sequenced.", body: "No more guessing the route or calling dispatch for the next stop.", hint: '👆 Tap to see the job list' },
-  { pill: 'Step 2 of 8', title: "Every job, prioritized.", body: "Work orders sorted by priority and location — no spreadsheets, no phone calls.", hint: '👆 Tap the next job' },
-  { pill: 'Step 3 of 8', title: "Full history, before he arrives.", body: "Equipment details and service history pulled straight through — no digging through paper files or calling the office.", hint: '👆 Tap to check parts' },
-  { pill: 'Step 4 of 8', title: "No guessing on parts.", body: "The app checks the job against what's already on the truck — before Marcus even walks in.", hint: '👆 Tap to start the job' },
-  { pill: 'Step 5 of 8', title: "A clear checklist, every time.", body: "Step-by-step, in the language techs already use — nothing new to learn.", hint: '👆 Check off each step' },
-  { pill: 'Step 6 of 8', title: "Done — with proof.", body: "Signature and photo captured on the spot. The job record updates instantly.", hint: '👆 Tap to complete' },
-  { pill: 'Step 7 of 8', title: "The board updates itself.", body: "Closing this job automatically slots in the next one — no dispatcher relay required.", hint: '👆 Tap to see the wrap-up' },
-  { pill: 'Step 8 of 8', title: "A day's work, and a look ahead.", body: "4 of 5 jobs done — and a heads-up on what's coming next.", hint: '🔁 Tap to replay' }
+  { pill: 'Step 1 of 10', title: "Marcus starts his day.<br>5 jobs, already sequenced.", body: "No more guessing the route or calling dispatch for the next stop. Everything Marcus needs is already on his phone.", hint: '👆 Tap to start the route' },
+  { pill: 'Step 2 of 10', title: "Directions — and the briefing<br>before he pulls in.", body: "Turn-by-turn navigation to the first stop, plus the gate code, the on-site contact, and access notes. No calling the office from the parking lot.", hint: '👆 Tap when he arrives' },
+  { pill: 'Step 3 of 10', title: "Every job, prioritized.", body: "Work orders sorted by priority and location — no spreadsheets, no phone calls.", hint: '👆 Tap the next job' },
+  { pill: 'Step 4 of 10', title: "Full history, before he arrives.", body: "Equipment details and service history pulled straight through — no digging through paper files or calling the office.", hint: '👆 Tap to check parts' },
+  { pill: 'Step 5 of 10', title: "No guessing on parts.", body: "The app checks the job against what's already on the truck — before Marcus even walks in.", hint: '👆 Tap to start the job' },
+  { pill: 'Step 6 of 10', title: "A clear checklist, every time.", body: "Step-by-step, in the language techs already use — nothing new to learn.", hint: '👆 Check off each step' },
+  { pill: 'Step 7 of 10', title: "One photo closes the visit.", body: "A photo of the finished job site is captured in the app and attaches straight to the work order — no camera roll, no email later.", hint: '📸 Tap the shutter' },
+  { pill: 'Step 8 of 10', title: "Done — with proof.", body: "Signature and photo captured on the spot. The job record updates instantly.", hint: '👆 Tap to complete' },
+  { pill: 'Step 9 of 10', title: "The board updates itself.", body: "Closing this job automatically slots in the next one — no dispatcher relay required.", hint: '👆 Tap to see the wrap-up' },
+  { pill: 'Step 10 of 10', title: "A day's work, and a look ahead.", body: "4 of 5 jobs done — and a heads-up on what's coming next.", hint: '🔁 Tap to replay' }
 ];
 
-let demoScreen = 0;
-let demoTypewriterTimer = null;
-let demoHookTimers = [];
-
-function clearDemoHooks(){ demoHookTimers.forEach(t=>clearTimeout(t)); demoHookTimers=[]; }
-function laterDemo(fn,ms){ demoHookTimers.push(setTimeout(fn,ms)); }
-function reveal(id,on){ const el=document.getElementById(id); if(el) el.classList.toggle('in',!!on); }
-
-function resetDemoVisuals(){
-  clearDemoHooks();
-  reveal('ds-parts-result',false);
-  const scan=document.getElementById('ds-parts-scan'); if(scan) scan.style.opacity='1';
-  for(let i=1;i<=5;i++){const c=document.getElementById('ds-chk-'+i); if(c) c.classList.remove('done');}
-  const cc=document.getElementById('ds-check-count'); if(cc) cc.textContent='0/5';
-  const sig=document.getElementById('sig-path'); if(sig) sig.classList.remove('drawn');
-  reveal('ds-complete-badge',false);
-  reveal('ds-dispatch-next',false);
-  reveal('ds-dispatch-board',false);
-  reveal('ds-nudge',false);
-  document.querySelectorAll('#ds-week-bars > div').forEach(b=>b.style.height='0px');
-}
-
-function showDemoScreen(n) {
-  const pillEl = document.getElementById('demo-pill');
-  if (!pillEl) return;
-  const ctxPanel = pillEl.parentElement;
-  ctxPanel.style.transition = 'opacity 0.2s ease';
-  ctxPanel.style.opacity = '0';
-  setTimeout(() => {
-    document.getElementById('demo-pill').textContent = DEMO_CONTEXT[n].pill;
-    document.getElementById('demo-title').innerHTML  = DEMO_CONTEXT[n].title;
-    document.getElementById('demo-body').textContent = DEMO_CONTEXT[n].body;
-    const hintEl = document.getElementById('demo-hint');
-    if (hintEl) {
-      const parts = DEMO_CONTEXT[n].hint.split(' ');
-      hintEl.querySelector('span:first-child').textContent = parts[0];
-      hintEl.querySelector('span:last-child').textContent  = parts.slice(1).join(' ');
-    }
-    ctxPanel.style.opacity = '1';
-  }, 200);
-
-  document.querySelectorAll('.demo-dot').forEach((dot, i) => dot.classList.toggle('active', i === n));
-
-  const current = document.querySelector('.demo-screen.ds-active');
-  const target  = document.getElementById('ds-screen-' + (n + 1));
-  if (!target) return;
-  if (current && current !== target) {
-    current.classList.add('ds-exiting');
-    current.classList.remove('ds-active');
-    setTimeout(() => { current.classList.remove('ds-exiting'); current.style.transform = 'translateX(100%)'; }, 420);
-  }
-  target.style.transform = '';
-  requestAnimationFrame(() => requestAnimationFrame(() => { target.classList.add('ds-active'); }));
-
-  /* ── Screen-specific hooks ── */
-  clearDemoHooks();
-
-  if (n === 3) { // Parts check — scan, then confirm "In stock"
+const demo5 = createDemo({
+  screen:'phone-screen', prefix:'ds-screen-', invite:'demo-invite',
+  pill:'demo-pill', title:'demo-title', body:'demo-body', hint:'demo-hint', dots:'demo-dots',
+  context: DEMO_CONTEXT,
+  reset:({reveal,$})=>{
+    reveal('ds-briefing',false);
+    const rt=$('ds-route'); if(rt) rt.classList.remove('drawn');
     reveal('ds-parts-result',false);
-    const scan=document.getElementById('ds-parts-scan');
-    if(scan) scan.style.opacity='1';
-    laterDemo(()=>{ if(scan){scan.style.transition='opacity .4s ease';scan.style.opacity='0.35';} reveal('ds-parts-result',true); }, 1100);
-  }
-
-  if (n === 4) { // Checklist — check items off in sequence
-    for(let i=1;i<=5;i++){const c=document.getElementById('ds-chk-'+i); if(c) c.classList.remove('done');}
-    const cc=document.getElementById('ds-check-count'); if(cc) cc.textContent='0/5';
-    for(let i=1;i<=5;i++){
-      laterDemo(()=>{
-        const c=document.getElementById('ds-chk-'+i);
-        if(c) c.classList.add('done');
-        if(cc) cc.textContent=i+'/5';
-      }, 500 + i*620);
-    }
-  }
-
-  if (n === 5) { // Signature stroke, then completion badge
-    const sig=document.getElementById('sig-path');
-    if(sig) sig.classList.remove('drawn');
+    const scan=$('ds-parts-scan'); if(scan) scan.style.opacity='1';
+    for(let i=1;i<=5;i++){const c=$('ds-chk-'+i); if(c) c.classList.remove('done');}
+    const cc=$('ds-check-count'); if(cc) cc.textContent='0/5';
+    const sh=$('ds-shutter'); if(sh) sh.classList.remove('taken','press');
+    reveal('ds-photo-attached',false);
+    const pl=$('ds-photo-label'); if(pl) pl.textContent='Photo attached to WO-48210';
+    const sig=$('sig-path'); if(sig) sig.classList.remove('drawn');
     reveal('ds-complete-badge',false);
-    laterDemo(()=>{ if(sig) sig.classList.add('drawn'); }, 450);
-    laterDemo(()=>reveal('ds-complete-badge',true), 2150);
-  }
-
-  if (n === 6) { // Dispatch board updates, next job slides in
     reveal('ds-dispatch-next',false);
     reveal('ds-dispatch-board',false);
-    laterDemo(()=>reveal('ds-dispatch-next',true), 700);
-    laterDemo(()=>reveal('ds-dispatch-board',true), 1500);
-  }
-
-  if (n === 7) { // Week bars grow, then the proactive nudge fades in last
     reveal('ds-nudge',false);
     document.querySelectorAll('#ds-week-bars > div').forEach(b=>b.style.height='0px');
-    laterDemo(()=>{
-      document.querySelectorAll('#ds-week-bars > div').forEach((b,i)=>{
-        setTimeout(()=>{ b.style.height=b.dataset.h+'px'; }, i*110);
-      });
-    }, 400);
-  laterDemo(()=>reveal('ds-nudge',true), 1750);
+  },
+  hooks:{
+    1:({later,reveal,$})=>{ // Route draws in, then the job briefing slides up
+      reveal('ds-briefing',false);
+      const rt=$('ds-route'); if(rt) rt.classList.remove('drawn');
+      later(()=>{ if(rt) rt.classList.add('drawn'); }, 350);
+      later(()=>reveal('ds-briefing',true), 1500);
+    },
+    4:({later,reveal,$})=>{ // Parts check — scan, then confirm "In stock"
+      reveal('ds-parts-result',false);
+      const scan=$('ds-parts-scan');
+      if(scan) scan.style.opacity='1';
+      later(()=>{ if(scan){scan.style.transition='opacity .4s ease';scan.style.opacity='0.35';} reveal('ds-parts-result',true); }, 1100);
+    },
+    5:({later,$})=>{ // Checklist — check items off in sequence
+      for(let i=1;i<=5;i++){const c=$('ds-chk-'+i); if(c) c.classList.remove('done');}
+      const cc=$('ds-check-count'); if(cc) cc.textContent='0/5';
+      for(let i=1;i<=5;i++){
+        later(()=>{
+          const c=$('ds-chk-'+i);
+          if(c) c.classList.add('done');
+          if(cc) cc.textContent=i+'/5';
+        }, 500 + i*620);
+      }
+    },
+    6:({later,reveal,$})=>{ // Job-site photo — shutter is tappable; auto-fires if the presenter doesn't
+      const sh=$('ds-shutter'); if(sh) sh.classList.remove('taken','press');
+      reveal('ds-photo-attached',false);
+      const pl=$('ds-photo-label'); if(pl) pl.textContent='Photo attached to WO-48210';
+      later(()=>takeJobPhoto(), 3200);
+    },
+    7:({later,reveal,$})=>{ // Signature stroke, then completion badge
+      const sig=$('sig-path');
+      if(sig) sig.classList.remove('drawn');
+      reveal('ds-complete-badge',false);
+      later(()=>{ if(sig) sig.classList.add('drawn'); }, 450);
+      later(()=>reveal('ds-complete-badge',true), 2150);
+    },
+    8:({later,reveal})=>{ // Dispatch board updates, next job slides in
+      reveal('ds-dispatch-next',false);
+      reveal('ds-dispatch-board',false);
+      later(()=>reveal('ds-dispatch-next',true), 700);
+      later(()=>reveal('ds-dispatch-board',true), 1500);
+    },
+    9:({later,reveal})=>{ // Week bars grow, then the proactive nudge fades in last
+      reveal('ds-nudge',false);
+      document.querySelectorAll('#ds-week-bars > div').forEach(b=>b.style.height='0px');
+      later(()=>{
+        document.querySelectorAll('#ds-week-bars > div').forEach((b,i)=>{
+          setTimeout(()=>{ b.style.height=b.dataset.h+'px'; }, i*110);
+        });
+      }, 400);
+      later(()=>reveal('ds-nudge',true), 1750);
+    }
   }
-}
+});
 
-window.advanceDemoScreen = function() {
-  if (demoScreen < 7) { demoScreen++; showDemoScreen(demoScreen); }
+window.showDemoScreen    = demo5.show;
+window.advanceDemoScreen = demo5.advance;
+window.resetDemo         = demo5.reset;
+window.dismissInvite     = demo5.dismissInvite;
+
+window.takeJobPhoto = function(){
+  if(demo5.n!==6) return;
+  const btn=demo5.$('ds-shutter');
+  if(!btn || btn.classList.contains('taken')) return;
+  btn.classList.add('taken','press');
+  setTimeout(()=>btn.classList.remove('press'),140);
+  const f=demo5.$('ds-flash');
+  if(f){ f.classList.remove('go'); void f.offsetWidth; f.classList.add('go'); }
+  const label=demo5.$('ds-photo-label');
+  demo5.later(()=>{ if(label) label.textContent='Attaching to WO-48210…'; demo5.reveal('ds-photo-attached',true); }, 320);
+  demo5.later(()=>{ if(label) label.textContent='Photo attached to WO-48210'; }, 1150);
 };
 
-window.resetDemo = function() {
-  if (demoTypewriterTimer) { clearInterval(demoTypewriterTimer); demoTypewriterTimer = null; }
-  resetDemoVisuals();
-  demoScreen = 0;
-  showDemoScreen(0);
-  const inv = document.getElementById('demo-invite');
-  if (inv) { inv.style.display = 'flex'; inv.style.opacity = '1'; }
-};
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 4 — TRADE-SHOW LEAD → PIPELINE (5 screens, same engine)
+═══════════════════════════════════════════════════════════════ */
+const DEMO4_CONTEXT = [
+  { pill: 'Step 1 of 5', title: "Scan the badge.<br>Lead captured in one tap.", body: "Dana stops by Booth B12. One scan captures name, company, and interest area — no clipboard, no end-of-show spreadsheet.", hint: '👆 Tap to see where it lands' },
+  { pill: 'Step 2 of 5', title: "It lands in Marketing Cloud, tagged.", body: "The lead joins the show's campaign automatically — stamped with the event, the booth, and the rep who scanned it.", hint: '👆 Tap to open the record' },
+  { pill: 'Step 3 of 5', title: "Matched, converted, one opportunity.", body: "Data Cloud recognizes Harborview as an existing customer — a second line of business, not a cold prospect — and a single opportunity is created in Sales Cloud.", hint: '👆 Tap to see the follow-up' },
+  { pill: 'Step 4 of 5', title: "Follow-up fires on its own.", body: "A journey email goes out within hours and a call task lands on the rep's list — both visible on the same record.", hint: '👆 Tap to see the result' },
+  { pill: 'Step 5 of 5', title: "Now the show has a number.", body: "Campaign influence ties the event to pipeline — so \"what did that show return?\" finally has an answer.", hint: '🔁 Tap to replay' }
+];
 
-window.dismissInvite = function() {
-  const inv = document.getElementById('demo-invite');
-  if (!inv) return;
-  inv.style.transition = 'opacity 0.35s ease';
-  inv.style.opacity = '0';
-  setTimeout(() => { inv.style.display = 'none'; }, 360);
-};
-
-(function initRipple() {
-  const screen = document.getElementById('phone-screen');
-  if (!screen) return;
-  screen.addEventListener('mousedown', function(e) {
-    const rect = this.getBoundingClientRect();
-    const r = document.createElement('div');
-    r.className = 'touch-ripple';
-    r.style.left = (e.clientX - rect.left) + 'px';
-    r.style.top  = (e.clientY - rect.top)  + 'px';
-    this.appendChild(r);
-    setTimeout(() => r.remove(), 600);
-  });
-  /* Tapping anywhere on the screen advances, except on screen 1 where the
-     invite overlay owns the first tap. */
-  screen.addEventListener('click', function(e){
-    if (e.target.closest('#demo-invite')) return;
-    if (e.target.closest('button')) return;
-    if (e.target.closest('.ds-card[onclick]')) return;
-    if (demoScreen === 7) { resetDemo(); return; }
-    advanceDemoScreen();
-  });
-})();
+const demo4 = createDemo({
+  screen:'d4-screen', prefix:'d4-screen-', invite:'d4-invite',
+  pill:'d4-pill', title:'d4-title', body:'d4-body', hint:'d4-hint', dots:'d4-dots',
+  context: DEMO4_CONTEXT, startOnInvite:true,
+  reset:({reveal,$})=>{
+    reveal('d4-lead',false);
+    const sc=$('d4-scanner'); if(sc) sc.classList.remove('done');
+    reveal('d4-newrow',false);
+    const m=$('d4-members'); if(m) m.textContent='63';
+    reveal('d4-match',false); reveal('d4-opp',false);
+    for(let i=3;i<=5;i++) reveal('d4-tl-'+i,false);
+    const bar=$('d4-share'); if(bar) bar.style.width='0';
+    reveal('d4-close',false);
+  },
+  hooks:{
+    0:({later,reveal,$})=>{ // Laser sweeps the badge, then the captured lead card lands
+      reveal('d4-lead',false);
+      const sc=$('d4-scanner'); if(sc) sc.classList.remove('done');
+      later(()=>{ if(sc) sc.classList.add('done'); }, 1250);
+      later(()=>reveal('d4-lead',true), 1450);
+    },
+    1:({later,reveal,$})=>{ // New member appears in the campaign, count ticks up
+      reveal('d4-newrow',false);
+      const m=$('d4-members'); if(m) m.textContent='63';
+      later(()=>{ reveal('d4-newrow',true); if(m) m.textContent='64'; }, 650);
+    },
+    2:({later,reveal})=>{ // Data Cloud match, then the opportunity
+      reveal('d4-match',false); reveal('d4-opp',false);
+      later(()=>reveal('d4-match',true), 500);
+      later(()=>reveal('d4-opp',true), 1450);
+    },
+    3:({later,reveal})=>{ // Timeline entries land in sequence
+      for(let i=3;i<=5;i++) reveal('d4-tl-'+i,false);
+      later(()=>reveal('d4-tl-3',true), 500);
+      later(()=>reveal('d4-tl-4',true), 1250);
+      later(()=>reveal('d4-tl-5',true), 2000);
+    },
+    4:({later,reveal,$})=>{ // Influence bar fills, closing line lands
+      const bar=$('d4-share'); if(bar) bar.style.width='0';
+      reveal('d4-close',false);
+      later(()=>{ if(bar) bar.style.width='61%'; }, 450);
+      later(()=>reveal('d4-close',true), 1400);
+    }
+  }
+});
+window.advanceDemo4   = demo4.advance;
+window.resetDemo4     = demo4.reset;
+window.dismissInvite4 = demo4.dismissInvite;
 
 /* ═══════════════════════════════════════════════════════════════
    SLIDE 6 — BEFORE / AFTER TOGGLE
 ═══════════════════════════════════════════════════════════════ */
+const OPS_DUR = 1500;
+const OPS = (function(){
+  const N={}; ['sap','sp','em','mm'].forEach(k=>{
+    const el=document.getElementById('ops-n-'+k);
+    const P=s=>s.split(',').map(Number);
+    N[k]={el, b:P(el.dataset.b), a:P(el.dataset.a)};
+  });
+  /* stage % → viewBox units (viewBox is 1000×440 and stretches with the stage) */
+  const vb=p=>[p[0]*10,p[1]*4.4];
+  const HUB=[50,50];
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  const pos=(k,t)=>[lerp(N[k].b[0],N[k].a[0],t),lerp(N[k].b[1],N[k].a[1],t)];
+
+  /* cubic bezier with a sideways bulge; big bulges give the tangled "Today" look */
+  function curve(p0,p1,w1,w2){
+    const dx=p1[0]-p0[0], dy=p1[1]-p0[1], nx=-dy, ny=dx;
+    return [p0[0],p0[1], p0[0]+dx*.25+nx*w1,p0[1]+dy*.25+ny*w1, p1[0]-dx*.25+nx*w2,p1[1]-dy*.25+ny*w2, p1[0],p1[1]];
+  }
+  const D=a=>'M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+' C'+a[2].toFixed(1)+' '+a[3].toFixed(1)+' '+a[4].toFixed(1)+' '+a[5].toFixed(1)+' '+a[6].toFixed(1)+' '+a[7].toFixed(1);
+
+  /* Each spoke starts at its own tool. Today it ends at another tool (tangle);
+     with Salesforce it ends at the hub. */
+  const spokes=[
+    {el:'ops-s0', from:'sap', toB:'mm', w:[ .55,-.45]},
+    {el:'ops-s1', from:'sp',  toB:'em', w:[-.5,  .6 ]},
+    {el:'ops-s2', from:'em',  toB:'sap',w:[ .6, -.35]},
+    {el:'ops-s3', from:'mm',  toB:'sp', w:[-.55, .5 ]}
+  ];
+  const extras=[
+    {el:'ops-x0', a:'sap', b:'sp', w:[-.6,.45]},
+    {el:'ops-x1', a:'em',  b:'mm', w:[.5,-.6]}
+  ];
+  const $=id=>document.getElementById(id);
+
+  function draw(t){
+    const e=ease(t);
+    for(const k in N){
+      const p=pos(k,e);
+      N[k].el.style.left=p[0]+'%'; N[k].el.style.top=p[1]+'%';
+    }
+    spokes.forEach(s=>{
+      const p0=vb(pos(s.from,e));
+      const endB=pos(s.toB,e);
+      const end=[lerp(endB[0],HUB[0],e),lerp(endB[1],HUB[1],e)];
+      /* bulge collapses to 0 as the line straightens */
+      const k=1-e;
+      $(s.el).setAttribute('d',D(curve(p0,vb(end),s.w[0]*k,s.w[1]*k)));
+    });
+    extras.forEach(x=>{
+      $(x.el).setAttribute('d',D(curve(vb(pos(x.a,e)),vb(pos(x.b,e)),x.w[0],x.w[1])));
+    });
+  }
+
+  let t=0, raf=null;
+  function go(target){
+    cancelAnimationFrame(raf);
+    const from=t, start=performance.now(), dur=OPS_DUR*Math.abs(target-from)||1;
+    (function step(now){
+      const k=Math.min(1,(now-start)/dur);
+      t=lerp(from,target,k);
+      draw(t);
+      if(k<1) raf=requestAnimationFrame(step);
+    })(start);
+  }
+  draw(0);
+  return {go, draw, get t(){return t;}};
+})();
+
 function setOps(state){
   const stage=document.getElementById('ops-stage');
-  stage.classList.toggle('after',state==='after');
+  const after=state==='after';
+  if(stage.classList.contains('after')===after) return;
+  stage.classList.toggle('after',after);
+  OPS.go(after?1:0);
   document.querySelectorAll('.toggle-wrap button').forEach(b=>b.classList.toggle('on',b.dataset.state===state));
 }
 
@@ -2235,12 +2700,24 @@ function paintPanel(panel){
     setTimeout(()=>{el.style.height=el.dataset.h+'px';}, 60+i*110);
   });
 }
-function setDashTab(i,btn){
-  document.querySelectorAll('.dash-tabs button').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
+const DASH_SIDE_TAB=[0,0,0,3,1,2,3];
+const DASH_TAB_SIDE=[0,4,5,6];
+function setDashTab(i,btn,sideIdx){
+  document.querySelectorAll('.dash-tabs button').forEach((b,j)=>{
+    const on=j===i;
+    b.classList.toggle('on',on);
+    b.setAttribute('aria-selected',String(on));
+  });
   document.querySelectorAll('.dash-panel').forEach((p,j)=>p.classList.toggle('on',j===i));
-  paintPanel(document.getElementById('dp-'+i));
+  const side=sideIdx!==undefined?sideIdx:DASH_TAB_SIDE[i];
+  document.querySelectorAll('.dash-side a').forEach((a,j)=>a.classList.toggle('on',j===side));
+  const panel=document.getElementById('dp-'+i);
+  paintPanel(panel);
+  if(panel) panel.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+document.querySelectorAll('.dash-side a').forEach((a,j)=>{
+  a.addEventListener('click',()=>setDashTab(DASH_SIDE_TAB[j],null,j));
+});
 (function initDashObserver(){
   const s8=document.getElementById('s8');
   if(!s8)return;

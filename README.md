@@ -14,8 +14,9 @@ A self-contained, interactive executive microsite built for the SPATCO Energy So
 | `exec-summary.html` | Print-ready one-page executive summary. |
 | `bva.html` | Business Value Assessment — donut + stacked bar, per-category breakdowns, assumptions table. Print to PDF. |
 | `team.html` | Account team page. |
-| `photo-ae.png` | Samuel Schmal headshot. **Drop this file in the repo root.** |
-| `photo-se.jpg` | Eric Dalton headshot. **Drop this file in the repo root.** |
+| `photo-ae.png` | Samuel Schmal headshot. |
+| `photo-se.jpg` | Eric Dalton headshot (square, face-centered crop of `photo-se-full.jpg`). |
+| `photo-se-full.jpg` | Original uncropped Eric Dalton photo, kept as the source for `photo-se.jpg`. |
 
 No build step, no framework, no CDN dependencies beyond the Google Fonts `<link>`. Open `index.html` in any modern browser and it works — including offline, apart from the font falling back to a system sans.
 
@@ -26,8 +27,8 @@ No build step, no framework, no CDN dependencies beyond the Google Fonts `<link>
 1. **Hero** — "Built for the Road to $800M," growth stats, the three pain points, Phase 1 product row.
 2. **The Challenge** — three flip cards: fragmented quoting, reactive-only sales, no campaign attribution.
 3. **Platform Overview** — Sales Cloud / Marketing Cloud / Data Cloud Foundations, each opening a detail drawer.
-4. **Product Demo** — trade-show lead → CRM record → follow-up, with a phone frame awaiting demo footage.
-5. **A Technician's Day** — the flagship interactive: an 8-screen field-service walkthrough. Explicitly labeled as Phase 2 / forward-looking.
+4. **Product Demo** — trade-show lead → CRM record → follow-up, as a 5-screen tap-through phone demo (badge scan, Marketing Cloud, Sales Cloud + Data Cloud match, automated follow-up, campaign-influence outcome).
+5. **A Technician's Day** — the flagship interactive: a 10-screen field-service walkthrough (schedule, route map + job briefing, job list, work order, parts, checklist, job-site photo capture, signature, auto-reassignment, day wrap-up). Explicitly labeled as Phase 2 / forward-looking.
 6. **Connected Ops** — before/after toggle. Three tools get absorbed; SAP stays put.
 7. **Architecture** — five layers, with the Einstein Trust Layer featured.
 8. **Executive Dashboard** — simulated Lightning UI with four tabbed KPI views.
@@ -60,11 +61,11 @@ These are baked into the copy. Keep them if you edit:
 
 ## Common edits
 
-**Adding the headshots.** Drop `photo-ae.png` and `photo-se.jpg` into the repo root. The `<img>` tags already reference those exact filenames and fall back to initials avatars until the files exist.
+**Headshots.** `photo-ae.png` and `photo-se.jpg` are in the repo root and referenced by exact filename; the `<img>` tags fall back to initials avatars if a file is missing.
 
 **Adding Grant Stephens' photo.** Search for `TODO: replace with photo-rvp.png` (three places: `index.html`, `exec-summary.html`, `team.html`) and swap the initials `<div>` for an `<img src="photo-rvp.png">`.
 
-**Adding demo footage to Slide 4.** Search `TODO: drop in demo-loop.mp4` in `index.html` and replace the placeholder `.pfv-screen` contents with a `<video>` element.
+**Editing the phone demos.** Slides 4 and 5 share one engine, `createDemo(cfg)`, in `index.html`. Each demo supplies its screens (`d4-screen-N` / `ds-screen-N`), a context-copy array (`DEMO4_CONTEXT` / `DEMO_CONTEXT`), and per-screen animation hooks. To add a screen, add the markup, one context entry, one more `.demo-dot`, and (if it animates) a hook keyed by its zero-based index.
 
 **Changing calculator assumptions.** The four tabs are driven by `calcBvc()` near the bottom of `index.html`. Slider defaults live in the `value=` attributes of each `<input type="range">`. Every input is tagged in the UI as either *SPATCO actual* or *industry benchmark* — keep that labeling honest when you change a default.
 
@@ -76,7 +77,7 @@ These are baked into the copy. Keep them if you edit:
 
 ## Presenting it
 
-Scroll, use the dot nav on the right edge, or use the arrow keys. Slide 5 is the one to spend time on — tap through all eight screens. Slide 9's sliders are meant to be moved live in front of the CFO.
+Scroll, use the dot nav on the right edge, or use the arrow keys. Slide 5 is the one to spend time on — tap through all ten screens. Slide 9's sliders are meant to be moved live in front of the CFO.
 
 ---
 
