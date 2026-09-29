@@ -116,28 +116,28 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 .pain-pill span{font-size:13.5px;font-weight:800;color:rgba(255,255,255,.93);letter-spacing:-.005em;}
 .hero-products{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);}
 
-/* ── Hero right column: the $350M → $700–800M growth arc ── */
+/* ── Hero right column: Executive KPI Snapshot ── */
 .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;}
 .hero-visual::before{content:'';position:absolute;width:118%;padding-bottom:118%;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
   background:radial-gradient(circle,rgba(2,116,190,.28) 0%,rgba(2,116,190,.1) 38%,transparent 68%);}
-.growth-card{position:relative;width:100%;max-width:440px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:28px 30px 24px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 26px 70px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.1);}
-.gc-eyebrow{font-size:9.5px;font-weight:900;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.4);}
-.gc-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:22px;}
-.gc-delta{font-size:11px;font-weight:900;letter-spacing:.06em;color:var(--brand-green);background:rgba(114,191,68,.14);border:1px solid rgba(114,191,68,.34);border-radius:20px;padding:4px 11px;white-space:nowrap;}
-.gc-chart{position:relative;height:222px;}
-.gc-bars{position:absolute;inset:0;display:flex;align-items:flex-end;gap:14px;}
-.gc-bars > div{flex:1;border-radius:7px 7px 0 0;height:0;transition:height 1.1s cubic-bezier(.34,1.12,.64,1);}
-.gc-bars > div:nth-child(1){background:linear-gradient(180deg,rgba(2,116,190,.75),rgba(2,116,190,.32));}
-.gc-bars > div:nth-child(2){background:linear-gradient(180deg,rgba(2,116,190,.55),rgba(2,116,190,.2));}
-.gc-bars > div:nth-child(3){background:linear-gradient(180deg,rgba(255,105,0,.45),rgba(255,105,0,.16));}
-.gc-bars > div:nth-child(4){background:linear-gradient(180deg,var(--brand-accent),rgba(255,105,0,.42));box-shadow:0 0 30px rgba(255,105,0,.45);}
-.gc-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:14px;padding-top:15px;border-top:1px solid rgba(255,255,255,.1);}
-.gc-foot .end{min-width:0;}
-.gc-foot .end.r{text-align:right;}
-.gc-foot .end .v{font-size:1.34rem;font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1.1;white-space:nowrap;}
-.gc-foot .end .v.acc{color:var(--brand-accent);}
-.gc-foot .end .l{font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:5px;}
-.gc-foot .arrow{flex-shrink:0;padding-bottom:18px;color:rgba(255,255,255,.26);}
+.kpi-hero{--k:#0274BE;position:relative;width:100%;max-width:440px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-top:4px solid var(--k);border-radius:22px;padding:26px 30px 22px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 26px 70px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.1);transition:border-top-color .4s;}
+.kh-eyebrow{display:block;font-size:9.5px;font-weight:900;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.kh-body{min-height:236px;display:flex;flex-direction:column;justify-content:center;padding:14px 0 10px;transition:opacity .2s ease,transform .2s ease;}
+.kh-body.swap{opacity:0;transform:translateY(8px);}
+.kh-label{font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--k);filter:brightness(1.35);line-height:1.3;}
+.kh-value{font-size:6rem;font-weight:900;color:#fff;letter-spacing:-.045em;line-height:1;margin-top:14px;white-space:nowrap;}
+.kh-delta{align-self:flex-start;margin-top:18px;font-size:13px;font-weight:900;letter-spacing:.02em;color:#8FE06A;background:rgba(114,191,68,.14);border:1px solid rgba(114,191,68,.34);border-radius:20px;padding:6px 14px;}
+.kh-bar{height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:8px;transition:opacity .3s;}
+.kh-bar i{display:block;height:100%;width:0;background:var(--k);filter:brightness(1.3);}
+.kpi-hero.stopped .kh-bar{opacity:0;}
+.kh-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px;}
+.kh-dots{display:flex;gap:4px;}
+.kh-dots button{width:20px;height:20px;padding:0;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.kh-dots button::before{content:'';width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s,transform .3s;}
+.kh-dots button:hover::before{background:rgba(255,255,255,.5);}
+.kh-dots button.active::before{background:var(--brand-accent);transform:scale(1.35);}
+.kh-link{border:none;background:transparent;padding:6px 2px;font-family:inherit;font-size:12px;font-weight:800;color:rgba(255,255,255,.78);cursor:pointer;transition:color .2s;}
+.kh-link:hover{color:var(--brand-accent);}
 .hero-products .lbl{font-size:9.5px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.3);}
 .prod-logo{display:flex;align-items:center;gap:8px;}
 .prod-logo span{font-size:12.5px;font-weight:800;color:rgba(255,255,255,.88);white-space:nowrap;}
@@ -638,7 +638,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
   .slide-inner{padding:80px 30px 44px;}
   .hero-wrap{padding:92px 30px 40px;grid-template-columns:1fr;gap:34px;}
   .hero-visual{justify-content:flex-start;}
-  .growth-card{max-width:100%;}
+  .kpi-hero{max-width:100%;}
   .flip-grid,.wtt-grid,.org,.cta-cards,.inv-grid,.kpi-grid{grid-template-columns:1fr 1fr;}
   .plat-cols,.demo4-cols,.bvc-panel.on,.dash-panel.on{grid-template-columns:1fr;}
   .dash-body{grid-template-columns:1fr;}
@@ -715,31 +715,24 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 
    </div><!-- /hero-col-l -->
 
-   <!-- Right column — the growth arc -->
+   <!-- Right column — Executive KPI Snapshot (figures are read from the Slide 8 tiles) -->
    <div class="hero-visual">
-     <div class="growth-card">
-       <div class="gc-head">
-         <span class="gc-eyebrow">The Growth Arc</span>
-         <span class="gc-delta">+$450M</span>
+     <div class="kpi-hero" id="kpi-hero">
+       <span class="kh-eyebrow">What Leadership Will See</span>
+       <div class="kh-body" id="kh-body">
+         <div class="kh-label" id="kh-label"></div>
+         <div class="kh-value" id="kh-value"></div>
+         <div class="kh-delta" id="kh-delta"></div>
        </div>
-       <div class="gc-chart">
-         <div class="gc-bars" id="gc-bars">
-           <div data-h="40"></div>
-           <div data-h="56"></div>
-           <div data-h="74"></div>
-           <div data-h="96"></div>
+       <div class="kh-bar"><i id="kh-bar"></i></div>
+       <div class="kh-foot">
+         <div class="kh-dots" id="kh-dots" role="tablist" aria-label="Executive KPIs">
+           <button class="active" role="tab" aria-label="KPI 1"></button>
+           <button role="tab" aria-label="KPI 2"></button>
+           <button role="tab" aria-label="KPI 3"></button>
+           <button role="tab" aria-label="KPI 4"></button>
          </div>
-       </div>
-       <div class="gc-foot">
-         <div class="end">
-           <div class="v">$350M</div>
-           <div class="l">Today</div>
-         </div>
-         <svg class="arrow" width="26" height="12" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M0 6h24M19 1l5 5-5 5"/></svg>
-         <div class="end r">
-           <div class="v acc">$700–800M</div>
-           <div class="l">Target</div>
-         </div>
+         <button class="kh-link" id="kh-link">See the full dashboard &rarr;</button>
        </div>
      </div>
    </div>
@@ -2294,19 +2287,61 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
     if(!topnav.contains(e.target)) closeMenu();
   });
 
-  /* Hero growth arc — grow the bars on first view. */
-  const heroChart=document.getElementById('gc-bars');
-  if(heroChart){
-    new IntersectionObserver((es,obs)=>{
-      es.forEach(e=>{
-        if(!e.isIntersecting) return;
-        obs.disconnect();
-        heroChart.querySelectorAll('div').forEach((b,i)=>{
-          setTimeout(()=>{ b.style.height=b.dataset.h+'%'; }, 180+i*130);
-        });
-      });
-    },{threshold:.3}).observe(heroChart);
-  }
+  /* Hero KPI snapshot. The KPI array is built from the Slide 8 tiles so the two slides
+     can't drift; content swaps use the same fade-then-replace pattern as the demo copy. */
+  (function heroKpis(){
+    const card=document.getElementById('kpi-hero');
+    if(!card) return;
+    const KPI_CONTEXT=Array.from(document.querySelectorAll('#s8 .kpi')).map(t=>({
+      label:t.querySelector('.l').textContent.trim(),
+      value:t.querySelector('.v').textContent.trim(),
+      delta:t.querySelector('.d').textContent.trim(),
+      color:t.style.getPropertyValue('--k').trim()
+    }));
+    if(!KPI_CONTEXT.length) return;
+    const body=document.getElementById('kh-body'), bar=document.getElementById('kh-bar');
+    const dotEls=Array.from(document.querySelectorAll('#kh-dots button'));
+    const INTERVAL=4500, TICK=100;
+    let n=0, elapsed=0, hovered=false, stopped=false, swapTimer=null;
+
+    function showKpi(i){
+      n=i; elapsed=0; bar.style.width='0';
+      dotEls.forEach((d,j)=>{ d.classList.toggle('active',j===i); d.setAttribute('aria-selected',String(j===i)); });
+      body.classList.add('swap');
+      clearTimeout(swapTimer);
+      swapTimer=setTimeout(()=>{
+        const k=KPI_CONTEXT[i];
+        card.style.setProperty('--k',k.color);
+        document.getElementById('kh-label').textContent=k.label;
+        document.getElementById('kh-value').textContent=k.value;
+        document.getElementById('kh-delta').textContent=k.delta;
+        body.classList.remove('swap');
+      },200);
+    }
+    function paint(){
+      const k=KPI_CONTEXT[n];
+      card.style.setProperty('--k',k.color);
+      document.getElementById('kh-label').textContent=k.label;
+      document.getElementById('kh-value').textContent=k.value;
+      document.getElementById('kh-delta').textContent=k.delta;
+    }
+    paint();
+
+    dotEls.forEach((d,i)=>d.addEventListener('click',()=>{
+      stopped=true; card.classList.add('stopped');
+      if(i!==n) showKpi(i);
+    }));
+    card.addEventListener('mouseenter',()=>{ hovered=true; });
+    card.addEventListener('mouseleave',()=>{ hovered=false; });
+    document.getElementById('kh-link').addEventListener('click',()=>goTo(document.getElementById('s8')));
+
+    setInterval(()=>{
+      if(stopped||hovered) return;
+      elapsed+=TICK;
+      bar.style.width=Math.min(100,elapsed/INTERVAL*100)+'%';
+      if(elapsed>=INTERVAL) showKpi((n+1)%KPI_CONTEXT.length);
+    },TICK);
+  })();
 
   const bar=document.getElementById('progress');
   window.addEventListener('scroll',()=>{
