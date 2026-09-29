@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SPATCO Energy Solutions — Business Value Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand-primary:#0274BE; --brand-secondary:#013F75; --brand-accent:#FF6900;
+  --brand-green:#72BF44; --brand-light:#F0F7FF;
+  --spatco-red:#C8102E; --spatco-steel:#46505A;
+  --font-main:'Salesforce Sans','Inter',system-ui,sans-serif;
+  --ink:#0F172A; --muted:#64748B; --line:#E2E8F0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-main);background:#EEF3FA;color:var(--ink);padding:34px 20px;-webkit-font-smoothing:antialiased;}
+.sheet{max-width:1000px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 18px 50px rgba(1,63,117,.14);overflow:hidden;}
+.print-btn{position:fixed;top:22px;right:22px;background:var(--brand-accent);color:#fff;border:none;border-radius:10px;padding:12px 22px;font-family:inherit;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(255,105,0,.34);z-index:50;}
+.back{position:fixed;top:22px;left:22px;font-size:12px;font-weight:800;color:var(--brand-primary);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 18px;z-index:50;}
+
+header{padding:30px 44px 22px;border-bottom:3px solid var(--brand-primary);display:flex;justify-content:space-between;align-items:flex-start;gap:24px;}
+.lock{display:flex;align-items:center;gap:15px;}
+.lock .sf{display:flex;align-items:center;gap:8px;}
+.lock .sf b{font-size:15px;font-weight:800;}
+.lock .div{width:1px;height:28px;background:var(--line);}
+.lock .sp b{display:block;font-size:15px;font-weight:900;letter-spacing:.06em;}
+.lock .sp i{display:block;font-size:8px;font-style:normal;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--spatco-red);margin-top:2px;}
+header .meta{text-align:right;font-size:9.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#94A3B8;line-height:1.7;}
+
+.banner{background:linear-gradient(135deg,var(--brand-secondary),#012B52);padding:32px 44px;display:flex;align-items:center;gap:36px;flex-wrap:wrap;}
+.banner .c .l{font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.banner .c .v{font-size:2.5rem;font-weight:900;color:#fff;letter-spacing:-.035em;margin-top:5px;line-height:1;}
+.banner .c .v.g{color:#8FD45F;}
+.banner .c .v.o{color:#FFA254;}
+.banner .c .v.sm{font-size:1.7rem;}
+.banner .sep{width:1px;height:52px;background:rgba(255,255,255,.2);}
+.banner .note{flex:1;min-width:230px;font-size:10px;color:rgba(255,255,255,.5);line-height:1.68;}
+
+section{padding:30px 44px 0;}
+h2{font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-primary);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+h2::after{content:'';flex:1;height:1px;background:var(--line);}
+.charts{display:grid;grid-template-columns:auto 1fr;gap:38px;align-items:center;}
+.legend{display:flex;flex-direction:column;gap:11px;}
+.legend .row{display:flex;align-items:center;gap:11px;}
+.legend i{width:11px;height:11px;border-radius:3px;flex-shrink:0;}
+.legend .nm{font-size:12px;font-weight:700;color:var(--spatco-steel);flex:1;}
+.legend .vl{font-size:13.5px;font-weight:900;color:var(--ink);}
+.legend .pc{font-size:10px;font-weight:800;color:#94A3B8;width:44px;text-align:right;}
+
+.stack-wrap{margin-top:22px;}
+.stack{display:flex;height:42px;border-radius:9px;overflow:hidden;box-shadow:0 3px 12px rgba(1,63,117,.1);}
+.stack div{display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:900;color:#fff;transition:flex .4s;}
+.stack-axis{display:flex;justify-content:space-between;margin-top:7px;font-size:9px;font-weight:800;color:#94A3B8;}
+
+.break{border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:12px;border-left:4px solid var(--bc);}
+.break .hd{display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap;}
+.break h3{font-size:1.02rem;font-weight:900;letter-spacing:-.015em;}
+.break .amt{font-size:1.35rem;font-weight:900;color:var(--bc);letter-spacing:-.025em;}
+.break .mech{font-size:.85rem;color:var(--spatco-steel);line-height:1.72;margin-top:9px;}
+.break .inputs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);}
+.break .inputs span{background:var(--brand-light);border:1px solid rgba(2,116,190,.16);border-radius:20px;padding:4px 11px;font-size:10px;font-weight:700;color:var(--brand-primary);}
+.break .formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:#94A3B8;margin-top:9px;}
+
+table{width:100%;border-collapse:collapse;}
+th{text-align:left;font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#94A3B8;padding:0 12px 9px 0;border-bottom:1px solid var(--line);}
+td{padding:11px 12px 11px 0;border-bottom:1px solid #F4F6FA;font-size:11.5px;color:var(--spatco-steel);vertical-align:top;line-height:1.55;}
+td.k{font-weight:800;color:var(--ink);}
+td.n{font-weight:900;color:var(--ink);white-space:nowrap;}
+.src{display:inline-block;font-size:8.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:2.5px 9px;border-radius:20px;white-space:nowrap;}
+.src.sp{background:rgba(114,191,68,.14);color:#3F7A22;border:1px solid rgba(114,191,68,.34);}
+.src.bm{background:#F4F6FA;color:#64748B;border:1px solid var(--line);}
+
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+.mile{border:1px solid var(--line);border-radius:10px;padding:14px 16px;position:relative;}
+.mile i{display:block;font-style:normal;font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-primary);margin-bottom:6px;}
+.mile b{display:block;font-size:12.5px;font-weight:900;}
+.mile span{display:block;font-size:10px;color:var(--muted);line-height:1.6;margin-top:5px;}
+.mile .dot{position:absolute;top:-5px;left:16px;width:9px;height:9px;border-radius:50%;background:var(--brand-primary);}
+
+footer{margin-top:32px;padding:20px 44px 32px;border-top:1px solid var(--line);font-size:9.5px;color:#94A3B8;line-height:1.75;}
+footer b{color:var(--spatco-steel);}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .sheet{box-shadow:none;border-radius:0;max-width:100%;}
+  .print-btn,.back{display:none;}
+  section{padding:18px 28px 0;break-inside:avoid;}
+  header{padding:18px 28px 12px;}
+  .banner{padding:20px 28px;}
+  footer{padding:14px 28px 18px;}
+  @page{size:letter;margin:11mm;}
+}
+@media (max-width:760px){
+  .charts{grid-template-columns:1fr;}
+  .road{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">&larr; Back to Microsite</a>
+<button class="print-btn" onclick="window.print()">🖨 Print / Save as PDF</button>
+
+<div class="sheet">
+
+  <header>
+    <div class="lock">
+      <div class="sf">
+        <svg width="30" height="21" viewBox="0 0 273 191"><path fill="#00A1E0" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
+        <b>Salesforce</b>
+      </div>
+      <div class="div"></div>
+      <div class="sp"><b>SPATCO</b><i>Energy Solutions</i></div>
+    </div>
+    <div class="meta">Business Value Assessment<br>Phase 1 · September 2026<br><span style="color:var(--spatco-red);">Confidential</span></div>
+  </header>
+
+  <div class="banner">
+    <div class="c"><div class="l">Total Identified Annual Value</div><div class="v g">$1,258,320</div></div>
+    <div class="sep"></div>
+    <div class="c"><div class="l">Phase 1 Investment</div><div class="v sm">$115,000</div></div>
+    <div class="sep"></div>
+    <div class="c"><div class="l">Payback</div><div class="v o sm">~1.1 months</div></div>
+    <div class="note">Modeled at the default assumptions shown in the microsite's value calculator. Implementation services only — Salesforce license subscription is priced separately. Directional estimates for executive discussion.</div>
+  </div>
+
+  <section>
+    <h2>Value by Category</h2>
+    <div class="charts">
+      <svg width="220" height="220" viewBox="0 0 42 42" role="img" aria-label="Value by category donut chart">
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#F1F5F9" stroke-width="5.6"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#0274BE" stroke-width="5.6" stroke-dasharray="30.6 69.4" stroke-dashoffset="25"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#FF6900" stroke-width="5.6" stroke-dasharray="5.2 94.8" stroke-dashoffset="-5.6"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#72BF44" stroke-width="5.6" stroke-dasharray="11.4 88.6" stroke-dashoffset="-10.8"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#C8102E" stroke-width="5.6" stroke-dasharray="52.8 47.2" stroke-dashoffset="-22.2"/>
+        <text x="21" y="20.2" text-anchor="middle" font-size="4.6" font-weight="900" fill="#0F172A">$1.26M</text>
+        <text x="21" y="24.6" text-anchor="middle" font-size="2.3" font-weight="700" fill="#94A3B8">ANNUAL</text>
+      </svg>
+      <div class="legend">
+        <div class="row"><i style="background:#0274BE;"></i><span class="nm">Sales Rep Productivity</span><span class="vl">$385,320</span><span class="pc">30.6%</span></div>
+        <div class="row"><i style="background:#FF6900;"></i><span class="nm">Campaign &amp; Trade Show ROI</span><span class="vl">$64,800</span><span class="pc">5.2%</span></div>
+        <div class="row"><i style="background:#72BF44;"></i><span class="nm">Onboarding &amp; Ramp Time</span><span class="vl">$144,000</span><span class="pc">11.4%</span></div>
+        <div class="row"><i style="background:#C8102E;"></i><span class="nm">Cross-Sell Whitespace</span><span class="vl">$664,200</span><span class="pc">52.8%</span></div>
+      </div>
+    </div>
+
+    <div class="stack-wrap">
+      <div class="stack">
+        <div style="flex:30.6;background:#0274BE;">30.6%</div>
+        <div style="flex:5.2;background:#FF6900;font-size:9px;">5.2%</div>
+        <div style="flex:11.4;background:#72BF44;">11.4%</div>
+        <div style="flex:52.8;background:#C8102E;">52.8%</div>
+      </div>
+      <div class="stack-axis"><span>Productivity</span><span>Campaigns</span><span>Ramp</span><span>Whitespace</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Detailed Breakdown</h2>
+
+    <div class="break" style="--bc:#0274BE;">
+      <div class="hd"><h3>Sales Rep Productivity</h3><span class="amt">$385,320</span></div>
+      <p class="mech">Sellers currently move a deal across SAP, SharePoint, and email — re-keying the same information and rebuilding quotes that already exist somewhere. Consolidating onto a single opportunity record returns hours to the selling week. Only half the reclaimed time is counted as converting into real selling activity; the rest is assumed to absorb into the day.</p>
+      <div class="inputs"><span>38 reps</span><span>6.0 admin hrs / week</span><span>$65 / hr loaded</span><span>50% recapture</span></div>
+      <div class="formula">38 × 6.0 × 52 × $65 × 0.50 = $385,320</div>
+    </div>
+
+    <div class="break" style="--bc:#FF6900;">
+      <div class="hd"><h3>Campaign &amp; Trade Show ROI</h3><span class="amt">$64,800</span></div>
+      <p class="mech">SPATCO runs roughly 30 trade shows a year with leads captured on badge scanners and manual spreadsheets. A measurable share of that investment is lost because leads are never worked. Marketing Cloud journeys and campaign influence reporting recover that share. This figure deliberately excludes the larger strategic value of being able to cut events that do not return.</p>
+      <div class="inputs"><span>30 shows / year</span><span>$12,000 avg event spend</span><span>18% yield lift</span></div>
+      <div class="formula">30 × $12,000 × 0.18 = $64,800</div>
+    </div>
+
+    <div class="break" style="--bc:#72BF44;">
+      <div class="hd"><h3>Onboarding &amp; Ramp Time</h3><span class="amt">$144,000</span></div>
+      <p class="mech">Without a CRM, new sellers ramp by shadowing tenured reps until the process clicks. A guided pipeline in Sales Cloud shortens that curve. This matters disproportionately under the $700–800M plan, where sales headcount is expected to grow faster than tribal knowledge can transfer.</p>
+      <div class="inputs"><span>12 hires / year</span><span>4 weeks of ramp removed</span><span>$3,000 / week loaded</span></div>
+      <div class="formula">12 × 4 × $3,000 = $144,000</div>
+    </div>
+
+    <div class="break" style="--bc:#C8102E;">
+      <div class="hd"><h3>Cross-Sell Whitespace</h3><span class="amt">$664,200</span></div>
+      <p class="mech">With 80–90% of new business coming from existing relationships, the account base is heavily single-threaded — customers buying one line of business when SPATCO sells four or five. Data Cloud Foundations unifies profiles so those gaps become visible to reps, converting a relationship-led motion into a deliberate expansion motion. The single largest lever in the model, and the one most directly tied to the growth mandate.</p>
+      <div class="inputs"><span>900 commercial accounts</span><span>82% single-threaded</span><span>2.0% conversion</span><span>$45,000 avg expansion deal</span></div>
+      <div class="formula">900 × 0.82 × 0.02 × $45,000 = $664,200</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Assumptions &amp; Sourcing</h2>
+    <table>
+      <tr><th style="width:30%;">Assumption</th><th style="width:15%;">Value</th><th style="width:20%;">Source</th><th>Basis</th></tr>
+      <tr><td class="k">Sales org headcount</td><td class="n">38 reps</td><td><span class="src sp">SPATCO actual</span></td><td>Discovery with the revenue organization.</td></tr>
+      <tr><td class="k">Trade shows per year</td><td class="n">~30</td><td><span class="src sp">SPATCO actual</span></td><td>Stated by SPATCO marketing during discovery.</td></tr>
+      <tr><td class="k">Accounts single-threaded</td><td class="n">82%</td><td><span class="src sp">SPATCO-informed</span></td><td>Reflects the stated 80–90% of business coming from existing relationships.</td></tr>
+      <tr><td class="k">Revenue &amp; growth target</td><td class="n">$350M → $700–800M</td><td><span class="src sp">SPATCO actual</span></td><td>Kian Capital growth mandate ahead of a 2028–29 exit.</td></tr>
+      <tr><td class="k">Phase 1 implementation</td><td class="n">$115,000</td><td><span class="src sp">Signed / near-signed SOW</span></td><td>LogicRain Technologies Inc., fixed cost, 14–16 weeks.</td></tr>
+      <tr><td class="k">Comparative SAP FSM spend</td><td class="n">~$411K / year</td><td><span class="src sp">SPATCO actual</span></td><td>SAP Field Service &amp; Asset Management software — a separate system that is not being replaced. Used only to size the Phase 1 ask.</td></tr>
+      <tr><td class="k">Admin hours per rep / week</td><td class="n">6.0</td><td><span class="src bm">Benchmark</span></td><td>Typical for a B2B field-sales org without CRM. To be validated with SPATCO.</td></tr>
+      <tr><td class="k">Fully-loaded hourly rate</td><td class="n">$65</td><td><span class="src bm">Benchmark</span></td><td>Placeholder pending SPATCO compensation data.</td></tr>
+      <tr><td class="k">Selling-time recapture</td><td class="n">50%</td><td><span class="src bm">Benchmark</span></td><td>Deliberately conservative — assumes half of reclaimed time converts to selling.</td></tr>
+      <tr><td class="k">Average event spend</td><td class="n">$12,000</td><td><span class="src bm">Benchmark</span></td><td>Regional B2B industrial trade show, all-in. To be replaced with SPATCO figures.</td></tr>
+      <tr><td class="k">Event yield lift</td><td class="n">18%</td><td><span class="src bm">Benchmark</span></td><td>Improvement from automated, tracked follow-up vs. manual spreadsheet handoff.</td></tr>
+      <tr><td class="k">New hires per year</td><td class="n">12</td><td><span class="src bm">Benchmark</span></td><td>Scaled to the growth plan. To be confirmed with SPATCO HR.</td></tr>
+      <tr><td class="k">Ramp weeks removed</td><td class="n">4</td><td><span class="src bm">Benchmark</span></td><td>18 weeks to first closed deal reduced to 14.</td></tr>
+      <tr><td class="k">Commercial account base</td><td class="n">900</td><td><span class="src bm">Benchmark</span></td><td>Estimate pending an account extract from SAP.</td></tr>
+      <tr><td class="k">Expansion conversion rate</td><td class="n">2.0%</td><td><span class="src bm">Benchmark</span></td><td>Conservative annual conversion of single-threaded accounts to a second line.</td></tr>
+      <tr><td class="k">Average expansion deal</td><td class="n">$45,000</td><td><span class="src bm">Benchmark</span></td><td>Placeholder pending SPATCO deal-size analysis.</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Phase 1 Roadmap</h2>
+    <div class="road">
+      <div class="mile"><div class="dot"></div><i>Aug 10 – Sep 2026</i><b>Discovery &amp; Architecture</b><span>Kickoff, requirements confirmation, environment provisioning, configuration approach signed off before build.</span></div>
+      <div class="mile"><div class="dot"></div><i>Sep – Nov 2026</i><b>Configuration &amp; Build</b><span>Sales Cloud configuration (6–8 wks), SPIFF commission implementation (4–5 wks), data migration of up to 50K records (2–3 wks).</span></div>
+      <div class="mile"><div class="dot"></div><i>Nov 27, 2026</i><b>Enablement &amp; Go-Live</b><span>System integration testing, user acceptance testing with real sellers, production cutover and hypercare.</span></div>
+    </div>
+    <p style="font-size:10.5px;color:var(--muted);line-height:1.7;margin-top:14px;">Payment milestones: $57,500 → $19,250 → $19,250 → $19,000, billed against delivery milestones across the engagement rather than as a lump sum. Phase 2 (Field Service) is future scope with no committed dates, tied to SPATCO's existing SAP Field Service agreement window running into late 2027.</p>
+  </section>
+
+  <footer>
+    <b>Scope.</b> Phase 1 comprises Sales Cloud, Marketing Cloud, and Data Cloud Foundations. Field Service, Revenue Cloud, and Agentforce are explicitly out of scope and appear in supporting materials only as forward-looking roadmap direction. SAP remains SPATCO's system of record; Salesforce is positioned as the front-end CRM and engagement layer that syncs with it.<br><br>
+    <b>Disclaimer.</b> The values in this assessment are directional estimates produced for executive discussion. They are derived from the assumptions listed above, a mix of SPATCO-provided figures and industry benchmark defaults, and are not a contractual commitment, a pricing quote, or a guarantee of results. Actual outcomes depend on adoption, data quality, and execution. The $115,000 figure covers implementation services only; Salesforce license subscription is priced separately. All customer, account, and equipment names used in demonstration materials are fictional.<br><br>
+    Prepared by the Salesforce account team for SPATCO Energy Solutions · September 2026
+  </footer>
+
+</div>
+</body>
+</html>

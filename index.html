@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SPATCO Energy Solutions × Salesforce — Built for the Road to $800M</title>
+<meta name="description" content="Salesforce executive microsite for SPATCO Energy Solutions — Sales Cloud, Marketing Cloud, and Data Cloud Foundations."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   BRAND SYSTEM
+═══════════════════════════════════════════════════════════════ */
+:root{
+  --brand-primary:   #0274BE;   /* Salesforce Blue */
+  --brand-secondary: #013F75;   /* Dark navy */
+  --brand-accent:    #FF6900;   /* Salesforce orange */
+  --brand-green:     #72BF44;   /* Salesforce green */
+  --brand-light:     #F0F7FF;   /* Light tint */
+  --font-main:       'Salesforce Sans','Inter',system-ui,-apple-system,sans-serif;
+  /* SPATCO secondary accents — used sparingly on cards + stat numbers */
+  --spatco-red:      #C8102E;
+  --spatco-steel:    #46505A;
+  --ink:             #0F172A;
+  --muted:           #64748B;
+  --line:            #E2E8F0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity;}
+body{font-family:var(--font-main);background:#000813;color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE SHELL
+═══════════════════════════════════════════════════════════════ */
+.slide{position:relative;width:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;scroll-snap-align:start;overflow:hidden;}
+.slide.tall{min-height:100vh;justify-content:flex-start;overflow:visible;}
+.slide-inner{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:78px 56px 56px;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:30px;margin-bottom:16px;}
+.eyebrow.on-dark{color:var(--brand-accent);background:rgba(255,105,0,.1);border:1px solid rgba(255,105,0,.3);}
+.eyebrow.on-light{color:var(--brand-primary);background:rgba(2,116,190,.08);border:1px solid rgba(2,116,190,.22);}
+h2.sh{font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:900;letter-spacing:-.025em;line-height:1.12;}
+p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
+.on-dark h2.sh,h2.sh.on-dark{color:#fff;}
+.dark-bg{background:linear-gradient(160deg,var(--brand-secondary) 0%,#011F3D 100%);}
+.dot-grid{position:absolute;inset:0;background-image:radial-gradient(rgba(2,116,190,.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+
+/* ═══════════════════════════════════════════════════════════════
+   DOT NAV + PROGRESS
+═══════════════════════════════════════════════════════════════ */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--brand-primary),var(--brand-accent));z-index:400;transition:width .15s linear;}
+#dotnav{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:350;display:flex;flex-direction:column;gap:14px;align-items:flex-end;}
+.dot{position:relative;width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);background:transparent;cursor:pointer;transition:all .28s cubic-bezier(.4,0,.2,1);padding:0;}
+.dot:hover{border-color:var(--brand-accent);transform:scale(1.25);}
+.dot.on{width:15px;height:15px;background:var(--brand-accent);border-color:var(--brand-accent);box-shadow:0 0 14px rgba(255,105,0,.65);}
+.dot.light{border-color:rgba(1,63,117,.4);}
+.dot.light.on{background:var(--brand-accent);border-color:var(--brand-accent);}
+.dot .tip{position:absolute;right:24px;top:50%;transform:translateY(-50%) translateX(6px);white-space:nowrap;background:rgba(1,31,61,.95);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:5px 11px;border-radius:7px;opacity:0;pointer-events:none;transition:all .22s;}
+.dot:hover .tip{opacity:1;transform:translateY(-50%) translateX(0);}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 1 — HERO
+═══════════════════════════════════════════════════════════════ */
+#s1{background:linear-gradient(160deg,var(--brand-secondary) 0%,#011F3D 100%);}
+#s1::before{content:'';position:absolute;inset:0;background-image:
+  linear-gradient(-58deg,transparent 0 58%,rgba(255,105,0,.055) 58% 60%,rgba(255,105,0,.02) 60% 66%,transparent 66%),
+  radial-gradient(rgba(2,116,190,.07) 1px,transparent 1px);
+  background-size:100% 100%,40px 40px;pointer-events:none;}
+/* Low-opacity fuel/infrastructure silhouette */
+#s1::after{content:'';position:absolute;right:-60px;bottom:-40px;width:520px;height:520px;opacity:.055;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23ffffff'%3E%3Crect x='14' y='30' width='30' height='56' rx='4'/%3E%3Crect x='20' y='36' width='18' height='13' rx='2' fill='%23011F3D'/%3E%3Crect x='50' y='46' width='6' height='40'/%3E%3Cpath d='M56 50h10a5 5 0 0 1 5 5v14a4 4 0 0 0 8 0V44l-7-7 3-3 8 8v27a9 9 0 0 1-18 0V57h-9z'/%3E%3Crect x='8' y='86' width='84' height='5' rx='2'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;}
+.hero-wrap{position:relative;z-index:3;max-width:1180px;margin:0 auto;padding:44px 56px;width:100%;}
+.cobrand{display:flex;align-items:center;gap:18px;margin-bottom:auto;}
+.cobrand .divider{width:1px;height:30px;background:rgba(255,255,255,.22);}
+.cobrand .sf-lockup{display:flex;align-items:center;gap:9px;}
+.cobrand .sf-lockup span{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.01em;}
+.spatco-wordmark{display:flex;flex-direction:column;line-height:1;}
+.spatco-wordmark b{font-size:16px;font-weight:900;color:#fff;letter-spacing:.06em;}
+.spatco-wordmark i{font-size:8.5px;font-style:normal;font-weight:700;letter-spacing:.22em;color:var(--spatco-red);text-transform:uppercase;margin-top:3px;}
+.hero-h1{font-size:clamp(2.4rem,5.6vw,4.5rem);font-weight:900;color:#fff;letter-spacing:-.035em;line-height:1.02;margin:34px 0 0;}
+.hero-h1 .accent{background:linear-gradient(95deg,var(--brand-accent),#FFA254);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-sub{font-size:1.02rem;color:rgba(255,255,255,.62);line-height:1.72;max-width:600px;margin-top:20px;}
+.stat-pills{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;}
+.stat-pill{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:13px 20px;backdrop-filter:blur(6px);}
+.stat-pill .v{font-size:1.28rem;font-weight:900;color:#fff;letter-spacing:-.02em;}
+.stat-pill .v em{font-style:normal;color:var(--brand-accent);}
+.stat-pill .l{font-size:9.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.44);margin-top:4px;}
+.pain-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.pain-pill{display:flex;align-items:center;gap:9px;background:rgba(200,16,46,.09);border:1px solid rgba(200,16,46,.3);border-radius:11px;padding:9px 15px;}
+.pain-pill svg{flex-shrink:0;}
+.pain-pill span{font-size:11.5px;font-weight:700;color:rgba(255,255,255,.82);}
+.hero-products{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+.hero-products .lbl{font-size:9.5px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.prod-logo{display:flex;align-items:center;gap:8px;}
+.prod-logo span{font-size:12.5px;font-weight:800;color:rgba(255,255,255,.88);white-space:nowrap;}
+.scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:5;}
+.scroll-cue span{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.scroll-cue .chev{animation:bounce 1.6s ease-in-out infinite;}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 2 — FLIP CARDS
+═══════════════════════════════════════════════════════════════ */
+#s2{background:linear-gradient(165deg,#FFFFFF 0%,var(--brand-light) 100%);}
+.flip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px;}
+.flip{perspective:1600px;height:376px;cursor:pointer;}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .72s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d;}
+.flip:hover .flip-inner,.flip.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;overflow:hidden;}
+.flip-front{background:#fff;border:1px solid var(--line);box-shadow:0 4px 22px rgba(1,63,117,.07);}
+.flip-front::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--spatco-red);}
+.flip-back{transform:rotateY(180deg);background:linear-gradient(155deg,var(--brand-secondary),#012B52);border:1px solid rgba(2,116,190,.4);box-shadow:0 12px 40px rgba(1,63,117,.3);}
+.flip-num{font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--spatco-red);text-transform:uppercase;}
+.flip-front h3{font-size:1.28rem;font-weight:900;color:var(--ink);margin:8px 0 12px;letter-spacing:-.02em;line-height:1.15;}
+.flip-front p{font-size:.85rem;color:var(--muted);line-height:1.68;}
+.pain-facts{margin-top:auto;display:flex;flex-direction:column;gap:7px;padding-top:16px;border-top:1px dashed var(--line);}
+.pain-fact{display:flex;align-items:flex-start;gap:8px;font-size:11.5px;font-weight:600;color:var(--spatco-steel);line-height:1.5;}
+.pain-fact b{color:var(--spatco-red);font-weight:900;}
+.flip-cta{position:absolute;bottom:14px;right:18px;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#CBD5E1;}
+.flip-back .sf-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(114,191,68,.14);border:1px solid rgba(114,191,68,.4);border-radius:20px;padding:4px 12px;font-size:9.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--brand-green);align-self:flex-start;}
+.flip-back h4{font-size:1.14rem;font-weight:900;color:#fff;margin:14px 0 12px;line-height:1.24;letter-spacing:-.015em;}
+.flip-back ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.flip-back li{display:flex;gap:10px;font-size:.82rem;color:rgba(255,255,255,.76);line-height:1.6;}
+.flip-back li svg{flex-shrink:0;margin-top:3px;}
+.flip-back .resolve{margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-accent);}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 3 — PLATFORM + DRAWER
+═══════════════════════════════════════════════════════════════ */
+#s3{background:linear-gradient(160deg,#011F3D 0%,var(--brand-secondary) 100%);}
+.plat-cols{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;margin-top:30px;}
+.prod-card{display:flex;align-items:flex-start;gap:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-left:3px solid var(--card-c,var(--brand-primary));border-radius:15px;padding:20px 22px;margin-bottom:14px;cursor:pointer;transition:all .26s cubic-bezier(.4,0,.2,1);}
+.prod-card:hover{background:rgba(255,255,255,.08);transform:translateX(7px);border-color:rgba(255,255,255,.2);border-left-color:var(--card-c,var(--brand-primary));box-shadow:0 10px 34px rgba(0,0,0,.28);}
+.prod-card .ico{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--card-c,var(--brand-primary));}
+.prod-card h3{font-size:1.04rem;font-weight:900;color:#fff;margin-bottom:5px;letter-spacing:-.015em;}
+.prod-card p{font-size:.8rem;color:rgba(255,255,255,.56);line-height:1.6;}
+.prod-card .scope{display:inline-block;margin-top:9px;font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-green);background:rgba(114,191,68,.13);border:1px solid rgba(114,191,68,.34);border-radius:20px;padding:3px 10px;}
+.prod-card .arrow{margin-left:auto;align-self:center;color:rgba(255,255,255,.3);transition:transform .26s,color .26s;}
+.prod-card:hover .arrow{transform:translateX(4px);color:var(--brand-accent);}
+.future-note{margin-top:18px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.16);border-radius:13px;padding:15px 18px;}
+.future-note b{display:block;font-size:9.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:6px;}
+.future-note p{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.62;}
+.plat-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px;}
+.orbit-hub{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#0A8FE0,var(--brand-primary) 62%,#015A9E);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(2,116,190,.1),0 0 0 26px rgba(2,116,190,.05),0 24px 64px rgba(2,116,190,.4);z-index:3;}
+.orbit-hub b{font-size:12px;font-weight:900;color:#fff;letter-spacing:.06em;margin-top:8px;}
+.orbit-ring{position:absolute;border:1px dashed rgba(255,255,255,.14);border-radius:50%;animation:spin 46s linear infinite;}
+.orbit-ring.r1{width:280px;height:280px;}
+.orbit-ring.r2{width:392px;height:392px;animation-duration:70s;animation-direction:reverse;}
+.orbit-chip{position:absolute;background:rgba(255,255,255,.07);backdrop-filter:blur(9px);border:1px solid rgba(255,255,255,.16);border-radius:11px;padding:9px 15px;font-size:10.5px;font-weight:800;color:#fff;white-space:nowrap;z-index:4;}
+.orbit-chip.sap{border-color:rgba(114,191,68,.45);background:rgba(114,191,68,.11);}
+
+#drawer-scrim{position:fixed;inset:0;background:rgba(0,8,19,.62);backdrop-filter:blur(3px);z-index:420;opacity:0;pointer-events:none;transition:opacity .34s;}
+#drawer-scrim.open{opacity:1;pointer-events:auto;}
+#drawer{position:fixed;top:0;right:0;height:100%;width:min(470px,92vw);background:#fff;z-index:430;transform:translateX(100%);transition:transform .42s cubic-bezier(.4,0,.2,1);box-shadow:-24px 0 70px rgba(0,0,0,.35);display:flex;flex-direction:column;}
+#drawer.open{transform:translateX(0);}
+.drawer-head{padding:30px 32px 22px;border-bottom:1px solid var(--line);position:relative;}
+.drawer-head .ico{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.drawer-head h3{font-size:1.5rem;font-weight:900;color:var(--ink);letter-spacing:-.025em;}
+.drawer-head p{font-size:.85rem;color:var(--muted);margin-top:7px;line-height:1.6;}
+#drawer-close{position:absolute;top:24px;right:26px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--muted);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+#drawer-close:hover{background:var(--brand-light);color:var(--ink);}
+.drawer-body{padding:26px 32px;overflow-y:auto;flex:1;}
+.drawer-body h5{font-size:9.5px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.cap{display:flex;gap:13px;margin-bottom:17px;}
+.cap .bullet{width:22px;height:22px;border-radius:6px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.cap b{display:block;font-size:.88rem;font-weight:800;color:var(--ink);margin-bottom:4px;}
+.cap p{font-size:.81rem;color:var(--muted);line-height:1.66;}
+.growth-callout{margin-top:22px;background:linear-gradient(140deg,var(--brand-secondary),#012B52);border-radius:15px;padding:22px;}
+.growth-callout .tag{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-accent);margin-bottom:10px;}
+.growth-callout p{font-size:.85rem;color:rgba(255,255,255,.82);line-height:1.7;}
+.growth-callout .metric{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.14);display:flex;gap:22px;}
+.growth-callout .metric div b{display:block;font-size:1.18rem;font-weight:900;color:#fff;}
+.growth-callout .metric div span{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.44);}
+
+/* ═══════════════════════════════════════════════════════════════
+   SHARED ANIMATIONS
+═══════════════════════════════════════════════════════════════ */
+@keyframes pulseSlow{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.6;transform:scale(.85);}}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(255,105,0,.5);}70%{box-shadow:0 0 0 11px rgba(255,105,0,0);}100%{box-shadow:0 0 0 0 rgba(255,105,0,0);}}
+@keyframes rippleAnim{0%{transform:scale(0);opacity:1;}100%{transform:scale(3);opacity:0;}}
+@keyframes spin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@keyframes dashFlow{to{stroke-dashoffset:-40;}}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.ds-pulse{animation:pulseRing 1.6s ease-out infinite;}
+.touch-ripple{position:absolute;border-radius:50%;background:rgba(2,116,190,.25);width:60px;height:60px;margin-left:-30px;margin-top:-30px;animation:rippleAnim .55s ease-out forwards;pointer-events:none;z-index:40;}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 4 — PRODUCT DEMO (video-in-phone-frame)
+═══════════════════════════════════════════════════════════════ */
+#s4{background:linear-gradient(165deg,#FFFFFF 0%,var(--brand-light) 60%,#E3EFFB 100%);}
+.demo4-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;margin-top:30px;}
+.step{display:flex;gap:18px;margin-bottom:24px;position:relative;}
+.step:not(:last-child)::after{content:'';position:absolute;left:21px;top:48px;bottom:-24px;width:2px;background:linear-gradient(180deg,var(--brand-primary),rgba(2,116,190,.12));}
+.step .n{width:44px;height:44px;border-radius:12px;background:linear-gradient(140deg,var(--brand-primary),#015A9E);color:#fff;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 18px rgba(2,116,190,.3);z-index:1;}
+.step h4{font-size:1.02rem;font-weight:900;color:var(--ink);margin-bottom:6px;letter-spacing:-.015em;}
+.step p{font-size:.85rem;color:var(--muted);line-height:1.68;}
+.step .chip{display:inline-block;margin-top:8px;font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--brand-light);color:var(--brand-primary);border:1px solid rgba(2,116,190,.22);}
+.phone-frame-v{width:262px;background:#1C1C1E;border-radius:42px;padding:11px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 70px rgba(1,63,117,.35);position:relative;flex-shrink:0;margin:0 auto;}
+.phone-frame-v::after{content:'';position:absolute;right:-3px;top:88px;width:3px;height:58px;background:#2C2C2E;border-radius:0 3px 3px 0;box-shadow:0 68px 0 #2C2C2E;}
+.pfv-status{display:flex;justify-content:space-between;align-items:center;padding:5px 15px 4px;color:#fff;font-size:9.5px;font-weight:700;}
+.pfv-screen{position:relative;height:470px;border-radius:32px;overflow:hidden;background:linear-gradient(165deg,#012B52 0%,#011F3D 55%,#00142A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px 20px;}
+.pfv-screen::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(2,116,190,.16) 1px,transparent 1px);background-size:22px 22px;}
+.pfv-play{width:62px;height:62px;border-radius:50%;background:rgba(255,105,0,.14);border:2px solid var(--brand-accent);display:flex;align-items:center;justify-content:center;margin-bottom:18px;animation:pulseRing 2s ease-out infinite;position:relative;z-index:2;}
+.pfv-screen h5{font-size:13px;font-weight:900;color:#fff;letter-spacing:-.01em;position:relative;z-index:2;}
+.pfv-screen small{font-size:10px;color:rgba(255,255,255,.44);line-height:1.6;margin-top:8px;display:block;position:relative;z-index:2;}
+.pfv-badge{position:absolute;top:16px;left:50%;transform:translateX(-50%);font-size:8px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-accent);background:rgba(255,105,0,.12);border:1px solid rgba(255,105,0,.34);border-radius:20px;padding:4px 12px;z-index:3;white-space:nowrap;}
+.pfv-track{position:absolute;left:20px;right:20px;bottom:22px;z-index:2;}
+.pfv-track .bar{height:3px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden;}
+.pfv-track .bar i{display:block;height:100%;width:34%;background:var(--brand-accent);border-radius:3px;}
+.pfv-track .t{display:flex;justify-content:space-between;font-size:8px;font-weight:700;color:rgba(255,255,255,.34);margin-top:6px;}
+.pfv-home{height:18px;display:flex;align-items:center;justify-content:center;}
+.pfv-home span{width:110px;height:4.5px;background:rgba(255,255,255,.35);border-radius:3px;}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 5 — INTERACTIVE PHONE DEMO
+═══════════════════════════════════════════════════════════════ */
+#slide-demo{position:relative;}
+#phone-outer{width:272px;min-height:560px;background:#1C1C1E;border-radius:44px;padding:12px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);position:relative;flex-shrink:0;}
+#phone-outer::after{content:'';position:absolute;right:-3px;top:90px;width:3px;height:60px;background:#2C2C2E;border-radius:0 3px 3px 0;box-shadow:0 70px 0 #2C2C2E;}
+#phone-status-bar{display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;color:#fff;font-size:10px;font-weight:700;letter-spacing:.02em;}
+#phone-screen{background:#F4F6FA;border-radius:34px;overflow:hidden;position:relative;height:490px;}
+#phone-screen .demo-screen{position:absolute;inset:0;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1);background:#F4F6FA;overflow:hidden;}
+#phone-screen .demo-screen.ds-active{transform:translateX(0);}
+#phone-screen .demo-screen.ds-exiting{transform:translateX(-100%);}
+#phone-home-bar{height:20px;display:flex;align-items:center;justify-content:center;}
+#phone-home-bar span{width:120px;height:5px;background:rgba(255,255,255,.35);border-radius:3px;}
+.demo-dots{display:flex;justify-content:flex-start;gap:6px;padding:14px 0 4px;margin-top:24px;}
+.demo-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s,transform .3s;}
+.demo-dot.active{background:var(--brand-accent);transform:scale(1.35);}
+#demo-pill{display:inline-block;font-size:10px;font-weight:800;color:var(--brand-accent);text-transform:uppercase;letter-spacing:.1em;border:1px solid rgba(255,105,0,.3);background:rgba(255,105,0,.08);padding:4px 12px;border-radius:20px;margin-bottom:16px;}
+#demo-title{font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:900;color:#fff;line-height:1.14;margin-bottom:14px;letter-spacing:-.025em;}
+#demo-body{color:rgba(255,255,255,.6);font-size:.88rem;line-height:1.75;margin-bottom:20px;max-width:390px;}
+#demo-hint{display:flex;align-items:center;gap:8px;}
+#demo-hint span:first-child{font-size:18px;}
+#demo-hint span:last-child{font-size:11px;font-weight:700;color:rgba(255,255,255,.45);}
+/* Phone screen component classes */
+.ds-bar{background:#fff;display:flex;align-items:center;justify-content:space-between;padding:9px 13px;border-bottom:1px solid #EEF2F7;flex-shrink:0;}
+.ds-bar .t{font-size:10.5px;font-weight:900;color:#0B2545;}
+.ds-back{background:none;border:none;font-size:10px;color:var(--brand-primary);font-weight:800;cursor:pointer;padding:0;}
+.ds-body{padding:11px 13px;overflow:hidden;flex:1;display:flex;flex-direction:column;}
+.ds-h{font-size:8.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#94A3B8;margin-bottom:7px;}
+.ds-card{background:#fff;border:1px solid #E6EBF2;border-radius:10px;padding:10px 11px;margin-bottom:7px;}
+.ds-row{display:flex;align-items:center;gap:8px;}
+.ds-chip{font-size:7.5px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;padding:2.5px 7px;border-radius:20px;}
+.ds-chip.hi{background:#FEE2E2;color:#C8102E;}
+.ds-chip.md{background:#FEF3C7;color:#B45309;}
+.ds-chip.lo{background:#E2E8F0;color:#64748B;}
+.ds-chip.ok{background:#DCFCE7;color:#15803D;}
+.ds-chip.sap{background:rgba(2,116,190,.1);color:var(--brand-primary);}
+.ds-stat{flex:1;background:#fff;border:1px solid #E6EBF2;border-radius:9px;padding:8px 6px;text-align:center;}
+.ds-stat b{display:block;font-size:15px;font-weight:900;color:var(--brand-primary);}
+.ds-stat span{font-size:7.5px;font-weight:700;color:#94A3B8;line-height:1.3;display:block;margin-top:2px;}
+.ds-cta{width:100%;background:linear-gradient(135deg,var(--brand-primary),#015A9E);color:#fff;border:none;border-radius:10px;padding:11px;font-size:10.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;}
+.ds-cta.accent{background:linear-gradient(135deg,var(--brand-accent),#C44E00);}
+.ds-cta.green{background:linear-gradient(135deg,#5CA834,var(--brand-green));}
+.ds-foot{padding:9px 13px 11px;background:#fff;border-top:1px solid #EEF2F7;flex-shrink:0;}
+.ds-kv{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #F4F6FA;}
+.ds-kv span{font-size:8.5px;font-weight:700;color:#94A3B8;}
+.ds-kv b{font-size:9px;font-weight:800;color:#0B2545;text-align:right;}
+.ds-check{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E6EBF2;border-radius:9px;padding:8px 10px;margin-bottom:6px;transition:all .35s ease;}
+.ds-check .box{width:16px;height:16px;border-radius:5px;border:1.8px solid #CBD5E1;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s;}
+.ds-check .box svg{opacity:0;transition:opacity .25s;}
+.ds-check span{font-size:9.5px;font-weight:700;color:#334155;}
+.ds-check.done{background:#F0FDF4;border-color:rgba(114,191,68,.45);}
+.ds-check.done .box{background:var(--brand-green);border-color:var(--brand-green);}
+.ds-check.done .box svg{opacity:1;}
+.ds-check.done span{color:#15803D;text-decoration:line-through;text-decoration-color:rgba(21,128,61,.4);}
+.ds-reveal{opacity:0;transform:translateY(8px);transition:all .45s cubic-bezier(.4,0,.2,1);}
+.ds-reveal.in{opacity:1;transform:translateY(0);}
+.ds-avatar{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--brand-primary),#015A9E);display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:900;flex-shrink:0;}
+.ds-avatar.red{background:linear-gradient(135deg,#C8102E,#8E0B20);}
+.ds-avatar.steel{background:linear-gradient(135deg,#46505A,#2C333A);}
+.ds-bars{display:flex;align-items:flex-end;gap:7px;height:62px;}
+.ds-bars > div{flex:1;border-radius:4px 4px 0 0;height:0;transition:height .8s cubic-bezier(.4,0,.2,1);}
+#sig-path{stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 1.5s ease;}
+#sig-path.drawn{stroke-dashoffset:0;}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 6 — CONNECTED OPS (before / after)
+═══════════════════════════════════════════════════════════════ */
+#s6{background:linear-gradient(165deg,#FFFFFF 0%,var(--brand-light) 100%);}
+.toggle-wrap{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:30px;padding:4px;gap:3px;box-shadow:0 3px 14px rgba(1,63,117,.08);}
+.toggle-wrap button{border:none;background:transparent;padding:9px 26px;border-radius:26px;font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--muted);cursor:pointer;transition:all .28s;}
+.toggle-wrap button.on{color:#fff;}
+.toggle-wrap button.on[data-state="before"]{background:var(--spatco-red);box-shadow:0 4px 14px rgba(200,16,46,.3);}
+.toggle-wrap button.on[data-state="after"]{background:var(--brand-green);box-shadow:0 4px 14px rgba(114,191,68,.32);}
+#ops-stage{position:relative;height:440px;margin-top:22px;}
+#ops-svg{position:absolute;inset:0;width:100%;height:100%;}
+#ops-svg path{transition:opacity .55s ease;}
+.ops-before-line{stroke:var(--spatco-red);stroke-width:2;stroke-dasharray:7 6;fill:none;opacity:.55;}
+.ops-after-line{stroke:var(--brand-green);stroke-width:2.6;stroke-dasharray:9 7;fill:none;opacity:0;animation:dashFlow 1.4s linear infinite;}
+#ops-stage.after .ops-before-line{opacity:0;}
+#ops-stage.after .ops-after-line{opacity:.9;}
+.ops-node{position:absolute;background:#fff;border:1.5px solid var(--line);border-radius:13px;padding:13px 17px;text-align:center;width:172px;transform:translate(-50%,-50%);transition:all .6s cubic-bezier(.4,0,.2,1);box-shadow:0 5px 20px rgba(1,63,117,.09);z-index:3;}
+.ops-node b{display:block;font-size:12px;font-weight:900;color:var(--ink);}
+.ops-node span{display:block;font-size:9px;color:var(--muted);margin-top:3px;line-height:1.45;}
+.ops-node .tagline{display:inline-block;margin-top:7px;font-size:7.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:2.5px 8px;border-radius:20px;background:#FEE2E2;color:var(--spatco-red);}
+#ops-stage.after .ops-node.replaced{opacity:.28;filter:grayscale(1);}
+#ops-stage.after .ops-node.replaced b{text-decoration:line-through;}
+#ops-stage.after .ops-node[data-pull="tl"]{transform:translate(-50%,-50%) translate(80px,60px) scale(.7);}
+#ops-stage.after .ops-node[data-pull="tr"]{transform:translate(-50%,-50%) translate(-80px,66px) scale(.7);}
+#ops-stage.after .ops-node[data-pull="br"]{transform:translate(-50%,-50%) translate(-84px,-58px) scale(.7);}
+.ops-node.sap{border-color:rgba(114,191,68,.45);border-width:2px;}
+.ops-node.sap .tagline{background:rgba(114,191,68,.14);color:#3F7A22;}
+#ops-stage.after .ops-node.sap{box-shadow:0 8px 28px rgba(114,191,68,.26);border-color:var(--brand-green);}
+.ops-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:186px;height:186px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#0A8FE0,var(--brand-primary) 62%,#015A9E);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(2,116,190,.09),0 20px 52px rgba(2,116,190,.34);z-index:4;transition:box-shadow .6s;}
+#ops-stage.after .ops-hub{box-shadow:0 0 0 14px rgba(114,191,68,.12),0 0 0 30px rgba(114,191,68,.06),0 20px 60px rgba(2,116,190,.4);}
+.ops-hub b{font-size:12.5px;font-weight:900;color:#fff;margin-top:7px;letter-spacing:.03em;}
+.ops-hub span{font-size:8px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-top:2px;}
+.ops-absorb{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);display:flex;flex-direction:column;gap:5px;align-items:center;z-index:5;opacity:0;transition:opacity .5s ease .45s;pointer-events:none;}
+#ops-stage.after .ops-absorb{opacity:1;}
+.ops-absorb div{background:rgba(114,191,68,.12);border:1px solid rgba(114,191,68,.4);color:#3F7A22;font-size:9px;font-weight:800;border-radius:20px;padding:4px 13px;white-space:nowrap;}
+.ops-legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:8px;}
+.ops-legend div{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--muted);}
+.ops-legend i{width:22px;height:2.5px;border-radius:2px;display:block;}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 7 — ARCHITECTURE
+═══════════════════════════════════════════════════════════════ */
+#s7{background:linear-gradient(160deg,#011F3D 0%,var(--brand-secondary) 100%);}
+.arch-stack{display:flex;flex-direction:column;gap:12px;margin-top:26px;}
+.layer{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:center;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:18px 24px;transition:all .28s;}
+.layer:hover{background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.2);}
+.layer .lnum{display:flex;align-items:center;gap:11px;}
+.layer .lnum b{width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.layer .lnum span{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72);line-height:1.25;}
+.layer .lbody{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.lchip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:7px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.82);}
+.lchip.tbd{border-style:dashed;color:rgba(255,255,255,.5);background:transparent;}
+.lchip.grn{background:rgba(114,191,68,.13);border-color:rgba(114,191,68,.4);color:#A8E07C;}
+.lchip.blu{background:rgba(2,116,190,.18);border-color:rgba(2,116,190,.45);color:#7FC6F2;}
+.layer.trust{background:linear-gradient(120deg,rgba(255,105,0,.11),rgba(255,105,0,.03));border:1.5px solid rgba(255,105,0,.45);box-shadow:0 10px 40px rgba(255,105,0,.13);}
+.layer.trust .lnum b{background:var(--brand-accent);color:#fff;}
+.layer.trust .lnum span{color:var(--brand-accent);}
+.layer.trust p{font-size:.85rem;color:rgba(255,255,255,.8);line-height:1.68;}
+.layer.trust p b{color:#fff;}
+.arch-note{margin-top:20px;display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.035);border:1px dashed rgba(255,255,255,.16);border-radius:13px;padding:16px 20px;}
+.arch-note p{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.68;}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 8 — EXECUTIVE DASHBOARD
+═══════════════════════════════════════════════════════════════ */
+#s8{background:linear-gradient(165deg,#EEF3FA 0%,#DFE9F6 100%);}
+.browser{border-radius:13px;overflow:hidden;box-shadow:0 26px 70px rgba(1,63,117,.24);border:1px solid rgba(1,63,117,.12);margin-top:24px;background:#fff;}
+.browser-bar{background:#E8EDF3;padding:9px 14px;display:flex;align-items:center;gap:9px;border-bottom:1px solid #D7DFE9;}
+.browser-bar .dots{display:flex;gap:6px;}
+.browser-bar .dots i{width:10px;height:10px;border-radius:50%;display:block;}
+.browser-url{flex:1;background:#fff;border-radius:7px;padding:5px 13px;font-size:10.5px;color:#64748B;display:flex;align-items:center;gap:7px;}
+.lightning-nav{background:linear-gradient(90deg,#032D60,#0B4A8F);padding:9px 16px;display:flex;align-items:center;gap:16px;}
+.lightning-nav .app{font-size:12.5px;font-weight:900;color:#fff;padding-right:16px;border-right:1px solid rgba(255,255,255,.2);}
+.lightning-nav .t{font-size:11px;font-weight:600;color:rgba(255,255,255,.62);padding:4px 2px;}
+.lightning-nav .t.on{color:#fff;font-weight:800;box-shadow:inset 0 -2.5px 0 #fff;}
+.lightning-nav .spacer{margin-left:auto;display:flex;align-items:center;gap:9px;}
+.dash-body{display:grid;grid-template-columns:186px 1fr;min-height:430px;}
+.dash-side{background:#F6F8FB;border-right:1px solid #E6EBF2;padding:16px 13px;}
+.dash-side h6{font-size:8.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#94A3B8;margin:0 0 9px 8px;}
+.dash-side a{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;font-size:11px;font-weight:700;color:#475569;text-decoration:none;margin-bottom:2px;cursor:pointer;}
+.dash-side a.on{background:rgba(2,116,190,.1);color:var(--brand-primary);}
+.dash-side a:hover{background:rgba(2,116,190,.06);}
+.dash-main{padding:18px 22px;}
+.dash-tabs{display:flex;gap:4px;border-bottom:1px solid #E6EBF2;margin-bottom:16px;flex-wrap:wrap;}
+.dash-tabs button{border:none;background:transparent;padding:9px 15px;font-size:11.5px;font-weight:800;color:#94A3B8;cursor:pointer;border-bottom:2.5px solid transparent;transition:all .2s;}
+.dash-tabs button.on{color:var(--brand-primary);border-bottom-color:var(--brand-primary);}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:16px;}
+.kpi{background:#fff;border:1px solid #E6EBF2;border-radius:10px;padding:13px 14px;border-top:3px solid var(--k,var(--brand-primary));}
+.kpi .l{font-size:8.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;line-height:1.3;}
+.kpi .v{font-size:1.5rem;font-weight:900;color:var(--ink);margin-top:6px;letter-spacing:-.025em;}
+.kpi .d{font-size:9.5px;font-weight:800;margin-top:3px;}
+.kpi .d.up{color:#15803D;}
+.kpi .d.dn{color:var(--spatco-red);}
+.dash-panel{display:none;}
+.dash-panel.on{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;}
+.panel-card{background:#fff;border:1px solid #E6EBF2;border-radius:11px;padding:15px 17px;}
+.panel-card h5{font-size:11px;font-weight:900;color:var(--ink);margin-bottom:3px;}
+.panel-card .sub{font-size:9px;color:#94A3B8;margin-bottom:13px;}
+.hbar{margin-bottom:11px;}
+.hbar .top{display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:#475569;margin-bottom:4px;}
+.hbar .top b{color:var(--ink);font-weight:900;}
+.hbar .track{height:9px;border-radius:5px;background:#F1F5F9;overflow:hidden;}
+.hbar .track i{display:block;height:100%;border-radius:5px;background:var(--bc,var(--brand-primary));width:0;transition:width 1.1s cubic-bezier(.4,0,.2,1);}
+.donut-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.donut-legend{display:flex;flex-direction:column;gap:7px;width:100%;margin-top:12px;}
+.donut-legend div{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;color:#475569;}
+.donut-legend i{width:9px;height:9px;border-radius:3px;display:block;flex-shrink:0;}
+.donut-legend b{margin-left:auto;color:var(--ink);font-weight:900;}
+.vbars{display:flex;align-items:flex-end;gap:10px;height:120px;margin-top:6px;}
+.vbars > div{flex:1;border-radius:5px 5px 0 0;height:0;transition:height 1s cubic-bezier(.4,0,.2,1);}
+.vlabels{display:flex;gap:10px;margin-top:6px;}
+.vlabels span{flex:1;text-align:center;font-size:9px;font-weight:700;color:#94A3B8;}
+.dash-note{font-size:9.5px;color:#94A3B8;margin-top:12px;font-style:italic;}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 9 — BUSINESS VALUE CALCULATOR
+═══════════════════════════════════════════════════════════════ */
+#s9{background:linear-gradient(160deg,#011F3D 0%,var(--brand-secondary) 55%,#012B52 100%);}
+.inv-strip{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px 24px;margin-top:24px;}
+.inv-strip .hd{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.inv-strip .hd b{font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-accent);}
+.inv-strip .hd span{font-size:10.5px;color:rgba(255,255,255,.45);}
+.inv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.inv-cell{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:14px 16px;}
+.inv-cell.hero{border-color:rgba(255,105,0,.42);background:rgba(255,105,0,.07);}
+.inv-cell .v{font-size:1.45rem;font-weight:900;color:#fff;letter-spacing:-.03em;}
+.inv-cell.hero .v{color:var(--brand-accent);}
+.inv-cell .l{font-size:9px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:5px;line-height:1.4;}
+.inv-cell .n{font-size:9.5px;color:rgba(255,255,255,.55);margin-top:7px;line-height:1.55;}
+.inv-foot{margin-top:14px;padding-top:13px;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:18px;flex-wrap:wrap;align-items:center;}
+.inv-foot .ctx{flex:1;min-width:300px;font-size:10.5px;color:rgba(255,255,255,.5);line-height:1.66;}
+.inv-foot .ctx b{color:#fff;font-weight:900;}
+.bvc-wrap{margin-top:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;}
+.bvc-tabs{display:flex;background:rgba(0,0,0,.18);border-bottom:1px solid rgba(255,255,255,.1);flex-wrap:wrap;}
+.bvc-tabs button{flex:1;min-width:170px;border:none;background:transparent;padding:15px 12px;font-size:11.5px;font-weight:800;color:rgba(255,255,255,.48);cursor:pointer;border-bottom:3px solid transparent;transition:all .22s;}
+.bvc-tabs button.on{color:#fff;background:rgba(255,255,255,.05);border-bottom-color:var(--brand-accent);}
+.bvc-tabs button small{display:block;font-size:9px;font-weight:700;color:rgba(255,255,255,.34);margin-top:3px;}
+.bvc-tabs button.on small{color:var(--brand-accent);}
+.bvc-panel{display:none;padding:26px 28px;}
+.bvc-panel.on{display:grid;grid-template-columns:1.25fr .95fr;gap:36px;}
+.sl{margin-bottom:22px;}
+.sl .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;}
+.sl .top label{font-size:11.5px;font-weight:700;color:rgba(255,255,255,.72);}
+.sl .top output{font-size:14px;font-weight:900;color:var(--brand-accent);}
+.sl input[type=range]{width:100%;height:5px;border-radius:4px;background:rgba(255,255,255,.14);appearance:none;-webkit-appearance:none;outline:none;cursor:pointer;}
+.sl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:19px;height:19px;border-radius:50%;background:var(--brand-accent);border:3px solid #012B52;box-shadow:0 2px 9px rgba(255,105,0,.55);cursor:pointer;}
+.sl input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--brand-accent);border:3px solid #012B52;cursor:pointer;}
+.sl .src{font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-top:7px;display:inline-block;padding:2px 8px;border-radius:20px;}
+.sl .src.sp{background:rgba(114,191,68,.14);color:#A8E07C;border:1px solid rgba(114,191,68,.32);}
+.sl .src.bm{background:rgba(255,255,255,.06);color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.14);}
+.bvc-out{background:linear-gradient(150deg,rgba(2,116,190,.18),rgba(2,116,190,.05));border:1px solid rgba(2,116,190,.34);border-radius:14px;padding:24px;display:flex;flex-direction:column;}
+.bvc-out .lab{font-size:9.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.bvc-out .big{font-size:2.5rem;font-weight:900;color:#fff;letter-spacing:-.035em;margin:7px 0 3px;line-height:1;}
+.bvc-out .per{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.42);}
+.bvc-out .form{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font-size:10.5px;color:rgba(255,255,255,.55);line-height:1.7;}
+.bvc-out .form code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:var(--brand-accent);background:rgba(255,105,0,.09);padding:1px 5px;border-radius:4px;}
+.bvc-out .bench{margin-top:auto;padding-top:16px;font-size:9.5px;color:rgba(255,255,255,.38);line-height:1.62;font-style:italic;}
+.bvc-summary{background:linear-gradient(120deg,rgba(255,105,0,.12),rgba(255,105,0,.02));border-top:1.5px solid rgba(255,105,0,.35);padding:22px 28px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.bvc-summary .cell .l{font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);}
+.bvc-summary .cell .v{font-size:1.6rem;font-weight:900;color:#fff;letter-spacing:-.03em;margin-top:4px;}
+.bvc-summary .cell .v.grn{color:var(--brand-green);}
+.bvc-summary .cell .v.acc{color:var(--brand-accent);}
+.bvc-summary .sep{width:1px;height:42px;background:rgba(255,255,255,.14);}
+.bvc-summary .pills{display:flex;gap:7px;flex-wrap:wrap;flex:1;}
+.bvc-summary .pills span{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:5px 12px;font-size:9.5px;font-weight:700;color:rgba(255,255,255,.62);}
+.btn-pdf{background:var(--brand-accent);color:#fff;border:none;border-radius:11px;padding:14px 26px;font-size:12.5px;font-weight:900;letter-spacing:.02em;cursor:pointer;display:inline-flex;align-items:center;gap:9px;box-shadow:0 8px 26px rgba(255,105,0,.34);transition:all .22s;}
+.btn-pdf:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,105,0,.45);}
+.bvc-disclaimer{font-size:9.5px;color:rgba(255,255,255,.34);line-height:1.66;margin-top:14px;max-width:820px;}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 10 — PATH FORWARD
+═══════════════════════════════════════════════════════════════ */
+#s10{background:linear-gradient(170deg,#FFFFFF 0%,var(--brand-light) 45%,#E3EEFA 100%);}
+.wtt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px;}
+.wtt{background:#fff;border:1px solid var(--line);border-radius:15px;padding:22px 24px;border-top:3px solid var(--wc,var(--brand-primary));box-shadow:0 4px 18px rgba(1,63,117,.06);transition:all .26s;}
+.wtt:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(1,63,117,.13);}
+.wtt .ic{width:38px;height:38px;border-radius:10px;background:var(--wc,var(--brand-primary));display:flex;align-items:center;justify-content:center;margin-bottom:13px;}
+.wtt h4{font-size:1.02rem;font-weight:900;color:var(--ink);letter-spacing:-.02em;margin-bottom:7px;}
+.wtt p{font-size:.84rem;color:var(--muted);line-height:1.68;}
+.sec-h{font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-primary);margin:46px 0 4px;}
+.sec-sub{font-size:.85rem;color:var(--muted);margin-bottom:18px;}
+/* Gantt */
+.gantt{background:#fff;border:1px solid var(--line);border-radius:15px;padding:22px 26px 20px;box-shadow:0 5px 22px rgba(1,63,117,.07);}
+.gantt-months{display:grid;grid-template-columns:190px 1fr;gap:16px;margin-bottom:11px;}
+.gantt-months .m{display:grid;grid-template-columns:repeat(4,1fr);}
+.gantt-months .m span{font-size:9.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#94A3B8;text-align:center;padding-bottom:7px;border-bottom:1px solid var(--line);}
+.grow{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:center;margin-bottom:9px;cursor:pointer;}
+.grow .lbl{display:flex;align-items:center;gap:9px;}
+.grow .lbl b{font-size:11.5px;font-weight:800;color:var(--ink);line-height:1.25;}
+.grow .lbl i{width:7px;height:7px;border-radius:2px;background:var(--gc,var(--brand-primary));flex-shrink:0;font-style:normal;}
+.gtrack{position:relative;height:28px;background:#F6F8FB;border-radius:7px;overflow:hidden;}
+.gtrack::before,.gtrack::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:#E9EEF5;}
+.gtrack::before{left:25%;box-shadow:25% 0 0 #E9EEF5;}
+.gtrack::after{left:75%;}
+.gbar{position:absolute;top:4px;bottom:4px;border-radius:5px;background:var(--gc,var(--brand-primary));display:flex;align-items:center;padding:0 10px;transition:all .3s;box-shadow:0 2px 8px rgba(0,0,0,.1);}
+.gbar span{font-size:9px;font-weight:800;color:#fff;white-space:nowrap;letter-spacing:.02em;}
+.grow:hover .gbar{filter:brightness(1.1);transform:scaleY(1.12);}
+.grow.on .gbar{box-shadow:0 0 0 3px rgba(255,105,0,.3),0 4px 12px rgba(0,0,0,.14);}
+.grow.future{cursor:default;opacity:.85;}
+.grow.future .lbl b{color:#94A3B8;font-weight:700;}
+.gbar.ghost{background:transparent;border:1.5px dashed #B9C6D6;justify-content:center;}
+.gbar.ghost span{color:#94A3B8;font-weight:800;}
+.gantt-detail{margin-top:14px;background:var(--brand-light);border:1px solid rgba(2,116,190,.18);border-radius:11px;padding:0 18px;max-height:0;overflow:hidden;opacity:0;transition:all .38s cubic-bezier(.4,0,.2,1);}
+.gantt-detail.open{max-height:260px;opacity:1;padding:16px 18px;}
+.gantt-detail b{display:block;font-size:12px;font-weight:900;color:var(--ink);margin-bottom:5px;}
+.gantt-detail .dt{font-size:9.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--brand-primary);margin-bottom:8px;}
+.gantt-detail p{font-size:.84rem;color:var(--spatco-steel);line-height:1.7;}
+.gantt-cap{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+.gantt-cap .k{font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#94A3B8;}
+.gantt-cap .pay{display:flex;gap:7px;flex-wrap:wrap;}
+.gantt-cap .pay span{background:var(--brand-light);border:1px solid rgba(2,116,190,.2);border-radius:20px;padding:4px 12px;font-size:10px;font-weight:800;color:var(--brand-primary);}
+/* Org chart */
+.org{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.org-col{background:#fff;border:1px solid var(--line);border-radius:15px;padding:20px 22px;box-shadow:0 4px 18px rgba(1,63,117,.06);}
+.org-col > .h{display:flex;align-items:center;gap:9px;padding-bottom:12px;margin-bottom:13px;border-bottom:2px solid var(--oc,var(--brand-primary));}
+.org-col > .h b{font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--oc,var(--brand-primary));}
+.org-p{display:flex;align-items:center;gap:11px;padding:8px 0;}
+.org-p .av{width:34px;height:34px;border-radius:50%;background:var(--oc,var(--brand-primary));color:#fff;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.org-p .av img{width:100%;height:100%;border-radius:50%;object-fit:cover;}
+.org-p b{display:block;font-size:12.5px;font-weight:800;color:var(--ink);}
+.org-p span{display:block;font-size:9.5px;color:var(--muted);margin-top:1px;}
+.org-p .champ{display:inline-block;margin-top:3px;font-size:7.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,105,0,.11);color:var(--brand-accent);border-radius:20px;padding:2px 8px;}
+.org-team{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);}
+.org-team .t{font-size:8.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin-bottom:7px;}
+.org-team .chips{display:flex;flex-wrap:wrap;gap:5px;}
+.org-team .chips span{background:#F6F8FB;border:1px solid var(--line);border-radius:20px;padding:3px 9px;font-size:9px;font-weight:700;color:var(--muted);}
+/* CTA */
+.cta-block{margin-top:46px;background:linear-gradient(140deg,var(--brand-secondary),#012B52);border-radius:20px;padding:38px 42px;box-shadow:0 22px 60px rgba(1,63,117,.26);}
+.cta-block h3{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:900;color:#fff;letter-spacing:-.025em;}
+.cta-block > p{font-size:.92rem;color:rgba(255,255,255,.58);line-height:1.7;max-width:640px;margin-top:10px;}
+.cta-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px;}
+.cta-card{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);border-radius:15px;padding:20px;text-align:center;transition:all .26s;}
+.cta-card:hover{background:rgba(255,255,255,.09);transform:translateY(-3px);border-color:rgba(255,255,255,.24);}
+.cta-card .ph{width:72px;height:72px;border-radius:50%;margin:0 auto 13px;object-fit:cover;border:2.5px solid rgba(255,255,255,.22);display:block;background:#0B2545;}
+.cta-card .ph-fallback{width:72px;height:72px;border-radius:50%;margin:0 auto 13px;background:var(--brand-primary);color:#fff;font-size:24px;font-weight:900;letter-spacing:.02em;display:flex;align-items:center;justify-content:center;border:2.5px solid rgba(255,255,255,.22);}
+.cta-card b{display:block;font-size:14px;font-weight:900;color:#fff;}
+.cta-card span{display:block;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--brand-accent);margin-top:4px;}
+.cta-card a{display:inline-block;margin-top:12px;font-size:11px;font-weight:700;color:rgba(255,255,255,.62);text-decoration:none;word-break:break-all;}
+.cta-card a:hover{color:#fff;}
+.cta-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);}
+.cta-links a{display:inline-flex;align-items:center;gap:8px;border-radius:11px;padding:12px 22px;font-size:12px;font-weight:800;text-decoration:none;transition:all .22s;}
+.cta-links a.primary{background:var(--brand-accent);color:#fff;box-shadow:0 8px 24px rgba(255,105,0,.3);}
+.cta-links a.primary:hover{transform:translateY(-2px);}
+.cta-links a.ghost{background:rgba(255,255,255,.07);color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.16);}
+.cta-links a.ghost:hover{background:rgba(255,255,255,.13);}
+.site-foot{text-align:center;padding:28px 20px 34px;font-size:10px;color:#94A3B8;line-height:1.7;}
+
+@media (max-width:1080px){
+  .slide-inner{padding:64px 30px 44px;}
+  .hero-wrap{padding:40px 30px;}
+  .flip-grid,.wtt-grid,.org,.cta-cards,.inv-grid,.kpi-grid{grid-template-columns:1fr 1fr;}
+  .plat-cols,.demo4-cols,.bvc-panel.on,.dash-panel.on{grid-template-columns:1fr;}
+  .dash-body{grid-template-columns:1fr;}
+  .dash-side{display:none;}
+  #slide-demo > div:last-child > div:last-child{flex-direction:column;gap:30px;}
+  .gantt-months,.grow{grid-template-columns:130px 1fr;}
+}
+@media (max-width:720px){
+  .flip-grid,.wtt-grid,.org,.cta-cards,.inv-grid,.kpi-grid{grid-template-columns:1fr;}
+  #dotnav{display:none;}
+  #ops-stage{height:620px;}
+  .ops-node{width:150px;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<nav id="dotnav" aria-label="Slide navigation"></nav>
+
+<!-- ══════════════════════════ SLIDE 1 — HERO ══════════════════════════ -->
+<section class="slide" id="s1" data-nav="Overview" data-theme="dark">
+  <div class="hero-wrap">
+
+    <div class="cobrand">
+      <div class="sf-lockup">
+        <svg width="34" height="24" viewBox="0 0 273 191" aria-label="Salesforce"><path fill="#00A1E0" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
+        <span>Salesforce</span>
+      </div>
+      <div class="divider"></div>
+      <div class="spatco-wordmark">
+        <b>SPATCO</b>
+        <i>Energy Solutions</i>
+      </div>
+    </div>
+
+    <!-- Headline options considered:
+         A. "Built for the Road to $800M."            ← selected: ties directly to the Kian growth mandate
+         B. "One Platform for the Next Chapter of Growth."
+         C. "700 Technicians. 36 Locations. One Source of Truth." -->
+    <h1 class="hero-h1">Built for the Road<br>to <span class="accent">$800M</span>.</h1>
+    <p class="hero-sub">SPATCO grew to $350M on relationships, field expertise, and hustle. The next $450M needs a system behind it. Sales Cloud, Marketing Cloud, and Data Cloud Foundations — sitting on top of the SAP system of record you already trust.</p>
+
+    <div class="stat-pills">
+      <div class="stat-pill"><div class="v">$350M <em>&rarr;</em> $700–800M</div><div class="l">Revenue &rarr; Target</div></div>
+      <div class="stat-pill"><div class="v">700+</div><div class="l">Field Technicians</div></div>
+      <div class="stat-pill"><div class="v">36</div><div class="l">Locations</div></div>
+    </div>
+
+    <div class="pain-pills">
+      <div class="pain-pill">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.2" stroke-linecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4M15 3h4a2 2 0 0 1 2 2v4M9 21H5a2 2 0 0 1-2-2v-4M15 21h4a2 2 0 0 0 2-2v-4"/></svg>
+        <span>Fragmented Quoting</span>
+      </div>
+      <div class="pain-pill">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M12 7v5l3 2"/></svg>
+        <span>Reactive-Only Sales</span>
+      </div>
+      <div class="pain-pill">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/><path d="M4 4l16 16" opacity=".55"/></svg>
+        <span>No Campaign Attribution</span>
+      </div>
+    </div>
+
+    <div class="hero-products">
+      <span class="lbl">Phase 1 Scope</span>
+      <div class="prod-logo"><svg width="22" height="16" viewBox="0 0 273 191"><path fill="#0274BE" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg><span>Sales Cloud</span></div>
+      <div class="prod-logo"><svg width="22" height="16" viewBox="0 0 273 191"><path fill="#FF6900" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg><span>Marketing Cloud</span></div>
+      <div class="prod-logo"><svg width="22" height="16" viewBox="0 0 273 191"><path fill="#72BF44" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg><span>Data Cloud Foundations</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <svg class="chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 2 — THE CHALLENGE ══════════════════════════ -->
+<section class="slide tall" id="s2" data-nav="The Challenge" data-theme="light">
+  <div class="slide-inner">
+    <div class="eyebrow on-light">The Challenge</div>
+    <h2 class="sh">Three things standing between<br>SPATCO and the next $450M.</h2>
+    <p class="ss" style="color:var(--muted);">Not theory — these came straight from Kevin's team. Hover or tap any card to see how the Phase 1 platform answers it.</p>
+
+    <div class="flip-grid">
+
+      <!-- 01 — Fragmented Quoting -->
+      <div class="flip" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-num">01 — Systems</div>
+            <h3>Fragmented Quoting</h3>
+            <p>Sales activity lives in SAP, SharePoint, and email at the same time. Sales, sales support, and estimating each log into different places to move one deal forward — and no single record holds the whole story.</p>
+            <div class="pain-facts">
+              <div class="pain-fact"><b>3</b><span>disconnected systems per quote (SAP · SharePoint · email)</span></div>
+              <div class="pain-fact"><b>0</b><span>shared opportunity records across the three teams</span></div>
+            </div>
+            <div class="flip-cta">Hover &rarr;</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="sf-tag">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Sales Cloud
+            </div>
+            <h4>One opportunity record. One source of truth.</h4>
+            <ul>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>Every quote, contact, and activity attaches to a single opportunity — not a folder or an inbox.</span></li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>Sales, sales support, and estimating work the same record with role-appropriate visibility.</span></li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>SAP stays the system of record — Salesforce syncs with it as the front-end engagement layer.</span></li>
+            </ul>
+            <div class="resolve">Signed Phase 1 &middot; Sales Cloud configuration</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 — Reactive-Only Sales -->
+      <div class="flip" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-num">02 — Motion</div>
+            <h3>Reactive-Only Sales</h3>
+            <p>Roughly 80–90% of new business comes from existing relationships. There's no fit-scoring, no lead prioritization, and reps have no visibility into account whitespace — so growth tracks the relationships, not the market.</p>
+            <div class="pain-facts">
+              <div class="pain-fact"><b>80–90%</b><span>of new business from existing relationships</span></div>
+              <div class="pain-fact"><b>None</b><span>of the account base scored for fit or whitespace</span></div>
+            </div>
+            <div class="flip-cta">Hover &rarr;</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="sf-tag">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Data Cloud + Sales Cloud
+            </div>
+            <h4>See the whitespace. Then go get it.</h4>
+            <ul>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>Data Cloud Foundations unifies account profiles so every line of business on an account is visible in one place.</span></li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>Reps can see which accounts buy one service and not the other four — and prioritize outreach accordingly.</span></li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>Relationship-led selling stays — it just stops being the only motion available.</span></li>
+            </ul>
+            <div class="resolve">Signed Phase 1 &middot; Sales Cloud + Data Cloud Foundations</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 — No Campaign Attribution -->
+      <div class="flip" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="flip-num">03 — Marketing</div>
+            <h3>No Campaign Attribution</h3>
+            <p>About 30 trade shows a year. Leads get captured on badge scanners and hand-built spreadsheets — then disappear. Nobody can say what happened to a lead after the show, or what any event actually returned.</p>
+            <div class="pain-facts">
+              <div class="pain-fact"><b>~30</b><span>trade shows per year, manually captured</span></div>
+              <div class="pain-fact"><b>$0</b><span>of that event spend currently traceable to pipeline</span></div>
+            </div>
+            <div class="flip-cta">Hover &rarr;</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div class="sf-tag">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Marketing Cloud
+            </div>
+            <h4>Every show lead, traced to pipeline.</h4>
+            <ul>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>Badge scans land directly in a campaign — no spreadsheet hand-off, no lost week.</span></li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>Automated journeys follow up within hours while SPATCO is still top of mind.</span></li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#72BF44" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>Campaign influence reporting answers "what did that show return?" with a number, not a guess.</span></li>
+            </ul>
+            <div class="resolve">Phase 1 product scope &middot; Marketing Cloud</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 3 — PLATFORM OVERVIEW ══════════════════════════ -->
+<section class="slide tall" id="s3" data-nav="The Platform" data-theme="dark">
+  <div class="dot-grid"></div>
+  <div class="slide-inner">
+    <div class="eyebrow on-dark">Phase 1 Platform</div>
+    <h2 class="sh on-dark">Three products. One front end.<br>SAP stays exactly where it is.</h2>
+    <p class="ss" style="color:rgba(255,255,255,.58);">This is the scope being finalized today — nothing speculative. Click any card for what it does specifically for SPATCO.</p>
+
+    <div class="plat-cols">
+      <div>
+
+        <div class="prod-card" style="--card-c:#0274BE;" onclick="openDrawer('sales')">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+          <div>
+            <h3>Sales Cloud</h3>
+            <p>One opportunity record across sales, sales support, and estimating — replacing the SAP + SharePoint + email scramble.</p>
+            <span class="scope">In Scope · Signed</span>
+          </div>
+          <svg class="arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+
+        <div class="prod-card" style="--card-c:#FF6900;" onclick="openDrawer('marketing')">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18l-18-8z"/><path d="M7 12.5V19a2 2 0 0 0 4 0v-5"/></svg></div>
+          <div>
+            <h3>Marketing Cloud</h3>
+            <p>Turns ~30 trade shows a year from a spreadsheet exercise into a measurable pipeline engine with real attribution.</p>
+            <span class="scope">In Scope · Phase 1</span>
+          </div>
+          <svg class="arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+
+        <div class="prod-card" style="--card-c:#72BF44;" onclick="openDrawer('data')">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/><path d="M4 11.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
+          <div>
+            <h3>Data Cloud Foundations</h3>
+            <p>Unified account and contact profiles across lines of business — the included-value layer that makes whitespace visible.</p>
+            <span class="scope">In Scope · Included Value</span>
+          </div>
+          <svg class="arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+
+        <div class="future-note">
+          <b>Not in Phase 1 — Roadmap Only</b>
+          <p>Field Service, Revenue Cloud, and Agentforce are deliberately out of scope today. They appear later in this site only as forward-looking direction, tied to SPATCO's existing SAP Field Service agreement window — not as anything being sold now.</p>
+        </div>
+      </div>
+
+      <div class="plat-visual">
+        <div class="orbit-ring r1"></div>
+        <div class="orbit-ring r2"></div>
+        <div class="orbit-hub">
+          <svg width="44" height="31" viewBox="0 0 273 191"><path fill="#fff" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
+          <b>SPATCO CRM</b>
+        </div>
+        <div class="orbit-chip" style="top:11%;left:6%;">Sales Cloud</div>
+        <div class="orbit-chip" style="top:26%;right:2%;">Marketing Cloud</div>
+        <div class="orbit-chip" style="bottom:22%;left:0;">Data Cloud Foundations</div>
+        <div class="orbit-chip sap" style="bottom:7%;right:6%;">🔒 SAP — System of Record</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 4 — PRODUCT DEMO ══════════════════════════ -->
+<section class="slide tall" id="s4" data-nav="Product Demo" data-theme="light">
+  <div class="slide-inner">
+    <div class="eyebrow on-light">Product Demo</div>
+    <h2 class="sh">From badge scan to booked meeting —<br>without a spreadsheet in the middle.</h2>
+    <p class="ss" style="color:var(--muted);">The single loop that closes the Slide 2 gap: a trade-show lead becomes a CRM record and gets followed up automatically. Three steps, no manual hand-offs.</p>
+
+    <div class="demo4-cols">
+      <div>
+
+        <div class="step">
+          <div class="n">1</div>
+          <div>
+            <h4>The lead is captured at the booth</h4>
+            <p>A badge scan at one of SPATCO's ~30 annual shows writes straight into a Marketing Cloud campaign — tagged to the event, the booth, and the rep who scanned it. No badge-scanner export, no overnight spreadsheet cleanup.</p>
+            <span class="chip">Marketing Cloud</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="n">2</div>
+          <div>
+            <h4>It becomes a real CRM record</h4>
+            <p>The lead lands in Sales Cloud with the account already matched against unified Data Cloud profiles — so the rep immediately sees whether this is a net-new prospect or an existing customer buying a second line of business.</p>
+            <span class="chip">Sales Cloud + Data Cloud</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="n">3</div>
+          <div>
+            <h4>Follow-up happens on its own</h4>
+            <p>An automated journey goes out within hours while SPATCO is still fresh. Rep activity, quote, and outcome all attach to one opportunity — which is what finally makes "what did that show return?" a reportable number.</p>
+            <span class="chip">Campaign Influence Reporting</span>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--line);border-left:3px solid var(--brand-accent);border-radius:13px;padding:16px 18px;margin-top:6px;">
+          <p style="font-size:.82rem;color:var(--spatco-steel);line-height:1.68;"><b style="color:var(--ink);">Why this loop first:</b> it is the shortest path from a real SPATCO pain point to a number Scott and John can see on a dashboard. Nothing here depends on AI, and nothing here touches SAP's role as the system of record.</p>
+        </div>
+
+      </div>
+
+      <div>
+        <!-- TODO: drop in demo-loop.mp4 — replace the .pfv-screen contents below with:
+             <video src="demo-loop.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video> -->
+        <div class="phone-frame-v">
+          <div class="pfv-status">
+            <span>9:41</span>
+            <span style="font-size:8.5px;opacity:.65;">SPATCO Sales</span>
+            <span style="display:flex;align-items:center;gap:3px;">
+              <svg width="11" height="8" fill="#fff" viewBox="0 0 11 8"><rect y="2" width="2" height="6" rx="1" opacity=".4"/><rect x="3" y="1.5" width="2" height="6.5" rx="1" opacity=".6"/><rect x="6" y=".5" width="2" height="7.5" rx="1" opacity=".8"/><rect x="9" width="2" height="8" rx="1"/></svg>
+              <svg width="21" height="10" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="19" height="10" rx="3.5" stroke="#fff" stroke-opacity=".35"/><rect x="1.5" y="1.5" width="15" height="8" rx="2.5" fill="#fff"/></svg>
+            </span>
+          </div>
+          <div class="pfv-screen">
+            <div class="pfv-badge">Demo Footage Coming Soon</div>
+            <div class="pfv-play">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF6900"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </div>
+            <h5>Trade Show Lead &rarr; Pipeline</h5>
+            <small>A 90-second walkthrough of the loop on the left, recorded in a SPATCO-configured org.</small>
+            <div class="pfv-track">
+              <div class="bar"><i></i></div>
+              <div class="t"><span>0:31</span><span>1:30</span></div>
+            </div>
+          </div>
+          <div class="pfv-home"><span></span></div>
+        </div>
+        <p style="text-align:center;font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#94A3B8;margin-top:16px;">Placeholder &mdash; live recording to be added</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 5 — INTERACTIVE PHONE DEMO ══════════════════════════ -->
+<section id="slide-demo" class="slide" data-nav="A Technician's Day" data-theme="dark" style="background:linear-gradient(160deg,var(--brand-secondary) 0%,#011F3D 100%);padding:32px 60px 40px;">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(2,116,190,0.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;max-width:1100px;margin:0 auto;height:100%;flex:1;">
+
+    <div style="flex-shrink:0;margin-bottom:20px;display:flex;justify-content:center;">
+      <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,105,0,0.4);border-radius:16px;padding:13px 32px;box-shadow:0 8px 40px rgba(255,105,0,0.15);">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--brand-accent);box-shadow:0 0 14px var(--brand-accent);animation:pulseSlow 1s ease-in-out infinite;"></span>
+        <span style="font-size:14px;font-weight:900;color:var(--brand-accent);letter-spacing:0.08em;text-transform:uppercase;">Interactive Demo — See where this platform is headed</span>
+        <div style="width:1px;height:22px;background:rgba(255,255,255,0.15);"></div>
+        <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.72);">Walk through a technician's day — tap the phone screen to begin</span>
+        <span style="font-size:18px;animation:bounce 1.3s ease-in-out infinite;">👇</span>
+      </div>
+    </div>
+
+    <div style="flex:1;min-height:0;display:flex;align-items:center;gap:48px;">
+
+      <!-- Left context panel -->
+      <div style="flex:1;min-width:0;">
+        <div id="demo-pill">Step 1 of 8</div>
+        <h2 id="demo-title">Marcus starts his day.<br>5 jobs, already sequenced.</h2>
+        <p id="demo-body">No more guessing the route or calling dispatch for the next stop. Everything Marcus needs is already on his phone.</p>
+        <div id="demo-hint"><span>👆</span><span>Tap the phone to begin</span></div>
+        <div class="demo-dots">
+          <div class="demo-dot active"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div>
+          <div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div>
+        </div>
+        <div style="margin-top:26px;padding:14px 17px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-left:2.5px solid var(--brand-accent);border-radius:12px;max-width:400px;">
+          <p style="font-size:9px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--brand-accent);margin-bottom:6px;">Scope Note</p>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.55);line-height:1.68;">Field Service is <b style="color:rgba(255,255,255,.8);">Phase 2 — not in today's signed scope.</b> This walkthrough shows where the platform goes once the Phase 1 foundation is in place, timed against SPATCO's existing SAP Field Service agreement window.</p>
+        </div>
+      </div>
+
+      <!-- Right: phone -->
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+        <div style="font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px;">Tap anywhere on the screen</div>
+        <div id="phone-outer">
+          <div id="phone-status-bar">
+            <span>7:12</span>
+            <span style="font-size:9px;opacity:.7;">SPATCO Field</span>
+            <span style="display:flex;align-items:center;gap:3px;">
+              <svg width="11" height="8" fill="white" viewBox="0 0 11 8"><rect y="2" width="2" height="6" rx="1" opacity=".4"/><rect x="3" y="1.5" width="2" height="6.5" rx="1" opacity=".6"/><rect x="6" y=".5" width="2" height="7.5" rx="1" opacity=".8"/><rect x="9" width="2" height="8" rx="1"/></svg>
+              <svg width="22" height="11" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="19" height="10" rx="3.5" stroke="white" stroke-opacity=".35"/><rect x="1.5" y="1.5" width="15" height="8" rx="2.5" fill="white"/></svg>
+            </span>
+          </div>
+          <div id="phone-screen">
+
+            <!-- ── Screen 1: Today's Schedule ── -->
+            <div class="demo-screen ds-active" id="ds-screen-1">
+              <div id="demo-invite" onclick="dismissInvite()" style="position:absolute;inset:0;z-index:25;cursor:pointer;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(to bottom,rgba(1,63,117,0.25) 0%,rgba(1,31,61,0.86) 60%,rgba(1,31,61,0.96) 100%);">
+                <div style="font-size:36px;margin-bottom:10px;animation:bounce 1.1s ease-in-out infinite;">👆</div>
+                <div style="background:white;border-radius:16px;padding:13px 18px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.35);max-width:196px;">
+                  <div style="font-size:11px;font-weight:900;color:#013F75;margin-bottom:4px;">A Technician's Day</div>
+                  <div style="font-size:9px;color:#64748B;line-height:1.55;">Tap through 8 screens — dispatch to done — to see where the platform is headed.</div>
+                  <div style="margin-top:9px;padding:6px 14px;background:linear-gradient(135deg,#FF6900,#C44E00);border-radius:8px;font-size:9.5px;font-weight:800;color:white;">Tap to Begin →</div>
+                </div>
+              </div>
+              <div class="ds-bar">
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">Tue · Sep 29</span>
+                <span class="t">Today</span>
+                <svg width="14" height="14" fill="none" stroke="#94A3B8" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+              </div>
+              <div class="ds-body">
+                <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px;">
+                  <div class="ds-avatar steel">MW</div>
+                  <div>
+                    <div style="font-size:11.5px;font-weight:900;color:#0B2545;">Good morning, Marcus</div>
+                    <div style="font-size:8.5px;color:#94A3B8;margin-top:1px;">Truck 214 · Petroleum Service Tech II</div>
+                  </div>
+                </div>
+                <div class="ds-row" style="gap:6px;margin-bottom:11px;">
+                  <div class="ds-stat"><b>5</b><span>Jobs<br>Today</span></div>
+                  <div class="ds-stat"><b style="color:var(--spatco-red);">78</b><span>Route<br>Miles</span></div>
+                  <div class="ds-stat"><b style="color:#5CA834;">8:30</b><span>First<br>Stop</span></div>
+                </div>
+                <div class="ds-h">Today's Route</div>
+                <div class="ds-card" style="padding:9px 11px;">
+                  <div class="ds-row" style="margin-bottom:7px;"><span style="width:17px;height:17px;border-radius:50%;background:var(--brand-primary);color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</span><div style="flex:1;"><div style="font-size:9.5px;font-weight:800;color:#0B2545;">Ridgeline Manufacturing</div><div style="font-size:8px;color:#94A3B8;">8:30 AM · 12.4 mi</div></div></div>
+                  <div class="ds-row" style="margin-bottom:7px;"><span style="width:17px;height:17px;border-radius:50%;background:#CBD5E1;color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</span><div style="flex:1;"><div style="font-size:9.5px;font-weight:800;color:#475569;">Cross Creek Travel Plaza</div><div style="font-size:8px;color:#94A3B8;">11:15 AM · 9.2 mi</div></div></div>
+                  <div class="ds-row"><span style="width:17px;height:17px;border-radius:50%;background:#CBD5E1;color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</span><div style="flex:1;"><div style="font-size:9.5px;font-weight:800;color:#475569;">Harper Logistics Yard</div><div style="font-size:8px;color:#94A3B8;">1:45 PM · 16.8 mi</div></div></div>
+                </div>
+                <div style="font-size:8px;color:#94A3B8;line-height:1.5;padding:0 2px;">Sequenced by proximity and skill match · 2 more stops below</div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">View Job List<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 2: Job List ── -->
+            <div class="demo-screen" id="ds-screen-2">
+              <div class="ds-bar">
+                <button class="ds-back" onclick="advanceDemoScreen()">‹ Today</button>
+                <span class="t">My Work Orders</span>
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">5</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-h">Sorted by Priority</div>
+                <div class="ds-card ds-pulse" style="border-color:rgba(200,16,46,.4);cursor:pointer;" onclick="advanceDemoScreen()">
+                  <div class="ds-row" style="justify-content:space-between;margin-bottom:5px;"><span class="ds-chip hi">High Priority</span><span style="font-size:8px;font-weight:800;color:#94A3B8;">WO-48210</span></div>
+                  <div style="font-size:10.5px;font-weight:900;color:#0B2545;margin-bottom:3px;">Ridgeline Manufacturing</div>
+                  <div style="font-size:8.5px;color:#64748B;line-height:1.5;">STP fault alarm — submersible turbine pump</div>
+                  <div class="ds-row" style="justify-content:space-between;margin-top:7px;padding-top:6px;border-top:1px solid #F1F5F9;"><span style="font-size:8px;font-weight:700;color:#94A3B8;">8:30 AM · 12.4 mi</span><span style="font-size:8.5px;font-weight:900;color:var(--brand-primary);">Open →</span></div>
+                </div>
+                <div class="ds-card" style="opacity:.72;">
+                  <div class="ds-row" style="justify-content:space-between;margin-bottom:5px;"><span class="ds-chip md">Medium</span><span style="font-size:8px;font-weight:800;color:#94A3B8;">WO-48214</span></div>
+                  <div style="font-size:10.5px;font-weight:900;color:#334155;margin-bottom:3px;">Cross Creek Travel Plaza</div>
+                  <div style="font-size:8.5px;color:#64748B;">Quarterly dispenser calibration — 8 fueling positions</div>
+                </div>
+                <div class="ds-card" style="opacity:.55;">
+                  <div class="ds-row" style="justify-content:space-between;margin-bottom:5px;"><span class="ds-chip lo">Routine</span><span style="font-size:8px;font-weight:800;color:#94A3B8;">WO-48219</span></div>
+                  <div style="font-size:10.5px;font-weight:900;color:#334155;margin-bottom:3px;">Harper Logistics Yard</div>
+                  <div style="font-size:8.5px;color:#64748B;">DEF tank level sensor inspection</div>
+                </div>
+              </div>
+              <div class="ds-foot" style="text-align:center;"><span style="font-size:8.5px;font-weight:700;color:#94A3B8;">Tap the top work order to open it</span></div>
+            </div>
+
+            <!-- ── Screen 3: Work Order Detail ── -->
+            <div class="demo-screen" id="ds-screen-3">
+              <div class="ds-bar">
+                <button class="ds-back" onclick="advanceDemoScreen()">‹ Jobs</button>
+                <span class="t">WO-48210</span>
+                <span class="ds-chip hi">High</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-card" style="border-left:2.5px solid var(--brand-primary);">
+                  <div style="font-size:11px;font-weight:900;color:#0B2545;">Ridgeline Manufacturing</div>
+                  <div style="font-size:8.5px;color:#64748B;margin-top:2px;">4410 Kettle Creek Rd · Bay 3 Fuel Island</div>
+                  <div style="margin-top:6px;"><span class="ds-chip sap">⇄ Synced from SAP</span></div>
+                </div>
+                <div class="ds-h">Asset</div>
+                <div class="ds-card">
+                  <div class="ds-kv"><span>Equipment</span><b>Submersible Turbine Pump</b></div>
+                  <div class="ds-kv"><span>Asset ID</span><b>RM-STP-0417</b></div>
+                  <div class="ds-kv"><span>Installed</span><b>Mar 2019 · 7 yrs</b></div>
+                  <div class="ds-kv" style="border-bottom:none;"><span>Last Service</span><b>Mar 14, 2026</b></div>
+                </div>
+                <div class="ds-h">Prior Service Notes</div>
+                <div class="ds-card" style="background:#F8FAFC;">
+                  <div style="font-size:8.5px;font-weight:800;color:#475569;margin-bottom:3px;">Mar 14, 2026 — D. Alvarez</div>
+                  <div style="font-size:8.5px;color:#64748B;line-height:1.55;">Intermittent control relay chatter noted. Cleaned contacts, cleared fault. Flagged relay for replacement at next PM.</div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">Check Parts<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 4: Parts Check ── -->
+            <div class="demo-screen" id="ds-screen-4">
+              <div class="ds-bar">
+                <button class="ds-back" onclick="advanceDemoScreen()">‹ WO-48210</button>
+                <span class="t">Parts Check</span>
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">T-214</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-h">Required for This Job</div>
+                <div class="ds-card">
+                  <div style="font-size:10.5px;font-weight:900;color:#0B2545;">Pump Control Relay</div>
+                  <div style="font-size:8.5px;color:#64748B;margin-top:2px;">P/N 4482-RLY · 240V 3-pole</div>
+                </div>
+                <div id="ds-parts-scan" style="display:flex;align-items:center;gap:7px;padding:9px 11px;background:#FFF7ED;border:1px solid rgba(255,105,0,.3);border-radius:10px;margin-bottom:7px;">
+                  <span style="width:8px;height:8px;border-radius:50%;background:var(--brand-accent);animation:pulseSlow .8s ease-in-out infinite;flex-shrink:0;"></span>
+                  <span style="font-size:9px;font-weight:800;color:#B45309;">Checking Truck 214 inventory…</span>
+                </div>
+                <div id="ds-parts-result" class="ds-reveal">
+                  <div class="ds-card" style="background:#F0FDF4;border-color:rgba(114,191,68,.45);">
+                    <div class="ds-row" style="justify-content:space-between;">
+                      <div class="ds-row"><span style="font-size:14px;">✅</span><div><div style="font-size:10.5px;font-weight:900;color:#15803D;">In stock</div><div style="font-size:8.5px;color:#4D7C0F;">Truck 214 · Bin C-3 · Qty 3</div></div></div>
+                      <span class="ds-chip ok">Confirmed</span>
+                    </div>
+                  </div>
+                  <div class="ds-h">Truck 214 Inventory</div>
+                  <div class="ds-card">
+                    <div class="ds-kv"><span>Line items on board</span><b>142</b></div>
+                    <div class="ds-kv"><span>Inventory value</span><b>$34,800</b></div>
+                    <div class="ds-kv" style="border-bottom:none;"><span>Parts used this week</span><b>11</b></div>
+                  </div>
+                  <div style="font-size:8px;color:#94A3B8;line-height:1.5;padding:0 2px;">No second trip, no warehouse call, no guessing what's on the truck.</div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta green" onclick="advanceDemoScreen()">Start Job<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 5: On-Site Checklist ── -->
+            <div class="demo-screen" id="ds-screen-5">
+              <div class="ds-bar">
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">On Site</span>
+                <span class="t">Service Checklist</span>
+                <span id="ds-check-count" style="font-size:9px;font-weight:900;color:var(--brand-primary);">0/5</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-h">STP Fault — Standard Procedure</div>
+                <div class="ds-check" id="ds-chk-1"><div class="box"><svg width="10" height="10" fill="none" stroke="#fff" stroke-width="3.5" viewBox="0 0 24 24" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div><span>Inspect containment sump</span></div>
+                <div class="ds-check" id="ds-chk-2"><div class="box"><svg width="10" height="10" fill="none" stroke="#fff" stroke-width="3.5" viewBox="0 0 24 24" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div><span>Test leak detection sensor</span></div>
+                <div class="ds-check" id="ds-chk-3"><div class="box"><svg width="10" height="10" fill="none" stroke="#fff" stroke-width="3.5" viewBox="0 0 24 24" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div><span>Replace pump control relay</span></div>
+                <div class="ds-check" id="ds-chk-4"><div class="box"><svg width="10" height="10" fill="none" stroke="#fff" stroke-width="3.5" viewBox="0 0 24 24" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div><span>Calibrate dispenser meter</span></div>
+                <div class="ds-check" id="ds-chk-5"><div class="box"><svg width="10" height="10" fill="none" stroke="#fff" stroke-width="3.5" viewBox="0 0 24 24" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div><span>Verify flow rate &amp; pressure</span></div>
+                <div style="font-size:8px;color:#94A3B8;line-height:1.5;padding:4px 2px 0;">Same terminology techs already use in the field — nothing new to learn.</div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">Close Out Job<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 6: Completion & Signature ── -->
+            <div class="demo-screen" id="ds-screen-6">
+              <div class="ds-bar">
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">WO-48210</span>
+                <span class="t">Close Out</span>
+                <span class="ds-chip ok">5/5 Done</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-h">Photo Documentation</div>
+                <div class="ds-row" style="gap:6px;margin-bottom:9px;">
+                  <div style="flex:1;height:48px;border-radius:9px;background:linear-gradient(135deg,#475569,#1E293B);display:flex;align-items:center;justify-content:center;"><span style="font-size:7.5px;font-weight:800;color:rgba(255,255,255,.7);">RELAY — BEFORE</span></div>
+                  <div style="flex:1;height:48px;border-radius:9px;background:linear-gradient(135deg,#5CA834,#3F7A22);display:flex;align-items:center;justify-content:center;"><span style="font-size:7.5px;font-weight:800;color:rgba(255,255,255,.85);">RELAY — AFTER</span></div>
+                </div>
+                <div class="ds-h">Customer Sign-Off</div>
+                <div class="ds-card" style="padding:8px 11px;">
+                  <div style="height:56px;border-bottom:1.5px dashed #CBD5E1;display:flex;align-items:center;justify-content:center;">
+                    <svg width="150" height="46" viewBox="0 0 150 46" fill="none"><path id="sig-path" d="M6 34c9-16 15-22 20-14s5 20 11 16 9-24 15-20-1 24 6 22 11-20 17-18 3 18 10 16 12-14 18-18 14-4 20 2" stroke="#013F75" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div class="ds-row" style="justify-content:space-between;margin-top:6px;">
+                    <div><div style="font-size:9px;font-weight:800;color:#0B2545;">T. Ellison</div><div style="font-size:7.5px;color:#94A3B8;">Plant Maintenance Lead</div></div>
+                    <div style="font-size:7.5px;color:#94A3B8;text-align:right;">Sep 29, 2026<br>10:04 AM</div>
+                  </div>
+                </div>
+                <div id="ds-complete-badge" class="ds-reveal">
+                  <div class="ds-card" style="background:#F0FDF4;border-color:rgba(114,191,68,.45);margin-bottom:0;">
+                    <div class="ds-row"><span style="font-size:14px;">✅</span><div><div style="font-size:10px;font-weight:900;color:#15803D;">Job marked complete</div><div style="font-size:8px;color:#4D7C0F;">Record updated · 1.6 hrs logged · parts consumed</div></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta green" onclick="advanceDemoScreen()">Submit &amp; Continue<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 7: Auto-Reassignment ── -->
+            <div class="demo-screen" id="ds-screen-7">
+              <div class="ds-bar">
+                <span style="display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#5CA834;animation:pulseSlow 1.4s ease-in-out infinite;"></span><span style="font-size:8px;font-weight:900;color:#15803D;letter-spacing:.08em;">LIVE</span></span>
+                <span class="t">Dispatch View</span>
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">Reg. SE</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-h">Marcus Webb · Truck 214</div>
+                <div class="ds-card" id="ds-dispatch-closed" style="background:#F0FDF4;border-color:rgba(114,191,68,.45);transition:all .5s ease;">
+                  <div class="ds-row" style="justify-content:space-between;"><div class="ds-row"><span style="font-size:13px;">✅</span><div><div style="font-size:9.5px;font-weight:900;color:#15803D;">WO-48210 Closed</div><div style="font-size:8px;color:#4D7C0F;">Ridgeline Manufacturing · 10:04 AM</div></div></div></div>
+                </div>
+                <div id="ds-dispatch-next" class="ds-reveal">
+                  <div class="ds-card" style="border-color:rgba(2,116,190,.45);border-left:2.5px solid var(--brand-primary);">
+                    <div class="ds-row" style="justify-content:space-between;margin-bottom:4px;"><span class="ds-chip sap">Auto-Assigned</span><span style="font-size:8px;font-weight:800;color:#94A3B8;">WO-48214</span></div>
+                    <div style="font-size:10px;font-weight:900;color:#0B2545;">Cross Creek Travel Plaza</div>
+                    <div style="font-size:8.5px;color:#64748B;margin-top:2px;">9.2 mi · ETA 11:15 AM · navigation ready</div>
+                  </div>
+                </div>
+                <div id="ds-dispatch-board" class="ds-reveal">
+                  <div class="ds-h">Region Board — Live</div>
+                  <div class="ds-card" style="padding:9px 11px;">
+                    <div class="ds-kv"><span>Techs active</span><b>18 of 21</b></div>
+                    <div class="ds-kv"><span>Jobs closed today</span><b style="color:#15803D;">37</b></div>
+                    <div class="ds-kv" style="border-bottom:none;"><span>Unassigned queue</span><b style="color:var(--spatco-red);">2</b></div>
+                  </div>
+                  <div style="font-size:8px;color:#94A3B8;line-height:1.5;padding:0 2px;">One shared picture instead of a separate board per location.</div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta" onclick="advanceDemoScreen()">See Day Wrap-Up<svg width="11" height="11" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </div>
+
+            <!-- ── Screen 8: Day Wrap-Up ── -->
+            <div class="demo-screen" id="ds-screen-8">
+              <div class="ds-bar">
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">5:40 PM</span>
+                <span class="t">Day Wrap-Up</span>
+                <span style="font-size:9px;font-weight:800;color:#94A3B8;">T-214</span>
+              </div>
+              <div class="ds-body">
+                <div class="ds-card" style="background:linear-gradient(135deg,var(--brand-secondary),#012B52);border:none;text-align:center;padding:14px 11px;">
+                  <div style="font-size:26px;font-weight:900;color:#fff;letter-spacing:-.03em;">4 <span style="font-size:15px;color:rgba(255,255,255,.5);">of 5</span></div>
+                  <div style="font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:3px;">Jobs Completed Today</div>
+                </div>
+                <div class="ds-h">This Week</div>
+                <div class="ds-bars" id="ds-week-bars">
+                  <div style="background:#CBD5E1;" data-h="42"></div>
+                  <div style="background:#CBD5E1;" data-h="58"></div>
+                  <div style="background:#CBD5E1;" data-h="50"></div>
+                  <div style="background:#CBD5E1;" data-h="66"></div>
+                  <div style="background:var(--brand-primary);" data-h="80"></div>
+                </div>
+                <div style="display:flex;gap:7px;margin:4px 0 9px;">
+                  <span style="flex:1;text-align:center;font-size:7.5px;font-weight:700;color:#94A3B8;">M</span>
+                  <span style="flex:1;text-align:center;font-size:7.5px;font-weight:700;color:#94A3B8;">T</span>
+                  <span style="flex:1;text-align:center;font-size:7.5px;font-weight:700;color:#94A3B8;">W</span>
+                  <span style="flex:1;text-align:center;font-size:7.5px;font-weight:700;color:#94A3B8;">T</span>
+                  <span style="flex:1;text-align:center;font-size:7.5px;font-weight:900;color:var(--brand-primary);">F</span>
+                </div>
+                <div id="ds-nudge" class="ds-reveal">
+                  <div class="ds-card" style="background:#FFF7ED;border-color:rgba(255,105,0,.38);margin-bottom:5px;">
+                    <div style="font-size:7.5px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:var(--brand-accent);margin-bottom:4px;">✦ Looking ahead — future capability</div>
+                    <div style="font-size:9.5px;color:#7C2D12;line-height:1.55;font-weight:600;">Ridgeline's STP-0417 is due for service in 30 days — flag for next visit?</div>
+                    <div style="display:flex;gap:5px;margin-top:7px;">
+                      <span style="flex:1;text-align:center;font-size:8px;font-weight:800;color:#fff;background:var(--brand-accent);border-radius:6px;padding:5px;">Flag It</span>
+                      <span style="flex:1;text-align:center;font-size:8px;font-weight:800;color:#92400E;background:rgba(255,105,0,.12);border-radius:6px;padding:5px;">Not Now</span>
+                    </div>
+                  </div>
+                  <div style="font-size:7.5px;color:#94A3B8;line-height:1.5;padding:0 2px;">Illustrative only — proactive nudges are future scope, not part of Phase 1.</div>
+                </div>
+              </div>
+              <div class="ds-foot"><button class="ds-cta accent" onclick="resetDemo()">🔁 Replay the Walkthrough</button></div>
+            </div>
+
+          </div><!-- /phone-screen -->
+          <div id="phone-home-bar"><span></span></div>
+        </div><!-- /phone-outer -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 6 — CONNECTED OPS ══════════════════════════ -->
+<section class="slide tall" id="s6" data-nav="Connected Ops" data-theme="light">
+  <div class="slide-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;">
+      <div>
+        <div class="eyebrow on-light">Connected Operations</div>
+        <h2 class="sh">Three tools get absorbed.<br>SAP stays right where it is.</h2>
+        <p class="ss" style="color:var(--muted);">Phase 1 consolidates the scattered front-end tools into one platform. It does not touch the ERP — SAP remains the system of record, connected by a clean two-way sync.</p>
+      </div>
+      <div class="toggle-wrap">
+        <button data-state="before" class="on" onclick="setOps('before')">Today</button>
+        <button data-state="after" onclick="setOps('after')">With Salesforce</button>
+      </div>
+    </div>
+
+    <div id="ops-stage">
+      <svg id="ops-svg" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true">
+        <!-- chaotic "today" mesh -->
+        <path class="ops-before-line" d="M130 100 L860 86"/>
+        <path class="ops-before-line" d="M130 100 L150 360"/>
+        <path class="ops-before-line" d="M860 86 L850 358"/>
+        <path class="ops-before-line" d="M150 360 L850 358"/>
+        <path class="ops-before-line" d="M130 100 L850 358"/>
+        <path class="ops-before-line" d="M860 86 L150 360"/>
+        <path class="ops-before-line" d="M130 100 Q430 40 860 86"/>
+        <path class="ops-before-line" d="M150 360 Q500 430 850 358"/>
+        <!-- clean "after" flow into the hub -->
+        <path class="ops-after-line" d="M180 110 L430 200"/>
+        <path class="ops-after-line" d="M820 96 L575 195"/>
+        <path class="ops-after-line" d="M195 352 L430 262"/>
+        <path class="ops-after-line" d="M812 348 L572 265"/>
+      </svg>
+
+      <div class="ops-node sap" data-pull="none" style="left:13%;top:24%;">
+        <b>SAP</b>
+        <span>ERP · finance · inventory · service contracts</span>
+        <span class="tagline">System of Record — Not Replaced</span>
+      </div>
+
+      <div class="ops-node replaced" data-pull="tr" style="left:86%;top:20%;">
+        <b>SharePoint</b>
+        <span>Quote docs, proposals, scattered folders</span>
+        <span class="tagline">Absorbed</span>
+      </div>
+
+      <div class="ops-node replaced" data-pull="tl" style="left:15%;top:82%;">
+        <b>Email-Based Quoting</b>
+        <span>Threads between sales, support, estimating</span>
+        <span class="tagline">Absorbed</span>
+      </div>
+
+      <div class="ops-node replaced" data-pull="br" style="left:85%;top:81%;">
+        <b>Manual Marketing Tools</b>
+        <span>Constant Contact, badge scans, spreadsheets</span>
+        <span class="tagline">Absorbed</span>
+      </div>
+
+      <div class="ops-hub">
+        <svg width="42" height="30" viewBox="0 0 273 191"><path fill="#fff" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
+        <b>Salesforce</b>
+        <span>Engagement Layer</span>
+      </div>
+
+      <div class="ops-absorb">
+        <div>SharePoint quoting &rarr; Sales Cloud</div>
+        <div>Email threads &rarr; Sales Cloud activity</div>
+        <div>Manual marketing &rarr; Marketing Cloud</div>
+        <div style="background:rgba(2,116,190,.1);border-color:rgba(2,116,190,.38);color:var(--brand-primary);">SAP &hArr; Salesforce &mdash; two-way sync, ERP untouched</div>
+      </div>
+    </div>
+
+    <div class="ops-legend">
+      <div><i style="background:var(--spatco-red);"></i>Today — point-to-point workarounds between disconnected tools</div>
+      <div><i style="background:var(--brand-green);"></i>With Salesforce — one front end, SAP integrated as the system of record</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 7 — ARCHITECTURE ══════════════════════════ -->
+<section class="slide tall" id="s7" data-nav="Architecture" data-theme="dark">
+  <div class="dot-grid"></div>
+  <div class="slide-inner">
+    <div class="eyebrow on-dark">Platform Architecture</div>
+    <h2 class="sh on-dark">A foundation first.<br>Intelligence only where it earns its place.</h2>
+    <p class="ss" style="color:rgba(255,255,255,.58);">Phase 1 is a data and engagement foundation, not an AI program. The trust layer is here because SPATCO's IT team asked the right question early: does proprietary data ever train someone else's model?</p>
+
+    <div class="arch-stack">
+
+      <div class="layer">
+        <div class="lnum"><b>1</b><span>Data<br>Sources</span></div>
+        <div class="lbody">
+          <div class="lchip">SAP — ERP &amp; system of record</div>
+          <div class="lchip">Existing spreadsheets</div>
+          <div class="lchip">SharePoint quote libraries</div>
+          <div class="lchip">Trade-show badge capture</div>
+        </div>
+      </div>
+
+      <div class="layer">
+        <div class="lnum"><b>2</b><span>Integration<br>Layer</span></div>
+        <div class="lbody">
+          <div class="lchip tbd">Integration approach — TBD</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.52);line-height:1.6;">To be finalized with the implementation partner during discovery. No integration tooling is assumed or committed in the current scope.</div>
+        </div>
+      </div>
+
+      <div class="layer trust">
+        <div class="lnum"><b>3</b><span>Einstein<br>Trust Layer</span></div>
+        <div>
+          <p><b>SPATCO's data stays SPATCO's data.</b> No customer data is retained by the model provider, and nothing SPATCO puts into the platform is ever used to train an outside model. Zero data retention, dynamic grounding, and toxicity/audit controls are built into the platform — not bolted on later.</p>
+          <div class="lbody" style="margin-top:12px;">
+            <div class="lchip">Zero data retention</div>
+            <div class="lchip">No third-party model training</div>
+            <div class="lchip">Audit trail &amp; masking</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer">
+        <div class="lnum"><b>4</b><span>Data Cloud<br>Foundations</span></div>
+        <div class="lbody">
+          <div class="lchip grn">Unified customer profiles</div>
+          <div class="lchip grn">Segmentation</div>
+          <div class="lchip grn">Flex credits — included</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Value already included with Phase 1 licensing — not a future purchase.</div>
+        </div>
+      </div>
+
+      <div class="layer">
+        <div class="lnum"><b>5</b><span>Applications</span></div>
+        <div class="lbody">
+          <div class="lchip blu">Sales Cloud</div>
+          <div class="lchip blu">Marketing Cloud</div>
+          <div class="lchip blu">Reports &amp; Dashboards</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arch-note">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2" style="flex-shrink:0;margin-top:2px;" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <p><b style="color:rgba(255,255,255,.75);">Deliberately absent:</b> Agentforce and advanced AI agents. They sit above this stack and are a later conversation — after the foundation is live and the data is clean enough to be worth reasoning over.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 8 — EXECUTIVE DASHBOARD ══════════════════════════ -->
+<section class="slide tall" id="s8" data-nav="Exec Dashboard" data-theme="light">
+  <div class="slide-inner">
+    <div class="eyebrow on-light">What Leadership Sees</div>
+    <h2 class="sh">The four numbers that tell you<br>whether this is working.</h2>
+    <p class="ss" style="color:var(--muted);">These are the KPIs the deal team selected for the business case. Figures shown are illustrative — the structure is what matters.</p>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="dots"><i style="background:#FF5F57;"></i><i style="background:#FEBC2E;"></i><i style="background:#28C840;"></i></div>
+        <div class="browser-url">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          spatco.lightning.force.com/lightning/n/Revenue_Leadership
+        </div>
+      </div>
+      <div class="lightning-nav">
+        <span class="app">Sales</span>
+        <span class="t">Home</span>
+        <span class="t">Opportunities</span>
+        <span class="t">Accounts</span>
+        <span class="t">Campaigns</span>
+        <span class="t on">Dashboards</span>
+        <span class="spacer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <span style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;">KB</span>
+        </span>
+      </div>
+      <div class="dash-body">
+        <div class="dash-side">
+          <h6>Dashboards</h6>
+          <a class="on">📊 Revenue Leadership</a>
+          <a>🎯 Pipeline by Region</a>
+          <a>🏭 Account Whitespace</a>
+          <a>📣 Campaign Performance</a>
+          <h6 style="margin-top:16px;">Reports</h6>
+          <a>Rep Activity Summary</a>
+          <a>New Hire Ramp Tracker</a>
+          <a>Trade Show ROI</a>
+        </div>
+        <div class="dash-main">
+          <div class="dash-tabs">
+            <button class="on" onclick="setDashTab(0,this)">Cross-Sell Whitespace</button>
+            <button onclick="setDashTab(1,this)">Rep Productivity</button>
+            <button onclick="setDashTab(2,this)">New-Hire Ramp</button>
+            <button onclick="setDashTab(3,this)">Campaign ROI</button>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi" style="--k:#0274BE;"><div class="l">Whitespace Penetration</div><div class="v">31%</div><div class="d up">▲ 12 pts vs. baseline</div></div>
+            <div class="kpi" style="--k:#FF6900;"><div class="l">Rep Selling Hours / Wk</div><div class="v">27.4</div><div class="d up">▲ 4.9 hrs recaptured</div></div>
+            <div class="kpi" style="--k:#72BF44;"><div class="l">New-Hire Ramp</div><div class="v">14 wk</div><div class="d up">▼ 4 wks faster</div></div>
+            <div class="kpi" style="--k:#C8102E;"><div class="l">Trade Show ROI</div><div class="v">4.1×</div><div class="d up">▲ from untracked</div></div>
+          </div>
+
+          <!-- Tab 0 — Whitespace -->
+          <div class="dash-panel on" id="dp-0">
+            <div class="panel-card">
+              <h5>Accounts by Lines of Business Purchased</h5>
+              <div class="sub">Illustrative · 900-account commercial base</div>
+              <div class="hbar"><div class="top"><span>1 line of business only</span><b>612</b></div><div class="track"><i style="--bc:#C8102E;" data-w="68"></i></div></div>
+              <div class="hbar"><div class="top"><span>2 lines of business</span><b>194</b></div><div class="track"><i style="--bc:#FF6900;" data-w="22"></i></div></div>
+              <div class="hbar"><div class="top"><span>3 lines of business</span><b>71</b></div><div class="track"><i style="--bc:#0274BE;" data-w="8"></i></div></div>
+              <div class="hbar"><div class="top"><span>4+ lines of business</span><b>23</b></div><div class="track"><i style="--bc:#72BF44;" data-w="3"></i></div></div>
+              <p class="dash-note">68% of accounts buy one thing. That is the whitespace.</p>
+            </div>
+            <div class="panel-card donut-wrap">
+              <h5 style="align-self:flex-start;">Expansion Pipeline by Segment</h5>
+              <div class="sub" style="align-self:flex-start;">Open cross-sell opportunities</div>
+              <svg width="140" height="140" viewBox="0 0 42 42">
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#F1F5F9" stroke-width="6"/>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#0274BE" stroke-width="6" stroke-dasharray="41 59" stroke-dashoffset="25"/>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#FF6900" stroke-width="6" stroke-dasharray="27 73" stroke-dashoffset="-16"/>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#72BF44" stroke-width="6" stroke-dasharray="19 81" stroke-dashoffset="-43"/>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#C8102E" stroke-width="6" stroke-dasharray="13 87" stroke-dashoffset="-62"/>
+                <text x="21" y="20.4" text-anchor="middle" font-size="5.4" font-weight="900" fill="#0F172A">$18.4M</text>
+                <text x="21" y="25" text-anchor="middle" font-size="2.6" font-weight="700" fill="#94A3B8">OPEN</text>
+              </svg>
+              <div class="donut-legend">
+                <div><i style="background:#0274BE;"></i>Petroleum Service<b>$7.5M</b></div>
+                <div><i style="background:#FF6900;"></i>Environmental<b>$5.0M</b></div>
+                <div><i style="background:#72BF44;"></i>EV Infrastructure<b>$3.5M</b></div>
+                <div><i style="background:#C8102E;"></i>DEF &amp; Equipment<b>$2.4M</b></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 1 — Rep Productivity -->
+          <div class="dash-panel" id="dp-1">
+            <div class="panel-card">
+              <h5>Where a Rep's Week Goes</h5>
+              <div class="sub">Illustrative · average across ~38 sellers</div>
+              <div class="hbar"><div class="top"><span>Selling &amp; customer time</span><b>27.4 hrs</b></div><div class="track"><i style="--bc:#72BF44;" data-w="69"></i></div></div>
+              <div class="hbar"><div class="top"><span>Quote assembly &amp; rework</span><b>5.1 hrs</b></div><div class="track"><i style="--bc:#FF6900;" data-w="13"></i></div></div>
+              <div class="hbar"><div class="top"><span>Manual data entry / lookup</span><b>4.2 hrs</b></div><div class="track"><i style="--bc:#C8102E;" data-w="11"></i></div></div>
+              <div class="hbar"><div class="top"><span>Internal reporting</span><b>3.3 hrs</b></div><div class="track"><i style="--bc:#0274BE;" data-w="8"></i></div></div>
+              <p class="dash-note">Baseline before Phase 1: 22.5 selling hours per week.</p>
+            </div>
+            <div class="panel-card">
+              <h5>Selling Hours Trend</h5>
+              <div class="sub">Post-go-live, by quarter</div>
+              <div class="vbars">
+                <div style="background:#CBD5E1;" data-h="56"></div>
+                <div style="background:#9CC4E4;" data-h="72"></div>
+                <div style="background:#4A9BD4;" data-h="92"></div>
+                <div style="background:#0274BE;" data-h="112"></div>
+              </div>
+              <div class="vlabels"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div>
+              <p class="dash-note">Recaptured hours compound as adoption climbs.</p>
+            </div>
+          </div>
+
+          <!-- Tab 2 — Ramp -->
+          <div class="dash-panel" id="dp-2">
+            <div class="panel-card">
+              <h5>Time to First Closed Deal</h5>
+              <div class="sub">Illustrative · new commercial sellers</div>
+              <div class="hbar"><div class="top"><span>Before — tribal knowledge</span><b>18 weeks</b></div><div class="track"><i style="--bc:#C8102E;" data-w="100"></i></div></div>
+              <div class="hbar"><div class="top"><span>After — guided in CRM</span><b>14 weeks</b></div><div class="track"><i style="--bc:#72BF44;" data-w="78"></i></div></div>
+              <div style="margin-top:14px;padding-top:13px;border-top:1px solid #F1F5F9;display:flex;gap:22px;">
+                <div><div style="font-size:1.35rem;font-weight:900;color:var(--brand-green);">4 wks</div><div style="font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#94A3B8;">Faster to Revenue</div></div>
+                <div><div style="font-size:1.35rem;font-weight:900;color:var(--ink);">12</div><div style="font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#94A3B8;">Hires / Year</div></div>
+              </div>
+              <p class="dash-note">Matters most when headcount grows toward the $800M plan.</p>
+            </div>
+            <div class="panel-card">
+              <h5>Onboarding Milestones Completed</h5>
+              <div class="sub">Cohort of 12</div>
+              <div class="vbars">
+                <div style="background:#72BF44;" data-h="112"></div>
+                <div style="background:#72BF44;" data-h="100"></div>
+                <div style="background:#9CC4E4;" data-h="78"></div>
+                <div style="background:#CBD5E1;" data-h="52"></div>
+              </div>
+              <div class="vlabels"><span>Wk 2</span><span>Wk 4</span><span>Wk 8</span><span>Wk 12</span></div>
+              <p class="dash-note">Visibility into who is stalling, before the quarter ends.</p>
+            </div>
+          </div>
+
+          <!-- Tab 3 — Campaign ROI -->
+          <div class="dash-panel" id="dp-3">
+            <div class="panel-card">
+              <h5>Trade Show Performance</h5>
+              <div class="sub">Illustrative · top events of ~30 per year</div>
+              <div class="hbar"><div class="top"><span>Southeast Petroleum Expo</span><b>$1.42M influenced</b></div><div class="track"><i style="--bc:#0274BE;" data-w="94"></i></div></div>
+              <div class="hbar"><div class="top"><span>NACS Regional</span><b>$0.96M influenced</b></div><div class="track"><i style="--bc:#0274BE;" data-w="64"></i></div></div>
+              <div class="hbar"><div class="top"><span>EV Charging Summit</span><b>$0.61M influenced</b></div><div class="track"><i style="--bc:#FF6900;" data-w="41"></i></div></div>
+              <div class="hbar"><div class="top"><span>State Fuel Marketers Assn.</span><b>$0.18M influenced</b></div><div class="track"><i style="--bc:#C8102E;" data-w="12"></i></div></div>
+              <p class="dash-note">The bottom row is the point — you can finally cut what doesn't work.</p>
+            </div>
+            <div class="panel-card donut-wrap">
+              <h5 style="align-self:flex-start;">Lead Follow-Up Status</h5>
+              <div class="sub" style="align-self:flex-start;">All event leads, last 12 months</div>
+              <svg width="140" height="140" viewBox="0 0 42 42">
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#F1F5F9" stroke-width="6"/>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#72BF44" stroke-width="6" stroke-dasharray="58 42" stroke-dashoffset="25"/>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#FF6900" stroke-width="6" stroke-dasharray="29 71" stroke-dashoffset="-33"/>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#CBD5E1" stroke-width="6" stroke-dasharray="13 87" stroke-dashoffset="-62"/>
+                <text x="21" y="20.4" text-anchor="middle" font-size="5.4" font-weight="900" fill="#0F172A">2,140</text>
+                <text x="21" y="25" text-anchor="middle" font-size="2.6" font-weight="700" fill="#94A3B8">LEADS</text>
+              </svg>
+              <div class="donut-legend">
+                <div><i style="background:#72BF44;"></i>Worked &amp; nurtured<b>58%</b></div>
+                <div><i style="background:#FF6900;"></i>In journey<b>29%</b></div>
+                <div><i style="background:#CBD5E1;"></i>Unqualified<b>13%</b></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 9 — BUSINESS VALUE CALCULATOR ══════════════════════════ -->
+<section class="slide tall" id="s9" data-nav="Value Calculator" data-theme="dark">
+  <div class="dot-grid"></div>
+  <div class="slide-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;">
+      <div>
+        <div class="eyebrow on-dark">Business Value</div>
+        <h2 class="sh on-dark">What Phase 1 costs.<br>What it's expected to return.</h2>
+      </div>
+      <button class="btn-pdf" onclick="generateBvcPDF()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>
+        Export Business Case PDF
+      </button>
+    </div>
+
+    <!-- Real numbers snapshot -->
+    <div class="inv-strip">
+      <div class="hd">
+        <b>Real Numbers We're Working With</b>
+        <span>Signed / near-signed SOW with LogicRain Technologies Inc. · Aug 10 – Nov 27, 2026</span>
+      </div>
+      <div class="inv-grid">
+        <div class="inv-cell hero">
+          <div class="v">$115,000</div>
+          <div class="l">Phase 1 Implementation</div>
+          <div class="n">Fixed cost · 14–16 weeks · milestone-billed across the engagement, not a lump sum.</div>
+        </div>
+        <div class="inv-cell">
+          <div class="v">$50,000</div>
+          <div class="l">Sales Cloud Configuration</div>
+          <div class="n">Leads, accounts, opportunities, pricebook, activity, workflows, reporting.</div>
+        </div>
+        <div class="inv-cell">
+          <div class="v">$50,000</div>
+          <div class="l">SPIFF Implementation</div>
+          <div class="n">Native commission management, tied to Opportunity data.</div>
+        </div>
+        <div class="inv-cell">
+          <div class="v">$15,000</div>
+          <div class="l">Data Migration</div>
+          <div class="n">Up to 50,000 records migrated into the new org.</div>
+        </div>
+      </div>
+      <div class="inv-foot">
+        <div class="ctx">
+          <b>For scale:</b> SPATCO currently commits roughly <b>$411K per year</b> to SAP Field Service &amp; Asset Management software alone — a separate system that stays exactly where it is. Phase 1's entire implementation ask is a fraction of what's already committed to a single point solution.
+        </div>
+        <div style="font-size:10px;color:rgba(255,255,255,.4);line-height:1.6;">Milestone schedule<br><b style="color:rgba(255,255,255,.7);font-weight:800;">$57,500 → $19,250 → $19,250 → $19,000</b></div>
+      </div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="bvc-wrap">
+      <div class="bvc-tabs">
+        <button class="on" onclick="setBvcTab(0,this)">Sales Rep Productivity<small id="tt-0">$0</small></button>
+        <button onclick="setBvcTab(1,this)">Campaign &amp; Trade Show ROI<small id="tt-1">$0</small></button>
+        <button onclick="setBvcTab(2,this)">Onboarding &amp; Ramp Time<small id="tt-2">$0</small></button>
+        <button onclick="setBvcTab(3,this)">Cross-Sell Whitespace<small id="tt-3">$0</small></button>
+      </div>
+
+      <!-- Tab 1 -->
+      <div class="bvc-panel on" id="bp-0">
+        <div>
+          <div class="sl"><div class="top"><label>Sales reps in the org</label><output id="o-reps">38</output></div><input type="range" id="i-reps" min="10" max="80" step="1" value="38" oninput="calcBvc()"><span class="src sp">SPATCO actual</span></div>
+          <div class="sl"><div class="top"><label>Hours / week lost to manual admin</label><output id="o-hrs">6.0</output></div><input type="range" id="i-hrs" min="1" max="20" step="0.5" value="6" oninput="calcBvc()"><span class="src bm">Industry benchmark</span></div>
+          <div class="sl"><div class="top"><label>Fully-loaded hourly rate</label><output id="o-rate">$65</output></div><input type="range" id="i-rate" min="30" max="150" step="5" value="65" oninput="calcBvc()"><span class="src bm">Industry benchmark</span></div>
+        </div>
+        <div class="bvc-out">
+          <div class="lab">Annual Value</div>
+          <div class="big" id="v-0">$0</div>
+          <div class="per">Recaptured selling capacity</div>
+          <div class="form">Reps × admin hours × 52 weeks × hourly rate × <code>50%</code> recapture. Half the reclaimed time is assumed to convert to real selling activity — the rest absorbs into the day.</div>
+          <div class="bench">Assumes quoting, lookup, and reporting consolidate onto one opportunity record instead of SAP + SharePoint + email.</div>
+        </div>
+      </div>
+
+      <!-- Tab 2 -->
+      <div class="bvc-panel" id="bp-1">
+        <div>
+          <div class="sl"><div class="top"><label>Trade shows per year</label><output id="o-shows">30</output></div><input type="range" id="i-shows" min="5" max="60" step="1" value="30" oninput="calcBvc()"><span class="src sp">SPATCO actual</span></div>
+          <div class="sl"><div class="top"><label>Average spend per event</label><output id="o-spend">$12,000</output></div><input type="range" id="i-spend" min="2000" max="40000" step="500" value="12000" oninput="calcBvc()"><span class="src bm">Industry benchmark — editable</span></div>
+          <div class="sl"><div class="top"><label>Yield lift from tracked follow-up</label><output id="o-lift">18%</output></div><input type="range" id="i-lift" min="5" max="40" step="1" value="18" oninput="calcBvc()"><span class="src bm">Industry benchmark</span></div>
+        </div>
+        <div class="bvc-out">
+          <div class="lab">Annual Value</div>
+          <div class="big" id="v-1">$0</div>
+          <div class="per">Recovered return on event spend</div>
+          <div class="form">Shows × spend per event × <code>lift %</code>. Models the share of event investment currently lost because leads go into a spreadsheet and never get worked.</div>
+          <div class="bench">Excludes the strategic value of finally being able to cut the events that don't return — which is usually the bigger number.</div>
+        </div>
+      </div>
+
+      <!-- Tab 3 -->
+      <div class="bvc-panel" id="bp-2">
+        <div>
+          <div class="sl"><div class="top"><label>New sales hires per year</label><output id="o-hires">12</output></div><input type="range" id="i-hires" min="2" max="40" step="1" value="12" oninput="calcBvc()"><span class="src bm">Benchmark — scales with growth plan</span></div>
+          <div class="sl"><div class="top"><label>Weeks of ramp time removed</label><output id="o-weeks">4</output></div><input type="range" id="i-weeks" min="1" max="12" step="1" value="4" oninput="calcBvc()"><span class="src bm">Industry benchmark</span></div>
+          <div class="sl"><div class="top"><label>Fully-loaded cost per rep / week</label><output id="o-wcost">$3,000</output></div><input type="range" id="i-wcost" min="1000" max="8000" step="250" value="3000" oninput="calcBvc()"><span class="src bm">Industry benchmark</span></div>
+        </div>
+        <div class="bvc-out">
+          <div class="lab">Annual Value</div>
+          <div class="big" id="v-2">$0</div>
+          <div class="per">Faster time-to-productivity</div>
+          <div class="form">Hires × weeks removed × weekly loaded cost. A guided CRM process replaces "shadow a tenured rep until it clicks."</div>
+          <div class="bench">Most material under the $700–800M plan, where sales headcount grows faster than tribal knowledge can transfer.</div>
+        </div>
+      </div>
+
+      <!-- Tab 4 -->
+      <div class="bvc-panel" id="bp-3">
+        <div>
+          <div class="sl"><div class="top"><label>Commercial accounts in base</label><output id="o-accts">900</output></div><input type="range" id="i-accts" min="200" max="3000" step="50" value="900" oninput="calcBvc()"><span class="src bm">Benchmark — to be confirmed</span></div>
+          <div class="sl"><div class="top"><label>% single-threaded on one line of business</label><output id="o-single">82%</output></div><input type="range" id="i-single" min="50" max="95" step="1" value="82" oninput="calcBvc()"><span class="src sp">Reflects 80–90% relationship-led reality</span></div>
+          <div class="sl"><div class="top"><label>% converted to a second line</label><output id="o-conv">2.0%</output></div><input type="range" id="i-conv" min="0.5" max="6" step="0.5" value="2" oninput="calcBvc()"><span class="src bm">Conservative benchmark</span></div>
+          <div class="sl"><div class="top"><label>Average expansion deal size</label><output id="o-deal">$45,000</output></div><input type="range" id="i-deal" min="10000" max="150000" step="5000" value="45000" oninput="calcBvc()"><span class="src bm">Industry benchmark</span></div>
+        </div>
+        <div class="bvc-out">
+          <div class="lab">Annual Value</div>
+          <div class="big" id="v-3">$0</div>
+          <div class="per">Expansion revenue from visible whitespace</div>
+          <div class="form">Accounts × single-threaded % × conversion % × deal size. The mechanism is Data Cloud unified profiles making the gaps visible to reps.</div>
+          <div class="bench">The single largest lever in the model — and the one most directly tied to the $350M → $800M mandate.</div>
+        </div>
+      </div>
+
+      <!-- Live summary -->
+      <div class="bvc-summary">
+        <div class="cell"><div class="l">Total Identified Annual Value</div><div class="v grn" id="bvc-total">$0</div></div>
+        <div class="sep"></div>
+        <div class="cell"><div class="l">Phase 1 Investment</div><div class="v">$115,000</div></div>
+        <div class="sep"></div>
+        <div class="cell"><div class="l">Payback</div><div class="v acc" id="bvc-payback">—</div></div>
+        <div class="sep"></div>
+        <div class="pills" id="bvc-pills"></div>
+      </div>
+    </div>
+
+    <p class="bvc-disclaimer">Figures marked <b style="color:#A8E07C;">SPATCO actual</b> come from the deal team's discovery with Kevin Bretcher's organization. Figures marked <b style="color:rgba(255,255,255,.6);">industry benchmark</b> are defaults to be replaced with SPATCO data during the business-case build. The $115,000 investment covers implementation services only; Salesforce license subscription is priced separately.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 10 — PATH FORWARD ══════════════════════════ -->
+<section class="slide tall" id="s10" data-nav="Path Forward" data-theme="light">
+  <div class="slide-inner">
+    <div class="eyebrow on-light">The Path Forward</div>
+    <h2 class="sh">Where this takes you.</h2>
+    <p class="ss" style="color:var(--muted);">Phase 1 isn't a technology project. It's the operating system for the next $450M of growth.</p>
+
+    <div class="wtt-grid">
+      <div class="wtt" style="--wc:#0274BE;">
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+        <h4>Sales Visibility at Scale</h4>
+        <p>One opportunity record across 36 locations means Kevin can forecast the business instead of assembling it. Pipeline becomes a system output, not a monthly reconciliation exercise.</p>
+      </div>
+      <div class="wtt" style="--wc:#FF6900;">
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18l-18-8z"/><path d="M7 12.5V19a2 2 0 0 0 4 0v-5"/></svg></div>
+        <h4>Marketing That Proves Its ROI</h4>
+        <p>Thirty events a year stop being a cost line and start being a measurable channel. When the board asks what marketing returned, there's a number attached to a campaign.</p>
+      </div>
+      <div class="wtt" style="--wc:#72BF44;">
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/><path d="M4 11.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
+        <h4>A Foundation for What's Next</h4>
+        <p>Clean, unified data is the prerequisite for everything that comes after — Field Service, deeper automation, and eventually AI. Get the foundation right and the rest becomes a decision, not a rebuild.</p>
+      </div>
+      <div class="wtt" style="--wc:#46505A;">
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h4>Room to Grow Without Ripping Out What Works</h4>
+        <p>SAP stays the system of record. Finance, inventory, and service contracts don't move. Salesforce sits on top as the engagement layer — additive, not disruptive.</p>
+      </div>
+    </div>
+
+    <!-- ── GANTT ── -->
+    <div class="sec-h">Implementation Plan</div>
+    <div class="sec-sub">The real, signed/near-signed SOW schedule with LogicRain Technologies Inc. — <b style="color:var(--ink);">August 10 &rarr; November 27, 2026</b>, 14–16 weeks, $115,000 fixed. Click any row for detail.</div>
+
+    <div class="gantt">
+      <div class="gantt-months">
+        <div></div>
+        <div class="m"><span>Aug 2026</span><span>Sep 2026</span><span>Oct 2026</span><span>Nov 2026</span></div>
+      </div>
+
+      <div class="grow" style="--gc:#46505A;" onclick="setGantt(0,this)">
+        <div class="lbl"><i></i><b>Ramp &amp; Discovery</b></div>
+        <div class="gtrack"><div class="gbar" style="left:0;width:12.5%;"><span>2 wks</span></div></div>
+      </div>
+      <div class="grow" style="--gc:#0274BE;" onclick="setGantt(1,this)">
+        <div class="lbl"><i></i><b>Sales Cloud Configuration</b></div>
+        <div class="gtrack"><div class="gbar" style="left:6.25%;width:50%;"><span>6–8 wks</span></div></div>
+      </div>
+      <div class="grow" style="--gc:#FF6900;" onclick="setGantt(2,this)">
+        <div class="lbl"><i></i><b>SPIFF Commissions</b></div>
+        <div class="gtrack"><div class="gbar" style="left:37.5%;width:31.25%;"><span>4–5 wks</span></div></div>
+      </div>
+      <div class="grow" style="--gc:#C8102E;" onclick="setGantt(3,this)">
+        <div class="lbl"><i></i><b>Data Migration</b></div>
+        <div class="gtrack"><div class="gbar" style="left:56.25%;width:18.75%;"><span>2–3 wks</span></div></div>
+      </div>
+      <div class="grow" style="--gc:#7C3AED;" onclick="setGantt(4,this)">
+        <div class="lbl"><i></i><b>SIT &amp; UAT</b></div>
+        <div class="gtrack"><div class="gbar" style="left:75%;width:18.75%;"><span>3 wks</span></div></div>
+      </div>
+      <div class="grow" style="--gc:#72BF44;" onclick="setGantt(5,this)">
+        <div class="lbl"><i></i><b>Go-Live</b></div>
+        <div class="gtrack"><div class="gbar" style="left:93.75%;width:6.25%;"><span>Nov 27</span></div></div>
+      </div>
+
+      <div class="grow future" style="--gc:#B9C6D6;margin-top:14px;">
+        <div class="lbl"><i style="background:transparent;border:1.5px dashed #B9C6D6;"></i><b>Phase 2 — Field Service <span style="font-size:9px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#94A3B8;">What's Next</span></b></div>
+        <div class="gtrack" style="background:transparent;"><div class="gbar ghost" style="left:0;width:100%;"><span>Future scope · no committed dates · tied to the existing SAP Field Service agreement window running into late 2027</span></div></div>
+      </div>
+
+      <div class="gantt-detail" id="gantt-detail"></div>
+
+      <div class="gantt-cap">
+        <span class="k">Payment Milestones</span>
+        <div class="pay"><span>$57,500</span><span>$19,250</span><span>$19,250</span><span>$19,000</span></div>
+        <span style="font-size:10px;color:#94A3B8;">Billed against milestones across the engagement — not a lump sum.</span>
+      </div>
+    </div>
+
+    <!-- ── ORG CHART ── -->
+    <div class="sec-h">Who's On This</div>
+    <div class="sec-sub">The people accountable for getting Phase 1 live.</div>
+
+    <div class="org">
+      <div class="org-col" style="--oc:#0274BE;">
+        <div class="h">
+          <svg width="17" height="12" viewBox="0 0 273 191"><path fill="#0274BE" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
+          <b>Salesforce</b>
+        </div>
+        <div class="org-p"><div class="av">GS</div><div><b>Grant Stephens</b><span>Regional Vice President</span></div></div>
+        <div class="org-p"><div class="av"><img src="photo-ae.png" alt="Samuel Schmal" onerror="this.parentElement.textContent='SS';"></div><div><b>Samuel Schmal</b><span>Account Executive</span></div></div>
+        <div class="org-p"><div class="av"><img src="photo-se.jpg" alt="Eric Dalton" onerror="this.parentElement.textContent='ED';"></div><div><b>Eric Dalton</b><span>Solutions Engineer</span></div></div>
+      </div>
+
+      <div class="org-col" style="--oc:#C8102E;">
+        <div class="h"><span style="width:17px;height:17px;border-radius:4px;background:#C8102E;color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;">S</span><b>SPATCO</b></div>
+        <div class="org-p"><div class="av">KB</div><div><b>Kevin Bretcher</b><span>Chief Revenue Officer</span><span class="champ">Executive Champion</span></div></div>
+        <div class="org-p"><div class="av" style="background:#8E0B20;">JF</div><div><b>John Force</b><span>Chief Executive Officer</span></div></div>
+        <div class="org-p"><div class="av" style="background:#8E0B20;">SW</div><div><b>Scott Wattenberg</b><span>Chief Financial Officer</span></div></div>
+      </div>
+
+      <div class="org-col" style="--oc:#46505A;">
+        <div class="h"><span style="width:17px;height:17px;border-radius:4px;background:#46505A;color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;">L</span><b>Implementation Partner</b></div>
+        <div class="org-p"><div class="av">DP</div><div><b>Dirgesh Patel</b><span>VP of Growth · LogicRain Technologies Inc.</span></div></div>
+        <div class="org-team">
+          <div class="t">5-Person Delivery Team</div>
+          <div class="chips"><span>Solutions Architect</span><span>Project Manager</span><span>Business Analyst</span><span>Sales Cloud Consultant</span><span>QA</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CTA ── -->
+    <div class="cta-block">
+      <h3>Let's get Phase 1 signed.</h3>
+      <p>The scope is defined, the partner is lined up, and the schedule holds an August 10 start with a November 27 go-live. The only thing left is the decision.</p>
+
+      <div class="cta-cards">
+        <div class="cta-card">
+          <img class="ph" src="photo-ae.png" alt="Samuel Schmal" onerror="this.outerHTML='&lt;div class=\'ph-fallback\'&gt;SS&lt;/div&gt;';">
+          <b>Samuel Schmal</b><span>Account Executive</span>
+          <a href="mailto:samuel.schmal@salesforce.com">samuel.schmal@salesforce.com</a>
+        </div>
+        <div class="cta-card">
+          <!-- TODO: replace with photo-rvp.png once available -->
+          <div class="ph-fallback">GS</div>
+          <b>Grant Stephens</b><span>Regional Vice President</span>
+          <a href="mailto:grant.stephens@salesforce.com">grant.stephens@salesforce.com</a>
+        </div>
+        <div class="cta-card">
+          <img class="ph" src="photo-se.jpg" alt="Eric Dalton" onerror="this.outerHTML='&lt;div class=\'ph-fallback\'&gt;ED&lt;/div&gt;';">
+          <b>Eric Dalton</b><span>Solutions Engineer</span>
+          <a href="mailto:eric.dalton@salesforce.com">eric.dalton@salesforce.com</a>
+        </div>
+      </div>
+
+      <div class="cta-links">
+        <a class="primary" href="exec-summary.html" target="_blank">📄 Executive Summary</a>
+        <a class="ghost" href="bva.html" target="_blank">📊 Business Value Assessment</a>
+        <a class="ghost" href="team.html" target="_blank">👥 Account Team</a>
+      </div>
+    </div>
+
+    <div class="site-foot">
+      Prepared for SPATCO Energy Solutions &middot; Salesforce &middot; September 2026<br>
+      Phase 1 scope: Sales Cloud, Marketing Cloud, Data Cloud Foundations. SAP remains the system of record.<br>
+      Field Service, Revenue Cloud, and Agentforce appear here as forward-looking roadmap direction only.
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PRODUCT DRAWER ══════════════════════════ -->
+<div id="drawer-scrim" onclick="closeDrawer()"></div>
+<aside id="drawer" aria-label="Product detail">
+  <div class="drawer-head">
+    <button id="drawer-close" onclick="closeDrawer()" aria-label="Close">&times;</button>
+    <div class="ico" id="drawer-ico"></div>
+    <h3 id="drawer-name"></h3>
+    <p id="drawer-sub"></p>
+  </div>
+  <div class="drawer-body">
+    <h5>What It Does for SPATCO</h5>
+    <div id="drawer-caps"></div>
+    <div class="growth-callout">
+      <div class="tag">⚡ Growth Impact</div>
+      <p id="drawer-growth"></p>
+      <div class="metric" id="drawer-metrics"></div>
+    </div>
+  </div>
+</aside>
+
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   DOT NAVIGATION + PROGRESS BAR
+═══════════════════════════════════════════════════════════════ */
+(function initNav(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const nav = document.getElementById('dotnav');
+  slides.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.className='dot'+(i===0?' on':'');
+    b.setAttribute('aria-label','Go to '+(s.dataset.nav||('Slide '+(i+1))));
+    b.innerHTML='<span class="tip">'+(s.dataset.nav||('Slide '+(i+1)))+'</span>';
+    b.addEventListener('click',()=>s.scrollIntoView({behavior:'smooth'}));
+    nav.appendChild(b);
+  });
+  const dots=Array.from(nav.children);
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i=slides.indexOf(e.target);
+        dots.forEach((d,j)=>d.classList.toggle('on',j===i));
+        const light=e.target.dataset.theme==='light';
+        dots.forEach(d=>d.classList.toggle('light',light));
+      }
+    });
+  },{threshold:.35,rootMargin:'-20% 0px -20% 0px'});
+  slides.forEach(s=>io.observe(s));
+
+  const bar=document.getElementById('progress');
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+  },{passive:true});
+
+  document.addEventListener('keydown',(e)=>{
+    const cur=dots.findIndex(d=>d.classList.contains('on'));
+    if(e.key==='ArrowDown'||e.key==='PageDown'){if(slides[cur+1]){e.preventDefault();slides[cur+1].scrollIntoView({behavior:'smooth'});}}
+    if(e.key==='ArrowUp'||e.key==='PageUp'){if(slides[cur-1]){e.preventDefault();slides[cur-1].scrollIntoView({behavior:'smooth'});}}
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 3 — PRODUCT DRAWER
+═══════════════════════════════════════════════════════════════ */
+const DRAWER_DATA={
+  sales:{
+    color:'#0274BE',
+    icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>',
+    name:'Sales Cloud',
+    sub:'The front-end engagement layer for every SPATCO deal — sitting on top of SAP, never replacing it.',
+    caps:[
+      ['One record across three teams','Sales, sales support, and estimating all work the same opportunity. Quotes, contacts, and activity stop living in SharePoint folders and individual inboxes.'],
+      ['Pipeline you can actually forecast','Stages, amounts, and close dates in one place means Kevin can run a forecast call off the system instead of off a spreadsheet each rep maintains differently.'],
+      ['Commission visibility built in','SPIFF — Salesforce\'s native commission-management product — is part of the signed implementation. Reps see how a deal pays them on the same record where they work it.']
+    ],
+    growth:'Relationship selling got SPATCO to $350M. Getting to $700–800M means every rep, in every one of the 36 locations, working from the same definition of a deal — so pipeline scales with headcount instead of with tenure.',
+    metrics:[['~38','Sales Org Seats'],['36','Locations Unified']]
+  },
+  marketing:{
+    color:'#FF6900',
+    icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18l-18-8z"/><path d="M7 12.5V19a2 2 0 0 0 4 0v-5"/></svg>',
+    name:'Marketing Cloud',
+    sub:'Turns ~30 trade shows a year from a cost line into a measurable pipeline source.',
+    caps:[
+      ['Badge scan straight to campaign','Show leads land in a campaign record on day one instead of a spreadsheet that gets emailed around the week after.'],
+      ['Follow-up that happens on its own','Journeys nurture every show lead automatically — the ones reps never get to today still get worked.'],
+      ['Campaign ROI, per event','Campaign influence reporting connects event spend to opportunities and closed revenue, so next year\'s show calendar is a decision, not a habit.']
+    ],
+    growth:'Thirty events a year is real demand-generation spend running with no feedback loop. Attribution is how that budget gets defended to the board — and how it gets bigger when it earns it.',
+    metrics:[['~30','Trade Shows / Year'],['100%','Leads Tracked']]
+  },
+  data:{
+    color:'#72BF44',
+    icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/><path d="M4 11.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>',
+    name:'Data Cloud Foundations',
+    sub:'The included-value layer that turns scattered account data into one profile per customer.',
+    caps:[
+      ['Unified customer profiles','One view of an account across petroleum, environmental, EV, and service — instead of the same customer appearing differently in each line of business.'],
+      ['Whitespace becomes visible','When every line of business on an account is on one profile, the gaps are obvious. That is the starting point for a proactive cross-sell motion.'],
+      ['Segmentation for Marketing Cloud','Unified profiles feed Marketing Cloud segments directly, so campaigns target by actual buying history rather than by list.']
+    ],
+    growth:'SPATCO has acquired steadily under Kian. Every acquisition adds accounts that overlap with existing ones. Unified profiles are what keep the customer base legible as the company doubles.',
+    metrics:[['Included','With Phase 1 Licensing'],['1','Profile per Customer']]
+  }
+};
+function openDrawer(key){
+  const d=DRAWER_DATA[key];if(!d)return;
+  const dr=document.getElementById('drawer');
+  document.getElementById('drawer-ico').style.background=d.color;
+  document.getElementById('drawer-ico').innerHTML=d.icon;
+  document.getElementById('drawer-name').textContent=d.name;
+  document.getElementById('drawer-sub').textContent=d.sub;
+  document.getElementById('drawer-caps').innerHTML=d.caps.map(c=>
+    '<div class="cap"><div class="bullet"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="'+d.color+'" stroke-width="3.2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><b>'+c[0]+'</b><p>'+c[1]+'</p></div></div>').join('');
+  document.getElementById('drawer-growth').textContent=d.growth;
+  document.getElementById('drawer-metrics').innerHTML=d.metrics.map(m=>'<div><b>'+m[0]+'</b><span>'+m[1]+'</span></div>').join('');
+  dr.classList.add('open');
+  document.getElementById('drawer-scrim').classList.add('open');
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawer-scrim').classList.remove('open');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 5 — INTERACTIVE DEMO STATE MACHINE
+═══════════════════════════════════════════════════════════════ */
+const DEMO_CONTEXT = [
+  { pill: 'Step 1 of 8', title: "Marcus starts his day.<br>5 jobs, already sequenced.", body: "No more guessing the route or calling dispatch for the next stop.", hint: '👆 Tap to see the job list' },
+  { pill: 'Step 2 of 8', title: "Every job, prioritized.", body: "Work orders sorted by priority and location — no spreadsheets, no phone calls.", hint: '👆 Tap the next job' },
+  { pill: 'Step 3 of 8', title: "Full history, before he arrives.", body: "Equipment details and service history pulled straight through — no digging through paper files or calling the office.", hint: '👆 Tap to check parts' },
+  { pill: 'Step 4 of 8', title: "No guessing on parts.", body: "The app checks the job against what's already on the truck — before Marcus even walks in.", hint: '👆 Tap to start the job' },
+  { pill: 'Step 5 of 8', title: "A clear checklist, every time.", body: "Step-by-step, in the language techs already use — nothing new to learn.", hint: '👆 Check off each step' },
+  { pill: 'Step 6 of 8', title: "Done — with proof.", body: "Signature and photo captured on the spot. The job record updates instantly.", hint: '👆 Tap to complete' },
+  { pill: 'Step 7 of 8', title: "The board updates itself.", body: "Closing this job automatically slots in the next one — no dispatcher relay required.", hint: '👆 Tap to see the wrap-up' },
+  { pill: 'Step 8 of 8', title: "A day's work, and a look ahead.", body: "4 of 5 jobs done — and a heads-up on what's coming next.", hint: '🔁 Tap to replay' }
+];
+
+let demoScreen = 0;
+let demoTypewriterTimer = null;
+let demoHookTimers = [];
+
+function clearDemoHooks(){ demoHookTimers.forEach(t=>clearTimeout(t)); demoHookTimers=[]; }
+function laterDemo(fn,ms){ demoHookTimers.push(setTimeout(fn,ms)); }
+function reveal(id,on){ const el=document.getElementById(id); if(el) el.classList.toggle('in',!!on); }
+
+function resetDemoVisuals(){
+  clearDemoHooks();
+  reveal('ds-parts-result',false);
+  const scan=document.getElementById('ds-parts-scan'); if(scan) scan.style.opacity='1';
+  for(let i=1;i<=5;i++){const c=document.getElementById('ds-chk-'+i); if(c) c.classList.remove('done');}
+  const cc=document.getElementById('ds-check-count'); if(cc) cc.textContent='0/5';
+  const sig=document.getElementById('sig-path'); if(sig) sig.classList.remove('drawn');
+  reveal('ds-complete-badge',false);
+  reveal('ds-dispatch-next',false);
+  reveal('ds-dispatch-board',false);
+  reveal('ds-nudge',false);
+  document.querySelectorAll('#ds-week-bars > div').forEach(b=>b.style.height='0px');
+}
+
+function showDemoScreen(n) {
+  const pillEl = document.getElementById('demo-pill');
+  if (!pillEl) return;
+  const ctxPanel = pillEl.parentElement;
+  ctxPanel.style.transition = 'opacity 0.2s ease';
+  ctxPanel.style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById('demo-pill').textContent = DEMO_CONTEXT[n].pill;
+    document.getElementById('demo-title').innerHTML  = DEMO_CONTEXT[n].title;
+    document.getElementById('demo-body').textContent = DEMO_CONTEXT[n].body;
+    const hintEl = document.getElementById('demo-hint');
+    if (hintEl) {
+      const parts = DEMO_CONTEXT[n].hint.split(' ');
+      hintEl.querySelector('span:first-child').textContent = parts[0];
+      hintEl.querySelector('span:last-child').textContent  = parts.slice(1).join(' ');
+    }
+    ctxPanel.style.opacity = '1';
+  }, 200);
+
+  document.querySelectorAll('.demo-dot').forEach((dot, i) => dot.classList.toggle('active', i === n));
+
+  const current = document.querySelector('.demo-screen.ds-active');
+  const target  = document.getElementById('ds-screen-' + (n + 1));
+  if (!target) return;
+  if (current && current !== target) {
+    current.classList.add('ds-exiting');
+    current.classList.remove('ds-active');
+    setTimeout(() => { current.classList.remove('ds-exiting'); current.style.transform = 'translateX(100%)'; }, 420);
+  }
+  target.style.transform = '';
+  requestAnimationFrame(() => requestAnimationFrame(() => { target.classList.add('ds-active'); }));
+
+  /* ── Screen-specific hooks ── */
+  clearDemoHooks();
+
+  if (n === 3) { // Parts check — scan, then confirm "In stock"
+    reveal('ds-parts-result',false);
+    const scan=document.getElementById('ds-parts-scan');
+    if(scan) scan.style.opacity='1';
+    laterDemo(()=>{ if(scan){scan.style.transition='opacity .4s ease';scan.style.opacity='0.35';} reveal('ds-parts-result',true); }, 1100);
+  }
+
+  if (n === 4) { // Checklist — check items off in sequence
+    for(let i=1;i<=5;i++){const c=document.getElementById('ds-chk-'+i); if(c) c.classList.remove('done');}
+    const cc=document.getElementById('ds-check-count'); if(cc) cc.textContent='0/5';
+    for(let i=1;i<=5;i++){
+      laterDemo(()=>{
+        const c=document.getElementById('ds-chk-'+i);
+        if(c) c.classList.add('done');
+        if(cc) cc.textContent=i+'/5';
+      }, 500 + i*620);
+    }
+  }
+
+  if (n === 5) { // Signature stroke, then completion badge
+    const sig=document.getElementById('sig-path');
+    if(sig) sig.classList.remove('drawn');
+    reveal('ds-complete-badge',false);
+    laterDemo(()=>{ if(sig) sig.classList.add('drawn'); }, 450);
+    laterDemo(()=>reveal('ds-complete-badge',true), 2150);
+  }
+
+  if (n === 6) { // Dispatch board updates, next job slides in
+    reveal('ds-dispatch-next',false);
+    reveal('ds-dispatch-board',false);
+    laterDemo(()=>reveal('ds-dispatch-next',true), 700);
+    laterDemo(()=>reveal('ds-dispatch-board',true), 1500);
+  }
+
+  if (n === 7) { // Week bars grow, then the proactive nudge fades in last
+    reveal('ds-nudge',false);
+    document.querySelectorAll('#ds-week-bars > div').forEach(b=>b.style.height='0px');
+    laterDemo(()=>{
+      document.querySelectorAll('#ds-week-bars > div').forEach((b,i)=>{
+        setTimeout(()=>{ b.style.height=b.dataset.h+'px'; }, i*110);
+      });
+    }, 400);
+  laterDemo(()=>reveal('ds-nudge',true), 1750);
+  }
+}
+
+window.advanceDemoScreen = function() {
+  if (demoScreen < 7) { demoScreen++; showDemoScreen(demoScreen); }
+};
+
+window.resetDemo = function() {
+  if (demoTypewriterTimer) { clearInterval(demoTypewriterTimer); demoTypewriterTimer = null; }
+  resetDemoVisuals();
+  demoScreen = 0;
+  showDemoScreen(0);
+  const inv = document.getElementById('demo-invite');
+  if (inv) { inv.style.display = 'flex'; inv.style.opacity = '1'; }
+};
+
+window.dismissInvite = function() {
+  const inv = document.getElementById('demo-invite');
+  if (!inv) return;
+  inv.style.transition = 'opacity 0.35s ease';
+  inv.style.opacity = '0';
+  setTimeout(() => { inv.style.display = 'none'; }, 360);
+};
+
+(function initRipple() {
+  const screen = document.getElementById('phone-screen');
+  if (!screen) return;
+  screen.addEventListener('mousedown', function(e) {
+    const rect = this.getBoundingClientRect();
+    const r = document.createElement('div');
+    r.className = 'touch-ripple';
+    r.style.left = (e.clientX - rect.left) + 'px';
+    r.style.top  = (e.clientY - rect.top)  + 'px';
+    this.appendChild(r);
+    setTimeout(() => r.remove(), 600);
+  });
+  /* Tapping anywhere on the screen advances, except on screen 1 where the
+     invite overlay owns the first tap. */
+  screen.addEventListener('click', function(e){
+    if (e.target.closest('#demo-invite')) return;
+    if (e.target.closest('button')) return;
+    if (e.target.closest('.ds-card[onclick]')) return;
+    if (demoScreen === 7) { resetDemo(); return; }
+    advanceDemoScreen();
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 6 — BEFORE / AFTER TOGGLE
+═══════════════════════════════════════════════════════════════ */
+function setOps(state){
+  const stage=document.getElementById('ops-stage');
+  stage.classList.toggle('after',state==='after');
+  document.querySelectorAll('.toggle-wrap button').forEach(b=>b.classList.toggle('on',b.dataset.state===state));
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 8 — DASHBOARD TABS + BAR ANIMATION
+═══════════════════════════════════════════════════════════════ */
+function paintPanel(panel){
+  if(!panel)return;
+  panel.querySelectorAll('.hbar .track i').forEach((el,i)=>{
+    el.style.width='0';
+    setTimeout(()=>{el.style.width=el.dataset.w+'%';}, 60+i*110);
+  });
+  panel.querySelectorAll('.vbars > div').forEach((el,i)=>{
+    el.style.height='0px';
+    setTimeout(()=>{el.style.height=el.dataset.h+'px';}, 60+i*110);
+  });
+}
+function setDashTab(i,btn){
+  document.querySelectorAll('.dash-tabs button').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.dash-panel').forEach((p,j)=>p.classList.toggle('on',j===i));
+  paintPanel(document.getElementById('dp-'+i));
+}
+(function initDashObserver(){
+  const s8=document.getElementById('s8');
+  if(!s8)return;
+  let painted=false;
+  new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting && !painted){ painted=true; paintPanel(document.getElementById('dp-0')); } });
+  },{threshold:.25}).observe(s8);
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 9 — BUSINESS VALUE CALCULATOR
+═══════════════════════════════════════════════════════════════ */
+const PHASE1_INVESTMENT = 115000;
+const BVC_LABELS = ['Sales Rep Productivity','Campaign & Trade Show ROI','Onboarding & Ramp Time','Cross-Sell Whitespace'];
+let BVC_STATE = { values:[0,0,0,0], total:0, payback:'—', inputs:{} };
+
+const $ = id => document.getElementById(id);
+const usd = n => '$' + Math.round(n).toLocaleString('en-US');
+const usdShort = n => n>=1e6 ? '$'+(n/1e6).toFixed(2)+'M' : (n>=1e3 ? '$'+Math.round(n/1e3)+'K' : '$'+Math.round(n));
+
+function setBvcTab(i,btn){
+  document.querySelectorAll('.bvc-tabs button').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.bvc-panel').forEach((p,j)=>p.classList.toggle('on',j===i));
+}
+
+function calcBvc(){
+  const reps=+$('i-reps').value, hrs=+$('i-hrs').value, rate=+$('i-rate').value;
+  const shows=+$('i-shows').value, spend=+$('i-spend').value, lift=+$('i-lift').value;
+  const hires=+$('i-hires').value, weeks=+$('i-weeks').value, wcost=+$('i-wcost').value;
+  const accts=+$('i-accts').value, single=+$('i-single').value, conv=+$('i-conv').value, deal=+$('i-deal').value;
+
+  $('o-reps').textContent=reps;
+  $('o-hrs').textContent=hrs.toFixed(1);
+  $('o-rate').textContent=usd(rate);
+  $('o-shows').textContent=shows;
+  $('o-spend').textContent=usd(spend);
+  $('o-lift').textContent=lift+'%';
+  $('o-hires').textContent=hires;
+  $('o-weeks').textContent=weeks;
+  $('o-wcost').textContent=usd(wcost);
+  $('o-accts').textContent=accts.toLocaleString('en-US');
+  $('o-single').textContent=single+'%';
+  $('o-conv').textContent=conv.toFixed(1)+'%';
+  $('o-deal').textContent=usd(deal);
+
+  const v0 = reps * hrs * 52 * rate * 0.5;
+  const v1 = shows * spend * (lift/100);
+  const v2 = hires * weeks * wcost;
+  const v3 = accts * (single/100) * (conv/100) * deal;
+  const vals=[v0,v1,v2,v3];
+  const total = vals.reduce((a,b)=>a+b,0);
+
+  vals.forEach((v,i)=>{ $('v-'+i).textContent=usd(v); $('tt-'+i).textContent=usdShort(v); });
+  $('bvc-total').textContent=usd(total);
+
+  const monthly = total/12;
+  const payback = monthly>0 ? (PHASE1_INVESTMENT/monthly) : 0;
+  const paybackTxt = payback<1 ? '<1 month' : payback.toFixed(1)+' months';
+  $('bvc-payback').textContent = paybackTxt;
+
+  $('bvc-pills').innerHTML = vals.map((v,i)=>'<span>'+BVC_LABELS[i]+' · <b style="color:#fff;">'+usdShort(v)+'</b></span>').join('');
+
+  BVC_STATE = {
+    values: vals, total: total, payback: paybackTxt,
+    inputs: {
+      reps, hrs, rate, shows, spend, lift, hires, weeks, wcost, accts, single, conv, deal
+    }
+  };
+}
+
+function generateBvcPDF(){
+  const s = BVC_STATE;
+  const rows = [
+    ['Sales Rep Productivity', s.values[0],
+     s.inputs.reps+' reps × '+s.inputs.hrs.toFixed(1)+' admin hrs/wk × 52 wks × '+usd(s.inputs.rate)+'/hr × 50% recapture',
+     'Reps: SPATCO actual · Hours &amp; rate: industry benchmark'],
+    ['Campaign &amp; Trade Show ROI', s.values[1],
+     s.inputs.shows+' shows × '+usd(s.inputs.spend)+' avg spend × '+s.inputs.lift+'% yield lift',
+     'Show count: SPATCO actual · Spend &amp; lift: industry benchmark'],
+    ['Onboarding &amp; Ramp Time', s.values[2],
+     s.inputs.hires+' hires/yr × '+s.inputs.weeks+' wks removed × '+usd(s.inputs.wcost)+'/wk loaded cost',
+     'All inputs: industry benchmark, scaled to the growth plan'],
+    ['Cross-Sell Whitespace', s.values[3],
+     s.inputs.accts.toLocaleString('en-US')+' accounts × '+s.inputs.single+'% single-threaded × '+s.inputs.conv.toFixed(1)+'% conversion × '+usd(s.inputs.deal)+' deal size',
+     'Single-threaded %: reflects SPATCO\'s 80–90% relationship-led reality']
+  ];
+  const max = Math.max(...s.values, 1);
+  const colors=['#0274BE','#FF6900','#72BF44','#C8102E'];
+
+  const w = window.open('', '_blank', 'width=900,height=1100');
+  if(!w){ alert('Please allow pop-ups to export the business case.'); return; }
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>SPATCO × Salesforce — Phase 1 Business Case</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',system-ui,sans-serif;color:#0F172A;background:#fff;padding:44px 52px;}
+  .hdr{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:18px;border-bottom:3px solid #0274BE;margin-bottom:26px;}
+  .hdr h1{font-size:23px;font-weight:900;letter-spacing:-.02em;}
+  .hdr p{font-size:11px;color:#64748B;margin-top:5px;}
+  .hdr .brand{text-align:right;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0274BE;}
+  h2{font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#64748B;margin:26px 0 12px;}
+  .inv{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;}
+  .inv div{border:1px solid #E2E8F0;border-radius:9px;padding:13px 14px;}
+  .inv div.hero{border-color:#FF6900;background:#FFF7ED;}
+  .inv b{display:block;font-size:19px;font-weight:900;letter-spacing:-.02em;}
+  .inv .hero b{color:#FF6900;}
+  .inv span{display:block;font-size:8.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin-top:4px;line-height:1.4;}
+  .ctx{margin-top:12px;background:#F8FAFC;border-left:3px solid #46505A;border-radius:0 8px 8px 0;padding:12px 15px;font-size:10.5px;color:#475569;line-height:1.65;}
+  .ctx b{color:#0F172A;}
+  .hero-total{background:linear-gradient(135deg,#013F75,#012B52);border-radius:13px;padding:24px 28px;display:flex;align-items:center;gap:34px;color:#fff;margin-top:6px;}
+  .hero-total .c .l{font-size:9px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+  .hero-total .c .v{font-size:27px;font-weight:900;letter-spacing:-.03em;margin-top:4px;}
+  .hero-total .c .v.g{color:#8FD45F;}
+  .hero-total .c .v.o{color:#FFA254;}
+  .hero-total .sep{width:1px;height:42px;background:rgba(255,255,255,.2);}
+  table{width:100%;border-collapse:collapse;margin-top:6px;}
+  th{text-align:left;font-size:8.5px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:#94A3B8;padding:0 10px 8px 0;border-bottom:1px solid #E2E8F0;}
+  td{padding:13px 10px 13px 0;border-bottom:1px solid #F1F5F9;font-size:10.5px;color:#475569;line-height:1.6;vertical-align:top;}
+  td.n{font-size:14px;font-weight:900;color:#0F172A;white-space:nowrap;}
+  td.cat{font-weight:800;color:#0F172A;font-size:11.5px;}
+  .bar{height:7px;border-radius:4px;margin-top:6px;}
+  .road{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+  .road div{border:1px solid #E2E8F0;border-radius:9px;padding:13px 15px;}
+  .road b{display:block;font-size:11.5px;font-weight:900;}
+  .road span{display:block;font-size:9.5px;color:#64748B;margin-top:4px;line-height:1.5;}
+  .road i{display:block;font-size:8.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#0274BE;font-style:normal;margin-bottom:5px;}
+  footer{margin-top:30px;padding-top:15px;border-top:1px solid #E2E8F0;font-size:9px;color:#94A3B8;line-height:1.65;}
+  @media print{body{padding:24px 30px;} @page{size:letter;margin:14mm;}}
+</style></head><body>
+<div class="hdr">
+  <div><h1>SPATCO Energy Solutions — Phase 1 Business Case</h1>
+  <p>Sales Cloud · Marketing Cloud · Data Cloud Foundations &nbsp;|&nbsp; Generated ${new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</p></div>
+  <div class="brand">Salesforce<br><span style="color:#94A3B8;font-weight:700;letter-spacing:.06em;">Confidential</span></div>
+</div>
+
+<h2>Investment Snapshot — Signed / Near-Signed Scope</h2>
+<div class="inv">
+  <div class="hero"><b>$115,000</b><span>Phase 1 Implementation · Fixed</span></div>
+  <div><b>$50,000</b><span>Sales Cloud Configuration</span></div>
+  <div><b>$50,000</b><span>SPIFF Commission Implementation</span></div>
+  <div><b>$15,000</b><span>Data Migration — 50K Records</span></div>
+</div>
+<div class="ctx"><b>14–16 weeks · August 10 – November 27, 2026</b> with implementation partner LogicRain Technologies Inc. Milestone-billed: $57,500 → $19,250 → $19,250 → $19,000.<br>
+<b>For scale:</b> SPATCO already commits roughly <b>$411K per year</b> to SAP Field Service &amp; Asset Management software alone — a separate system that is not being replaced. Phase 1's entire implementation ask is a fraction of what is already committed to a single point solution.</div>
+
+<h2>Total Identified Value vs. Investment</h2>
+<div class="hero-total">
+  <div class="c"><div class="l">Total Identified Annual Value</div><div class="v g">${usd(s.total)}</div></div>
+  <div class="sep"></div>
+  <div class="c"><div class="l">Phase 1 Investment</div><div class="v">$115,000</div></div>
+  <div class="sep"></div>
+  <div class="c"><div class="l">Payback Period</div><div class="v o">${s.payback}</div></div>
+</div>
+
+<h2>Value Breakdown by Category</h2>
+<table>
+  <tr><th style="width:26%;">Category</th><th style="width:16%;">Annual Value</th><th>Model &amp; Inputs</th></tr>
+  ${rows.map((r,i)=>`<tr>
+    <td class="cat">${r[0]}<div class="bar" style="width:${Math.max(8,(r[1]/max)*100)}%;background:${colors[i]};"></div></td>
+    <td class="n">${usd(r[1])}</td>
+    <td>${r[2]}<div style="font-size:9px;color:#94A3B8;margin-top:5px;">${r[3]}</div></td>
+  </tr>`).join('')}
+</table>
+
+<h2>Phase 1 Delivery Milestones</h2>
+<div class="road">
+  <div><i>Aug 10 – Sep 2026</i><b>Discovery &amp; Architecture</b><span>Kickoff, requirements confirmation, Sales Cloud configuration begins.</span></div>
+  <div><i>Sep – Nov 2026</i><b>Configuration &amp; Build</b><span>Sales Cloud build, SPIFF commission plans, data migration of up to 50K records.</span></div>
+  <div><i>Nov 27, 2026</i><b>Enablement &amp; Go-Live</b><span>System integration testing, user acceptance testing, production cutover.</span></div>
+</div>
+
+<footer>
+<b style="color:#475569;">Assumption sourcing.</b> Rep count, trade-show volume, and the single-threaded account percentage are drawn from discovery with SPATCO's revenue organization. Hourly rates, event spend, yield lift, ramp duration, conversion rate, and expansion deal size are industry benchmark defaults to be replaced with SPATCO data during the business-case build.<br><br>
+The $115,000 figure covers implementation services only; Salesforce license subscription is priced separately. SAP remains SPATCO's system of record — Salesforce is positioned as the front-end CRM and engagement layer. Field Service, Revenue Cloud, and Agentforce are explicitly out of Phase 1 scope and are referenced in this deck only as forward-looking roadmap direction.<br><br>
+Values are directional estimates for executive discussion, not a contractual commitment or a guarantee of results.
+</footer>
+<script>window.onload=function(){setTimeout(function(){window.print();},650);}<\/script>
+</body></html>`);
+  w.document.close();
+}
+calcBvc();
+
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 10 — GANTT ROW DETAIL
+═══════════════════════════════════════════════════════════════ */
+const GANTT_DETAIL=[
+  ['Ramp &amp; Discovery','Aug 10 – Aug 21, 2026 · 2 weeks','Kickoff with the LogicRain delivery team, confirmation of requirements gathered pre-SOW, environment provisioning, and sign-off on the configuration approach before any build starts. Sets the definition of "done" for every workstream that follows.'],
+  ['Sales Cloud Configuration','Aug 17 – Oct 9, 2026 · 6–8 weeks','The core of the engagement: leads, accounts and contacts, opportunities, pricebook, activity tracking, Outlook/Gmail integration, workflow automation, and reporting. This is what replaces the SAP + SharePoint + email quoting scramble with one opportunity record.'],
+  ['SPIFF Commissions','Sep 21 – Oct 23, 2026 · 4–5 weeks','Implementation of SPIFF, Salesforce\'s native commission-management product, with plans tied directly to Opportunity data. Reps see how a deal pays them on the same record where they work it — no separate spreadsheet, no month-end reconciliation.'],
+  ['Data Migration','Oct 12 – Oct 30, 2026 · 2–3 weeks','Migration of up to 50,000 records into the new org, including mapping, cleansing, and validation. Deliberately sequenced after configuration so records land in a structure that is already agreed and tested.'],
+  ['SIT &amp; UAT','Nov 2 – Nov 20, 2026 · 3 weeks','System integration testing followed by user acceptance testing with real SPATCO sellers and sales support. Defects triaged and resolved before cutover — this is the window where adoption risk gets retired.'],
+  ['Go-Live','Nov 27, 2026','Production cutover and hypercare. Sales, sales support, and estimating move onto the platform together. SAP continues operating as the system of record throughout — nothing about the ERP changes on this date.']
+];
+function setGantt(i,row){
+  const d=document.getElementById('gantt-detail');
+  const already=row.classList.contains('on');
+  document.querySelectorAll('.grow').forEach(r=>r.classList.remove('on'));
+  if(already){ d.classList.remove('open'); return; }
+  row.classList.add('on');
+  const g=GANTT_DETAIL[i];
+  d.innerHTML='<div class="dt">'+g[1]+'</div><b>'+g[0]+'</b><p>'+g[2]+'</p>';
+  d.classList.add('open');
+}
+
+/* JSAPPEND */
+</script>
+</body>
+</html>

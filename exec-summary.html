@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SPATCO Energy Solutions × Salesforce — Executive Summary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand-primary:#0274BE; --brand-secondary:#013F75; --brand-accent:#FF6900;
+  --brand-green:#72BF44; --brand-light:#F0F7FF;
+  --spatco-red:#C8102E; --spatco-steel:#46505A;
+  --font-main:'Salesforce Sans','Inter',system-ui,sans-serif;
+  --ink:#0F172A; --muted:#64748B; --line:#E2E8F0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-main);background:#EEF3FA;color:var(--ink);padding:34px 20px;-webkit-font-smoothing:antialiased;}
+.sheet{max-width:960px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 18px 50px rgba(1,63,117,.14);overflow:hidden;}
+.print-btn{position:fixed;top:22px;right:22px;background:var(--brand-accent);color:#fff;border:none;border-radius:10px;padding:12px 22px;font-family:inherit;font-size:12.5px;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(255,105,0,.34);z-index:50;}
+.print-btn:hover{transform:translateY(-1px);}
+.back{position:fixed;top:22px;left:22px;font-size:12px;font-weight:800;color:var(--brand-primary);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 18px;z-index:50;}
+
+header{padding:30px 44px 24px;border-bottom:3px solid var(--brand-primary);display:flex;justify-content:space-between;align-items:flex-start;gap:24px;}
+.lock{display:flex;align-items:center;gap:15px;}
+.lock .sf{display:flex;align-items:center;gap:8px;}
+.lock .sf b{font-size:15px;font-weight:800;color:var(--ink);}
+.lock .div{width:1px;height:28px;background:var(--line);}
+.lock .sp b{display:block;font-size:15px;font-weight:900;letter-spacing:.06em;color:var(--ink);}
+.lock .sp i{display:block;font-size:8px;font-style:normal;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--spatco-red);margin-top:2px;}
+header .meta{text-align:right;font-size:9.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#94A3B8;line-height:1.7;}
+.title{padding:26px 44px 0;}
+.title h1{font-size:1.95rem;font-weight:900;letter-spacing:-.03em;line-height:1.14;}
+.title p{font-size:.92rem;color:var(--muted);margin-top:9px;line-height:1.7;max-width:720px;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;padding:22px 44px 0;}
+.stats div{background:var(--brand-light);border:1px solid rgba(2,116,190,.14);border-radius:10px;padding:13px 15px;}
+.stats b{display:block;font-size:1.22rem;font-weight:900;letter-spacing:-.025em;color:var(--brand-secondary);}
+.stats span{display:block;font-size:8.5px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:#94A3B8;margin-top:4px;line-height:1.35;}
+section{padding:28px 44px 0;}
+h2{font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-primary);margin-bottom:11px;display:flex;align-items:center;gap:10px;}
+h2::after{content:'';flex:1;height:1px;background:var(--line);}
+p.body{font-size:.9rem;color:var(--spatco-steel);line-height:1.78;}
+p.body b{color:var(--ink);font-weight:800;}
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:14px;}
+.pain{border:1px solid var(--line);border-left:3px solid var(--spatco-red);border-radius:0 9px 9px 0;padding:12px 15px;}
+.pain b{display:block;font-size:11.5px;font-weight:900;color:var(--ink);margin-bottom:4px;}
+.pain span{font-size:10px;color:var(--muted);line-height:1.6;}
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:14px;}
+.prod{border:1px solid var(--line);border-radius:10px;padding:13px 15px;border-top:3px solid var(--pc);}
+.prod b{display:block;font-size:12px;font-weight:900;color:var(--ink);}
+.prod span{display:block;font-size:10px;color:var(--muted);line-height:1.6;margin-top:5px;}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:4px;}
+.mile{border:1px solid var(--line);border-radius:10px;padding:14px 16px;position:relative;}
+.mile i{display:block;font-style:normal;font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-primary);margin-bottom:6px;}
+.mile b{display:block;font-size:12.5px;font-weight:900;color:var(--ink);}
+.mile span{display:block;font-size:10px;color:var(--muted);line-height:1.6;margin-top:5px;}
+.mile .dot{position:absolute;top:-5px;left:16px;width:9px;height:9px;border-radius:50%;background:var(--brand-primary);}
+.invest{background:linear-gradient(135deg,var(--brand-secondary),#012B52);border-radius:12px;padding:20px 24px;margin-top:4px;display:flex;align-items:center;gap:30px;flex-wrap:wrap;}
+.invest .c .l{font-size:8.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.invest .c .v{font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-.03em;margin-top:3px;}
+.invest .c .v.o{color:#FFA254;}
+.invest .sep{width:1px;height:38px;background:rgba(255,255,255,.2);}
+.invest .n{flex:1;min-width:240px;font-size:10px;color:rgba(255,255,255,.55);line-height:1.65;}
+.why{background:var(--brand-light);border-left:3px solid var(--brand-accent);border-radius:0 11px 11px 0;padding:18px 22px;}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:4px;}
+.tm{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:10px;padding:13px 15px;}
+.tm .av{width:38px;height:38px;border-radius:50%;background:var(--brand-primary);color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;}
+.tm .av img{width:100%;height:100%;object-fit:cover;}
+.tm b{display:block;font-size:12px;font-weight:900;color:var(--ink);}
+.tm span{display:block;font-size:9px;color:var(--muted);margin-top:1px;}
+.tm a{display:block;font-size:9px;color:var(--brand-primary);text-decoration:none;margin-top:2px;word-break:break-all;}
+footer{margin-top:30px;padding:18px 44px 30px;border-top:1px solid var(--line);font-size:9px;color:#94A3B8;line-height:1.7;}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .sheet{box-shadow:none;border-radius:0;max-width:100%;}
+  .print-btn,.back{display:none;}
+  section{padding:16px 30px 0;break-inside:avoid;}
+  header{padding:18px 30px 14px;}
+  .title{padding:16px 30px 0;}
+  .stats{padding:14px 30px 0;}
+  footer{padding:12px 30px 16px;}
+  .title h1{font-size:1.6rem;}
+  @page{size:letter;margin:12mm;}
+}
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">&larr; Back to Microsite</a>
+<button class="print-btn" onclick="window.print()">🖨 Print / Save as PDF</button>
+
+<div class="sheet">
+
+  <header>
+    <div class="lock">
+      <div class="sf">
+        <svg width="30" height="21" viewBox="0 0 273 191"><path fill="#00A1E0" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
+        <b>Salesforce</b>
+      </div>
+      <div class="div"></div>
+      <div class="sp"><b>SPATCO</b><i>Energy Solutions</i></div>
+    </div>
+    <div class="meta">Executive Summary<br>Phase 1 · September 2026<br><span style="color:var(--spatco-red);">Confidential</span></div>
+  </header>
+
+  <div class="title">
+    <h1>Built for the road to $800M.</h1>
+    <p>SPATCO grew to roughly $350M in revenue on relationships, field expertise, and hustle — with no CRM behind it. Under Kian Capital's mandate to reach $700–800M ahead of a 2028–29 exit, the next $450M needs a system. Phase 1 puts that system in place without touching SAP.</p>
+  </div>
+
+  <div class="stats">
+    <div><b>$350M &rarr; $800M</b><span>Revenue &rarr; Target</span></div>
+    <div><b>700+</b><span>Field Technicians</span></div>
+    <div><b>36</b><span>Locations</span></div>
+    <div><b>$115,000</b><span>Phase 1 Implementation</span></div>
+  </div>
+
+  <section>
+    <h2>The Challenge</h2>
+    <p class="body">Sales activity is split across SAP, SharePoint, and email, with separate logins for sales, sales support, and estimating and no single record of a deal. Roughly <b>80–90% of new business comes from existing relationships</b> — there is no fit-scoring, no lead prioritization, and no rep-level visibility into account whitespace. And the ~30 trade shows SPATCO runs each year are captured on badge scanners and manual spreadsheets, with no view of what happens to a lead after the show and no campaign ROI.</p>
+    <div class="pains">
+      <div class="pain"><b>Fragmented Quoting</b><span>Three systems, multiple logins, no shared opportunity record across sales, support, and estimating.</span></div>
+      <div class="pain"><b>Reactive-Only Sales</b><span>80–90% of business from existing relationships. No fit-scoring, no whitespace visibility.</span></div>
+      <div class="pain"><b>No Campaign Attribution</b><span>~30 shows a year captured manually. No follow-through visibility, no measurable ROI.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Solution — Phase 1 Scope</h2>
+    <p class="body"><b>Sales Cloud</b> gives every deal one opportunity record across all three teams. <b>Marketing Cloud</b> turns trade-show leads into tracked campaigns with real attribution. <b>Data Cloud Foundations</b> unifies account profiles so whitespace becomes visible and actionable. Critically, <b>SAP remains SPATCO's system of record</b> — finance, inventory, and service contracts do not move. Salesforce sits on top as the front-end CRM and engagement layer, synced with the ERP.</p>
+    <div class="prods">
+      <div class="prod" style="--pc:#0274BE;"><b>Sales Cloud</b><span>One opportunity record. Forecastable pipeline across 36 locations. SPIFF commission visibility built into the same record.</span></div>
+      <div class="prod" style="--pc:#FF6900;"><b>Marketing Cloud</b><span>Badge scan straight to campaign, automated follow-up journeys, and campaign influence reporting per event.</span></div>
+      <div class="prod" style="--pc:#72BF44;"><b>Data Cloud Foundations</b><span>Unified customer profiles across petroleum, environmental, EV, and service. Included with Phase 1 licensing.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Roadmap — Phase 1 Only</h2>
+    <div class="road">
+      <div class="mile"><div class="dot"></div><i>Aug 10 – Sep 2026</i><b>Discovery &amp; Architecture</b><span>Kickoff with LogicRain Technologies Inc., requirements confirmation, environment provisioning, configuration approach signed off.</span></div>
+      <div class="mile"><div class="dot"></div><i>Sep – Nov 2026</i><b>Configuration &amp; Build</b><span>Sales Cloud configuration, SPIFF commission plans tied to Opportunity data, and migration of up to 50,000 records.</span></div>
+      <div class="mile"><div class="dot"></div><i>Nov 27, 2026</i><b>Enablement &amp; Go-Live</b><span>System integration testing, user acceptance testing with real sellers, production cutover and hypercare.</span></div>
+    </div>
+
+    <div class="invest">
+      <div class="c"><div class="l">Fixed Implementation Cost</div><div class="v o">$115,000</div></div>
+      <div class="sep"></div>
+      <div class="c"><div class="l">Duration</div><div class="v">14–16 weeks</div></div>
+      <div class="sep"></div>
+      <div class="n">Sales Cloud configuration $50,000 · SPIFF commission implementation $50,000 · Data migration $15,000. Milestone-billed at $57,500 → $19,250 → $19,250 → $19,000. Implementation services only; license subscription priced separately.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why Now</h2>
+    <div class="why">
+      <p class="body">The growth mandate has a clock on it. Kian Capital is targeting an exit in 2028–29, which means the systems that support a $700–800M business need to be operating — not being implemented — well before diligence starts. Every quarter SPATCO runs without a CRM is a quarter of pipeline, campaign, and whitespace data that never gets captured and can never be recovered. An August 10 start delivers go-live on <b>November 27, 2026</b>, putting a full year of clean operating history on the books before the exit window opens. The ask is $115,000 against a business already committing roughly <b>$411K per year</b> to a single SAP point solution that isn't going anywhere.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Your Salesforce Team</h2>
+    <div class="team">
+      <div class="tm">
+        <div class="av"><img src="photo-ae.png" alt="Samuel Schmal" onerror="this.parentElement.textContent='SS';"></div>
+        <div><b>Samuel Schmal</b><span>Account Executive</span><a href="mailto:samuel.schmal@salesforce.com">samuel.schmal@salesforce.com</a></div>
+      </div>
+      <div class="tm">
+        <!-- TODO: replace with photo-rvp.png once available -->
+        <div class="av">GS</div>
+        <div><b>Grant Stephens</b><span>Regional Vice President</span><a href="mailto:grant.stephens@salesforce.com">grant.stephens@salesforce.com</a></div>
+      </div>
+      <div class="tm">
+        <div class="av"><img src="photo-se.jpg" alt="Eric Dalton" onerror="this.parentElement.textContent='ED';"></div>
+        <div><b>Eric Dalton</b><span>Solutions Engineer</span><a href="mailto:eric.dalton@salesforce.com">eric.dalton@salesforce.com</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Phase 1 scope is limited to Sales Cloud, Marketing Cloud, and Data Cloud Foundations. Field Service, Revenue Cloud, and Agentforce are explicitly out of scope and are referenced only as forward-looking roadmap direction. SAP remains SPATCO's system of record throughout. Implementation delivered by LogicRain Technologies Inc.<br><br>
+    Prepared for Kevin Bretcher (CRO), John Force (CEO), and Scott Wattenberg (CFO) · SPATCO Energy Solutions · September 2026
+  </footer>
+
+</div>
+</body>
+</html>

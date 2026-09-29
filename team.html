@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Your Salesforce Account Team — SPATCO Energy Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand-primary:#0274BE; --brand-secondary:#013F75; --brand-accent:#FF6900;
+  --brand-green:#72BF44; --brand-light:#F0F7FF;
+  --spatco-red:#C8102E; --spatco-steel:#46505A;
+  --font-main:'Salesforce Sans','Inter',system-ui,sans-serif;
+  --ink:#0F172A; --muted:#64748B; --line:#E2E8F0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-main);color:var(--ink);-webkit-font-smoothing:antialiased;
+  background:linear-gradient(165deg,var(--brand-secondary) 0%,#011F3D 48%,#00142A 100%);
+  min-height:100vh;padding:0 20px 60px;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(2,116,190,.07) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+.back{position:fixed;top:22px;left:22px;font-size:12px;font-weight:800;color:rgba(255,255,255,.75);text-decoration:none;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:11px 18px;z-index:50;backdrop-filter:blur(6px);}
+.back:hover{background:rgba(255,255,255,.14);color:#fff;}
+.wrap{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding-top:92px;}
+.lock{display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:34px;}
+.lock .sf{display:flex;align-items:center;gap:9px;}
+.lock .sf b{font-size:15px;font-weight:800;color:#fff;}
+.lock .div{width:1px;height:30px;background:rgba(255,255,255,.22);}
+.lock .sp b{display:block;font-size:16px;font-weight:900;letter-spacing:.06em;color:#fff;}
+.lock .sp i{display:block;font-size:8.5px;font-style:normal;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--spatco-red);margin-top:3px;}
+.hd{text-align:center;margin-bottom:44px;}
+.hd .eb{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-accent);background:rgba(255,105,0,.1);border:1px solid rgba(255,105,0,.3);border-radius:30px;padding:5px 16px;margin-bottom:16px;}
+.hd h1{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:900;color:#fff;letter-spacing:-.035em;line-height:1.06;}
+.hd p{font-size:1rem;color:rgba(255,255,255,.58);line-height:1.72;max-width:580px;margin:14px auto 0;}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:32px 26px 28px;text-align:center;backdrop-filter:blur(8px);transition:all .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+.card:hover{transform:translateY(-5px);background:rgba(255,255,255,.085);border-color:rgba(255,255,255,.24);box-shadow:0 20px 50px rgba(0,0,0,.34);}
+.ph{width:112px;height:112px;border-radius:50%;margin:0 auto 18px;object-fit:cover;display:block;border:3px solid rgba(255,255,255,.18);box-shadow:0 12px 34px rgba(0,0,0,.3);background:#0B2545;}
+.ph-fallback{width:112px;height:112px;border-radius:50%;margin:0 auto 18px;background:linear-gradient(140deg,#0A8FE0,var(--brand-primary) 62%,#015A9E);color:#fff;font-size:36px;font-weight:900;letter-spacing:.01em;display:flex;align-items:center;justify-content:center;border:3px solid rgba(255,255,255,.18);box-shadow:0 12px 34px rgba(2,116,190,.34);}
+.card h2{font-size:1.28rem;font-weight:900;color:#fff;letter-spacing:-.02em;}
+.card .role{font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-accent);margin-top:6px;}
+.card .bio{font-size:.85rem;color:rgba(255,255,255,.58);line-height:1.74;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);flex:1;}
+.card .mail{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:11px;padding:11px 18px;font-size:11.5px;font-weight:700;color:rgba(255,255,255,.85);text-decoration:none;word-break:break-all;transition:all .22s;}
+.card .mail:hover{background:var(--brand-accent);border-color:var(--brand-accent);color:#fff;}
+
+.partner{margin-top:26px;background:rgba(255,255,255,.035);border:1px dashed rgba(255,255,255,.16);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.partner .av{width:48px;height:48px;border-radius:50%;background:#46505A;color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.partner .t b{display:block;font-size:13.5px;font-weight:900;color:#fff;}
+.partner .t span{display:block;font-size:10.5px;color:rgba(255,255,255,.5);margin-top:3px;}
+.partner .chips{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto;}
+.partner .chips span{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:4px 11px;font-size:9.5px;font-weight:700;color:rgba(255,255,255,.55);}
+
+.links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
+.links a{display:inline-flex;align-items:center;gap:8px;border-radius:11px;padding:13px 24px;font-size:12px;font-weight:800;text-decoration:none;transition:all .22s;}
+.links a.primary{background:var(--brand-accent);color:#fff;box-shadow:0 8px 24px rgba(255,105,0,.3);}
+.links a.primary:hover{transform:translateY(-2px);}
+.links a.ghost{background:rgba(255,255,255,.07);color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.16);}
+.links a.ghost:hover{background:rgba(255,255,255,.13);}
+.foot{text-align:center;margin-top:40px;font-size:10px;color:rgba(255,255,255,.32);line-height:1.75;}
+
+@media (max-width:900px){.cards{grid-template-columns:1fr;} .wrap{padding-top:80px;}}
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">&larr; Back to Microsite</a>
+
+<div class="wrap">
+
+  <div class="lock">
+    <div class="sf">
+      <svg width="32" height="23" viewBox="0 0 273 191"><path fill="#fff" d="M113.7 21.2C122.5 12 134.8 6.3 148.4 6.3c18.1 0 33.8 10.1 42.2 25.1 7.3-3.3 15.4-5.1 23.9-5.1 32.7 0 59.2 26.7 59.2 59.6s-26.5 59.6-59.2 59.6c-4 0-7.9-.4-11.7-1.2-7.4 13.2-21.5 22.1-37.7 22.1-6.8 0-13.2-1.6-18.9-4.3-7.5 17.6-24.9 29.9-45.2 29.9-21.2 0-39.2-13.4-46.1-32.2-3.1.7-6.3 1-9.6 1C20.6 160.8 0 139.9 0 114.2c0-17.2 9.3-32.2 23.1-40.3-2.8-6.5-4.4-13.7-4.4-21.3C18.7 23.6 42.4 0 71.6 0c17.1 0 32.4 8.1 42.1 20.8"/></svg>
+      <b>Salesforce</b>
+    </div>
+    <div class="div"></div>
+    <div class="sp"><b>SPATCO</b><i>Energy Solutions</i></div>
+  </div>
+
+  <div class="hd">
+    <div class="eb">Your Account Team</div>
+    <h1>The people behind<br>Phase 1.</h1>
+    <p>Three people accountable for getting SPATCO from signature to go-live on November 27, 2026 — and for what comes after.</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <img class="ph" src="photo-ae.png" alt="Samuel Schmal" onerror="this.outerHTML='&lt;div class=\'ph-fallback\'&gt;SS&lt;/div&gt;';">
+      <h2>Samuel Schmal</h2>
+      <div class="role">Account Executive</div>
+      <p class="bio">Samuel owns the SPATCO relationship end to end — scope, commercials, and making sure what gets signed is what actually gets built.</p>
+      <a class="mail" href="mailto:samuel.schmal@salesforce.com">✉ samuel.schmal@salesforce.com</a>
+    </div>
+
+    <div class="card">
+      <!-- TODO: replace with photo-rvp.png once available -->
+      <div class="ph-fallback">GS</div>
+      <h2>Grant Stephens</h2>
+      <div class="role">Regional Vice President</div>
+      <p class="bio">Grant leads the regional team and is the executive escalation path for SPATCO — the person to call when something needs to move faster than process allows.</p>
+      <a class="mail" href="mailto:grant.stephens@salesforce.com">✉ grant.stephens@salesforce.com</a>
+    </div>
+
+    <div class="card">
+      <img class="ph" src="photo-se.jpg" alt="Eric Dalton" onerror="this.outerHTML='&lt;div class=\'ph-fallback\'&gt;ED&lt;/div&gt;';">
+      <h2>Eric Dalton</h2>
+      <div class="role">Solutions Engineer</div>
+      <p class="bio">Eric designed the Phase 1 architecture — including how Salesforce sits on top of SAP without displacing it — and built the demonstrations in this microsite.</p>
+      <a class="mail" href="mailto:eric.dalton@salesforce.com">✉ eric.dalton@salesforce.com</a>
+    </div>
+
+  </div>
+
+  <div class="partner">
+    <div class="av">DP</div>
+    <div class="t">
+      <b>Dirgesh Patel &middot; VP of Growth</b>
+      <span>LogicRain Technologies Inc. — implementation partner for Phase 1</span>
+    </div>
+    <div class="chips">
+      <span>Solutions Architect</span><span>Project Manager</span><span>Business Analyst</span><span>Sales Cloud Consultant</span><span>QA</span>
+    </div>
+  </div>
+
+  <div class="links">
+    <a class="primary" href="index.html">← Back to the Microsite</a>
+    <a class="ghost" href="exec-summary.html">📄 Executive Summary</a>
+    <a class="ghost" href="bva.html">📊 Business Value Assessment</a>
+  </div>
+
+  <div class="foot">
+    Phase 1 scope: Sales Cloud, Marketing Cloud, Data Cloud Foundations. SAP remains the system of record.<br>
+    Prepared for SPATCO Energy Solutions · Salesforce · September 2026
+  </div>
+
+</div>
+</body>
+</html>
