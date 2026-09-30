@@ -120,13 +120,15 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;}
 .hero-visual::before{content:'';position:absolute;width:118%;padding-bottom:118%;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
   background:radial-gradient(circle,rgba(2,116,190,.28) 0%,rgba(2,116,190,.1) 38%,transparent 68%);}
-.kpi-hero{--k:#0274BE;position:relative;width:100%;max-width:440px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-top:4px solid var(--k);border-radius:22px;padding:26px 30px 22px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 26px 70px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.1);transition:border-top-color .4s;}
+.kpi-hero{--k:#0274BE;position:relative;width:100%;max-width:440px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:24px 30px 18px;backdrop-filter:blur(6px);}
 .kh-eyebrow{display:block;font-size:9.5px;font-weight:900;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.5);}
-.kh-body{min-height:236px;display:flex;flex-direction:column;justify-content:center;padding:14px 0 10px;transition:opacity .2s ease,transform .2s ease;}
+.kh-body{min-height:262px;display:flex;flex-direction:column;justify-content:center;padding:14px 0 10px;transition:opacity .2s ease,transform .2s ease;}
 .kh-body.swap{opacity:0;transform:translateY(8px);}
 .kh-label{font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--k);filter:brightness(1.35);line-height:1.3;}
+.kh-label::before{content:'';display:block;width:34px;height:3px;border-radius:2px;background:var(--k);margin-bottom:12px;}
 .kh-value{font-size:6rem;font-weight:900;color:#fff;letter-spacing:-.045em;line-height:1;margin-top:14px;white-space:nowrap;}
-.kh-delta{align-self:flex-start;margin-top:18px;font-size:13px;font-weight:900;letter-spacing:.02em;color:#8FE06A;background:rgba(114,191,68,.14);border:1px solid rgba(114,191,68,.34);border-radius:20px;padding:6px 14px;}
+.kh-line{margin-top:16px;max-width:350px;font-size:14px;font-weight:600;line-height:1.55;color:rgba(255,255,255,.7);}
+.kh-line b{color:#fff;font-weight:800;}
 .kh-bar{height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:8px;transition:opacity .3s;}
 .kh-bar i{display:block;height:100%;width:0;background:var(--k);filter:brightness(1.3);}
 .kpi-hero.stopped .kh-bar{opacity:0;}
@@ -138,6 +140,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
 .kh-dots button.active::before{background:var(--brand-accent);transform:scale(1.35);}
 .kh-link{border:none;background:transparent;padding:6px 2px;font-family:inherit;font-size:12px;font-weight:800;color:rgba(255,255,255,.78);cursor:pointer;transition:color .2s;}
 .kh-link:hover{color:var(--brand-accent);}
+.kh-note{margin:10px 0 0;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-size:10.5px;font-weight:600;color:rgba(255,255,255,.42);line-height:1.5;}
 .hero-products .lbl{font-size:9.5px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.3);}
 .prod-logo{display:flex;align-items:center;gap:8px;}
 .prod-logo span{font-size:12.5px;font-weight:800;color:rgba(255,255,255,.88);white-space:nowrap;}
@@ -722,7 +725,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
        <div class="kh-body" id="kh-body">
          <div class="kh-label" id="kh-label"></div>
          <div class="kh-value" id="kh-value"></div>
-         <div class="kh-delta" id="kh-delta"></div>
+         <div class="kh-line" id="kh-line"></div>
        </div>
        <div class="kh-bar"><i id="kh-bar"></i></div>
        <div class="kh-foot">
@@ -734,6 +737,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
          </div>
          <button class="kh-link" id="kh-link">See the full dashboard &rarr;</button>
        </div>
+       <p class="kh-note">Figures shown are illustrative &mdash; the structure is what matters.</p>
      </div>
    </div>
 
@@ -2292,10 +2296,16 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
   (function heroKpis(){
     const card=document.getElementById('kpi-hero');
     if(!card) return;
-    const KPI_CONTEXT=Array.from(document.querySelectorAll('#s8 .kpi')).map(t=>({
+    const KPI_LINES=[
+      'Today, <b>68%</b> of accounts buy only one line of business &mdash; this is what turning that around looks like.',
+      'Up from <b>22.5 hrs/week</b> today &mdash; 4.9 hours a week recaptured from admin work.',
+      'Weeks to first closed deal &mdash; down from an <b>18-week</b> baseline today.',
+      'Versus <b>$0</b> of the ~30 events/year traceable to pipeline today.'
+    ];
+    const KPI_CONTEXT=Array.from(document.querySelectorAll('#s8 .kpi')).map((t,i)=>({
       label:t.querySelector('.l').textContent.trim(),
       value:t.querySelector('.v').textContent.trim(),
-      delta:t.querySelector('.d').textContent.trim(),
+      line:KPI_LINES[i],
       color:t.style.getPropertyValue('--k').trim()
     }));
     if(!KPI_CONTEXT.length) return;
@@ -2314,7 +2324,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
         card.style.setProperty('--k',k.color);
         document.getElementById('kh-label').textContent=k.label;
         document.getElementById('kh-value').textContent=k.value;
-        document.getElementById('kh-delta').textContent=k.delta;
+        document.getElementById('kh-line').innerHTML=k.line;
         body.classList.remove('swap');
       },200);
     }
@@ -2323,7 +2333,7 @@ p.ss{font-size:.95rem;line-height:1.7;max-width:640px;margin-top:12px;}
       card.style.setProperty('--k',k.color);
       document.getElementById('kh-label').textContent=k.label;
       document.getElementById('kh-value').textContent=k.value;
-      document.getElementById('kh-delta').textContent=k.delta;
+      document.getElementById('kh-line').innerHTML=k.line;
     }
     paint();
 
